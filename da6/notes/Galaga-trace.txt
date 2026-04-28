@@ -1,0 +1,6438 @@
+
+tracing at address $C000...
+  $C00D BPL 0xFB  
+    add external entry point $C00A 
+    add continuation entry point $C00F 
+
+tracing at address $C00A...
+  $C00D BPL 0xFB  
+
+tracing at address $C0C8...
+  $C0D0 BNE 0x19  
+    add external entry point $C0EB 
+    add continuation entry point $C0D2 
+
+tracing at address $C0EB...
+  $C0F0 RTI (0x40)  
+    add continuation entry point $C0F1 
+
+tracing at address $C000...
+  $C00D BPL 0xFB  
+
+tracing at address $BE00...
+  $BE00 JSR (0x20)  
+    add external entry point $C28A 
+    add continuation entry point $BE03 
+
+tracing at address $C28A...
+  $C28E JSR (0x20)  
+    add external entry point $C232 
+    add continuation entry point $C291 
+
+tracing at address $C232...
+  $C23A RTS (0x60)  
+    add continuation entry point $C23B 
+
+tracing at address $C000...
+  $C00D BPL 0xFB  
+
+tracing at address $C01E...
+  $C029 BNE 0xFB  
+    add external entry point $C026 
+    add continuation entry point $C02B 
+
+tracing at address $C026...
+  $C029 BNE 0xFB  
+
+tracing at address $C044...
+  $C044 JSR (0x20)  
+    add continuation entry point $C047 
+
+tracing at address $C0BD...
+  $C0BF JSR (0x20)  
+    add external entry point $C0F5 
+    add continuation entry point $C0C2 
+
+tracing at address $C0F5...
+  $C102 RTS (0x60)  
+    add continuation entry point $C103 
+
+tracing at address $C117...
+  $C117 JSR (0x20)  
+    add external entry point $C1BF 
+    add continuation entry point $C11A 
+
+tracing at address $C1BF...
+  $C1C3 RTS (0x60)  
+    add continuation entry point $C1C4 
+
+tracing at address $C3B5...
+  $C3B7 RTS (0x60)  
+    add continuation entry point $C3B8 
+
+tracing at address $C3CA...
+  $C3CC RTS (0x60)  
+    add continuation entry point $C3CD 
+
+tracing at address $C4A0...
+  $C4B5 JSR (0x20)  
+    add external entry point $C4EF 
+    add continuation entry point $C4B8 
+
+tracing at address $C4EF...
+  $C4FD BNE 0xF2  
+    add external entry point $C4F1 
+    add continuation entry point $C4FF 
+
+tracing at address $C4F1...
+  $C4FD BNE 0xF2  
+
+tracing at address $C65A...
+  $C65C BPL 0x05  
+    add external entry point $C663 
+    add continuation entry point $C65E 
+
+tracing at address $C663...
+  $C66B BCC 0x06  
+    add external entry point $C673 
+    add continuation entry point $C66D 
+
+tracing at address $C673...
+  $C678 JMP (0x4C)  
+    add external entry point $C855 
+    add continuation entry point $C67B 
+
+tracing at address $C855...
+  $C857 BEQ 0x0C  
+    add external entry point $C865 
+    add continuation entry point $C859 
+
+tracing at address $C865...
+  $C865 JSR (0x20)  
+    add external entry point $C886 
+    add continuation entry point $C868 
+
+tracing at address $C886...
+  $C88A BCS 0x1A  
+    add external entry point $C8A6 
+    add continuation entry point $C88C 
+
+tracing at address $C8A6...
+  $C8A6 RTS (0x60)  
+    add continuation entry point $C8A7 
+
+tracing at address $C693...
+  $C698 BCS 0x0D  
+    add external entry point $C6A7 
+    add continuation entry point $C69A 
+
+tracing at address $C6A7...
+  $C6A7 RTS (0x60)  
+    add continuation entry point $C6A8 
+
+tracing at address $C8C4...
+  $C8D3 BCC 0x02  
+    add external entry point $C8D7 
+    add continuation entry point $C8D5 
+
+tracing at address $C8D7...
+  $C8DC BNE 0xED  
+    add external entry point $C8CB 
+    add continuation entry point $C8DE 
+
+tracing at address $C8CB...
+  $C8D3 BCC 0x02  
+
+tracing at address $C929...
+  $C934 JMP (0x4C)  
+    add external entry point $CBA8 
+    add continuation entry point $C937 
+
+tracing at address $CBA8...
+  $CBAB BNE 0x05  
+    add continuation entry point $CBAD 
+
+tracing at address $C957...
+  $C95C BNE 0x02  
+    add external entry point $C960 
+    add continuation entry point $C95E 
+
+tracing at address $C960...
+  $C96A JMP (0x4C)  
+    add external entry point $C191 
+    add continuation entry point $C96D 
+
+tracing at address $C191...
+  $C191 JSR (0x20)  
+    add continuation entry point $C194 
+
+tracing at address $C993...
+  $C99B BEQ 0x04  
+    add external entry point $C9A1 
+    add continuation entry point $C99D 
+
+tracing at address $C9A1...
+  $C9A2 JMP (0x4C)  
+    add external entry point $C12D 
+    add continuation entry point $C9A5 
+
+tracing at address $C12D...
+  $C12D JSR (0x20)  
+    add continuation entry point $C130 
+
+tracing at address $C9CE...
+  $C9DB BNE 0x01  
+    add external entry point $C9DE 
+    add continuation entry point $C9DD 
+
+tracing at address $C9DE...
+  $C9E0 JSR (0x20)  
+    add continuation entry point $C9E3 
+
+tracing at address $CA17...
+  $CA1B BMI 0x0C  
+    add external entry point $CA29 
+    add continuation entry point $CA1D 
+
+tracing at address $CA29...
+  $CA35 BNE 0x03  
+    add external entry point $CA3A 
+    add continuation entry point $CA37 
+
+tracing at address $CA3A...
+  $CA40 JSR (0x20)  
+    add external entry point $C177 
+    add continuation entry point $CA43 
+
+tracing at address $C177...
+  $C177 JSR (0x20)  
+    add continuation entry point $C17A 
+
+tracing at address $CA91...
+  $CA9F JMP (0x4C)  
+    add external entry point $C262 
+    add continuation entry point $CAA2 
+
+tracing at address $C262...
+  $C262 JSR (0x20)  
+    add external entry point $C144 
+    add continuation entry point $C265 
+
+tracing at address $C144...
+  $C144 JSR (0x20)  
+    add continuation entry point $C147 
+
+tracing at address $CAF6...
+  $CAFB BCS 0xD5  
+    add external entry point $CAD2 
+    add continuation entry point $CAFD 
+
+tracing at address $CAD2...
+  $CAD6 JSR (0x20)  
+    add continuation entry point $CAD9 
+
+tracing at address $CB38...
+  $CB48 JSR (0x20)  
+    add continuation entry point $CB4B 
+
+tracing at address $CB56...
+  $CB62 JSR (0x20)  
+    add external entry point $C156 
+    add continuation entry point $CB65 
+
+tracing at address $C156...
+  $C15C JSR (0x20)  
+    add external entry point $C1BD 
+    add continuation entry point $C15F 
+
+tracing at address $C1BD...
+  $C1C3 RTS (0x60)  
+
+tracing at address $CB79...
+  $CB7B JSR (0x20)  
+    add external entry point $CBE6 
+    add continuation entry point $CB7E 
+
+tracing at address $CBE6...
+  $CC02 JSR (0x20)  
+    add continuation entry point $CC05 
+
+tracing at address $CBB2...
+  $CBBE JSR (0x20)  
+    add external entry point $C3A1 
+    add continuation entry point $CBC1 
+
+tracing at address $C3A1...
+  $C3AB BCC 0x08  
+    add continuation entry point $C3AD 
+
+tracing at address $CBDE...
+  $CBE4 BPL 0x07  
+    add external entry point $CBED 
+
+tracing at address $CBED...
+  $CC02 JSR (0x20)  
+
+tracing at address $CC38...
+  $CC3E BNE 0x1E  
+    add external entry point $CC5E 
+    add continuation entry point $CC40 
+
+tracing at address $CC5E...
+  $CC5E RTS (0x60)  
+    add continuation entry point $CC5F 
+
+tracing at address $CC70...
+  $CC8B BNE 0x4D  
+    add continuation entry point $CC8D 
+
+tracing at address $CCDA...
+  $CCDF BPL 0x02  
+    add external entry point $CCE3 
+    add continuation entry point $CCE1 
+
+tracing at address $CCE3...
+  $CCED JMP (0x4C)  
+    add continuation entry point $CCF0 
+
+tracing at address $CD1A...
+  $CD1E RTS (0x60)  
+    add continuation entry point $CD1F 
+
+tracing at address $CDB3...
+  $CDB6 RTS (0x60)  
+    add continuation entry point $CDB7 
+
+tracing at address $CDE0...
+  $CDE6 JSR (0x20)  
+    add continuation entry point $CDE9 
+
+tracing at address $CE00...
+  $CE00 JSR (0x20)  
+    add continuation entry point $CE03 
+
+tracing at address $CE4F...
+  $CE52 BNE 0x0D  
+    add external entry point $CE61 
+    add continuation entry point $CE54 
+
+tracing at address $CE61...
+  $CE65 JSR (0x20)  
+    add continuation entry point $CE68 
+
+tracing at address $CE6C...
+  $CE6C JMP (0x4C)  
+    add continuation entry point $CE6F 
+
+tracing at address $CEFC...
+  $CEFE JSR (0x20)  
+    add external entry point $D22A 
+    add continuation entry point $CF01 
+
+tracing at address $D22A...
+  $D22B JSR (0x20)  
+    add continuation entry point $D22E 
+
+tracing at address $CF52...
+  $CF52 JSR (0x20)  
+    add continuation entry point $CF55 
+
+tracing at address $D046...
+  $D046 RTS (0x60)  
+    add continuation entry point $D047 
+
+tracing at address $D273...
+  $D273 RTS (0x60)  
+    add continuation entry point $D274 
+
+tracing at address $D293...
+  $D299 JMP (0x4C)  
+    add external entry point $C13E 
+    add continuation entry point $D29C 
+
+tracing at address $C13E...
+  $C144 JSR (0x20)  
+
+tracing at address $D3FE...
+  $D402 BCC 0x0D  
+    add continuation entry point $D404 
+
+tracing at address $D411...
+  $D41D BPL 0xFA  
+    add external entry point $D419 
+    add continuation entry point $D41F 
+
+tracing at address $D419...
+  $D41D BPL 0xFA  
+
+tracing at address $D509...
+  $D50D BEQ 0x03  
+    add external entry point $D512 
+    add continuation entry point $D50F 
+
+tracing at address $D512...
+  $D513 BPL 0xF4  
+    add continuation entry point $D515 
+
+tracing at address $D624...
+  $D629 JMP (0x4C)  
+    add external entry point $D739 
+    add continuation entry point $D62C 
+
+tracing at address $D739...
+  $D743 BEQ 0x03  
+    add external entry point $D748 
+    add continuation entry point $D745 
+
+tracing at address $D748...
+  $D748 RTS (0x60)  
+    add continuation entry point $D749 
+
+tracing at address $D6E7...
+  $D6EB JSR (0x20)  
+    add external entry point $D4F8 
+    add continuation entry point $D6EE 
+
+tracing at address $D4F8...
+  $D4F8 JSR (0x20)  
+    add continuation entry point $D4FB 
+
+tracing at address $D7BA...
+  $D7BB JSR (0x20)  
+    add external entry point $D7AA 
+    add continuation entry point $D7BE 
+
+tracing at address $D7AA...
+  $D7AF RTS (0x60)  
+    add continuation entry point $D7B0 
+
+tracing at address $D7D1...
+  $D7E3 BPL 0xFA  
+    add external entry point $D7DF 
+    add continuation entry point $D7E5 
+
+tracing at address $D7DF...
+  $D7E3 BPL 0xFA  
+
+tracing at address $D80C...
+  $D813 JMP (0x4C)  
+    add external entry point $D842 
+    add continuation entry point $D816 
+
+tracing at address $D842...
+  $D871 BPL 0xFB  
+    add external entry point $D86E 
+    add continuation entry point $D873 
+
+tracing at address $D86E...
+  $D871 BPL 0xFB  
+
+tracing at address $D81A...
+  $D823 BPL 0xF7  
+    add external entry point $D81C 
+    add continuation entry point $D825 
+
+tracing at address $D81C...
+  $D823 BPL 0xF7  
+
+tracing at address $D882...
+  $D88B RTS (0x60)  
+    add continuation entry point $D88C 
+
+tracing at address $D913...
+  $D916 BNE 0x0D  
+    add external entry point $D925 
+    add continuation entry point $D918 
+
+tracing at address $D925...
+  $D928 JSR (0x20)  
+    add external entry point $D93F 
+    add continuation entry point $D92B 
+
+tracing at address $D93F...
+  $D950 RTS (0x60)  
+    add continuation entry point $D951 
+
+tracing at address $D995...
+  $D9A6 JSR (0x20)  
+    add external entry point $DAE2 
+    add continuation entry point $D9A9 
+
+tracing at address $DAE2...
+  $DAE8 BCS 0x04  
+    add external entry point $DAEE 
+    add continuation entry point $DAEA 
+
+tracing at address $DAEE...
+  $DAF2 BCS 0x05  
+    add external entry point $DAF9 
+    add continuation entry point $DAF4 
+
+tracing at address $DAF9...
+  $DAFB JSR (0x20)  
+    add external entry point $D518 
+    add continuation entry point $DAFE 
+
+tracing at address $D518...
+  $D527 BCC 0x06  
+    add external entry point $D52F 
+    add continuation entry point $D529 
+
+tracing at address $D52F...
+  $D535 JMP (0x4C)  
+    add external entry point $D561 
+    add continuation entry point $D538 
+
+tracing at address $D561...
+  $D56E RTS (0x60)  
+    add continuation entry point $D56F 
+
+tracing at address $D9D0...
+  $D9D3 BNE 0x1B  
+    add external entry point $D9F0 
+    add continuation entry point $D9D5 
+
+tracing at address $D9F0...
+  $D9F0 JMP (0x4C)  
+    add external entry point $DA73 
+    add continuation entry point $D9F3 
+
+tracing at address $DA73...
+  $DA76 BCC 0x30  
+    add external entry point $DAA8 
+    add continuation entry point $DA78 
+
+tracing at address $DAA8...
+  $DAB1 BCS 0x01  
+    add external entry point $DAB4 
+    add continuation entry point $DAB3 
+
+tracing at address $DAB4...
+  $DABD BNE 0x06  
+    add external entry point $DAC5 
+    add continuation entry point $DABF 
+
+tracing at address $DAC5...
+  $DACF JSR (0x20)  
+    add continuation entry point $DAD2 
+
+tracing at address $DA5D...
+  $DA61 BNE 0xD3  
+    add external entry point $DA36 
+    add continuation entry point $DA63 
+
+tracing at address $DA36...
+  $DA3B BEQ 0x20  
+    add continuation entry point $DA3D 
+
+tracing at address $DB43...
+  $DB49 BMI 0x03  
+    add external entry point $DB4E 
+    add continuation entry point $DB4B 
+
+tracing at address $DB4E...
+  $DB57 BCC 0xEC  
+    add external entry point $DB45 
+    add continuation entry point $DB59 
+
+tracing at address $DB45...
+  $DB49 BMI 0x03  
+
+tracing at address $DB80...
+  $DB91 BMI 0x4C  
+    add external entry point $DBDF 
+    add continuation entry point $DB93 
+
+tracing at address $DBDF...
+  $DBE3 BEQ 0x08  
+    add external entry point $DBED 
+    add continuation entry point $DBE5 
+
+tracing at address $DBED...
+  $DBED JSR (0x20)  
+    add external entry point $DFF1 
+    add continuation entry point $DBF0 
+
+tracing at address $DFF1...
+  $E001 RTS (0x60)  
+    add continuation entry point $E002 
+
+tracing at address $DC38...
+  $DC3A JMP (0x4C)  
+    add continuation entry point $DC3D 
+
+tracing at address $DC6E...
+  $DC6E JSR (0x20)  
+    add continuation entry point $DC71 
+
+tracing at address $DD1E...
+  $DD28 BNE 0xD7  
+    add external entry point $DD01 
+    add continuation entry point $DD2A 
+
+tracing at address $DD01...
+  $DD05 JSR (0x20)  
+    add external entry point $D78C 
+    add continuation entry point $DD08 
+
+tracing at address $D78C...
+  $D79E BCC 0xD6  
+    add external entry point $D776 
+    add continuation entry point $D7A0 
+
+tracing at address $D776...
+  $D77A BCS 0x05  
+    add external entry point $D781 
+    add continuation entry point $D77C 
+
+tracing at address $D781...
+  $D78B RTS (0x60)  
+
+tracing at address $DD80...
+  $DD90 BNE 0xF5  
+    add external entry point $DD87 
+    add continuation entry point $DD92 
+
+tracing at address $DD87...
+  $DD90 BNE 0xF5  
+
+tracing at address $DDEE...
+  $DDEE JSR (0x20)  
+    add continuation entry point $DDF1 
+
+tracing at address $DE10...
+  $DE10 JSR (0x20)  
+    add continuation entry point $DE13 
+
+tracing at address $DE4A...
+  $DE4D BEQ 0x01  
+    add external entry point $DE50 
+    add continuation entry point $DE4F 
+
+tracing at address $DE50...
+  $DE52 BNE 0xFB  
+    add continuation entry point $DE54 
+
+tracing at address $DE76...
+  $DE86 JSR (0x20)  
+    add continuation entry point $DE89 
+
+tracing at address $DEF1...
+  $DEF5 JSR (0x20)  
+    add continuation entry point $DEF8 
+
+tracing at address $DF97...
+  $DF9B BNE 0x34  
+    add external entry point $DFD1 
+    add continuation entry point $DF9D 
+
+tracing at address $DFD1...
+  $DFDF RTS (0x60)  
+    add continuation entry point $DFE0 
+
+tracing at address $E03E...
+  $E044 BNE 0x12  
+    add external entry point $E058 
+    add continuation entry point $E046 
+
+tracing at address $E058...
+  $E061 BMI 0x07  
+    add external entry point $E06A 
+    add continuation entry point $E063 
+
+tracing at address $E06A...
+  $E089 BNE 0x05  
+    add external entry point $E090 
+    add continuation entry point $E08B 
+
+tracing at address $E090...
+  $E095 JSR (0x20)  
+    add external entry point $C335 
+    add continuation entry point $E098 
+
+tracing at address $C335...
+  $C337 BNE 0x02  
+    add external entry point $C33B 
+    add continuation entry point $C339 
+
+tracing at address $C33B...
+  $C343 BPL 0x5F  
+    add external entry point $C3A4 
+    add continuation entry point $C345 
+
+tracing at address $C3A4...
+  $C3AB BCC 0x08  
+
+tracing at address $E113...
+  $E115 BEQ 0x04  
+    add external entry point $E11B 
+    add continuation entry point $E117 
+
+tracing at address $E11B...
+  $E120 BEQ 0x6E  
+    add external entry point $E190 
+    add continuation entry point $E122 
+
+tracing at address $E190...
+  $E194 BMI 0x29  
+    add external entry point $E1BF 
+    add continuation entry point $E196 
+
+tracing at address $E1BF...
+  $E1C6 BCC 0xCA  
+    add external entry point $E192 
+    add continuation entry point $E1C8 
+
+tracing at address $E192...
+  $E194 BMI 0x29  
+
+tracing at address $E1E9...
+  $E1EC BMI 0x7B  
+    add external entry point $E269 
+    add continuation entry point $E1EE 
+
+tracing at address $E269...
+  $E269 RTS (0x60)  
+    add continuation entry point $E26A 
+
+tracing at address $E24D...
+  $E264 BCS 0x04  
+    add continuation entry point $E266 
+
+tracing at address $E2CB...
+  $E2CB JSR (0x20)  
+    add continuation entry point $E2CE 
+
+tracing at address $E2E7...
+  $E2F0 BCC 0x0E  
+    add external entry point $E300 
+    add continuation entry point $E2F2 
+
+tracing at address $E300...
+  $E303 BNE 0xFA  
+    add external entry point $E2FF 
+    add continuation entry point $E305 
+
+tracing at address $E2FF...
+  $E2FF RTS (0x60)  
+
+tracing at address $E383...
+  $E388 BCS 0xDF  
+    add external entry point $E369 
+    add continuation entry point $E38A 
+
+tracing at address $E369...
+  $E376 BNE 0xF7  
+    add external entry point $E36F 
+    add continuation entry point $E378 
+
+tracing at address $E36F...
+  $E376 BNE 0xF7  
+
+tracing at address $E3D4...
+  $E3DB BNE 0x05  
+    add external entry point $E3E2 
+    add continuation entry point $E3DD 
+
+tracing at address $E3E2...
+  $E3E9 BCC 0xEB  
+    add external entry point $E3D6 
+    add continuation entry point $E3EB 
+
+tracing at address $E3D6...
+  $E3DB BNE 0x05  
+
+tracing at address $E3EE...
+  $E403 JMP (0x4C)  
+    add external entry point $E223 
+    add continuation entry point $E406 
+
+tracing at address $E223...
+  $E22A BMI 0x3D  
+    add continuation entry point $E22C 
+
+tracing at address $E426...
+  $E42D BNE 0x09  
+    add external entry point $E438 
+    add continuation entry point $E42F 
+
+tracing at address $E438...
+  $E440 BNE 0x0D  
+    add external entry point $E44F 
+    add continuation entry point $E442 
+
+tracing at address $E44F...
+  $E457 JSR (0x20)  
+    add external entry point $E4E5 
+    add continuation entry point $E45A 
+
+tracing at address $E4E5...
+  $E4ED BNE 0x02  
+    add external entry point $E4F1 
+    add continuation entry point $E4EF 
+
+tracing at address $E4F1...
+  $E4F4 RTS (0x60)  
+    add continuation entry point $E4F5 
+
+tracing at address $E482...
+  $E485 JMP (0x4C)  
+    add continuation entry point $E488 
+
+tracing at address $E4A1...
+  $E4A6 BEQ 0x04  
+    add external entry point $E4AC 
+    add continuation entry point $E4A8 
+
+tracing at address $E4AC...
+  $E4B3 BMI 0x05  
+    add external entry point $E4BA 
+    add continuation entry point $E4B5 
+
+tracing at address $E4BA...
+  $E4C3 BPL 0xF7  
+    add external entry point $E4BC 
+    add continuation entry point $E4C5 
+
+tracing at address $E4BC...
+  $E4C3 BPL 0xF7  
+
+tracing at address $E4D5...
+  $E4DD BNE 0x02  
+    add external entry point $E4E1 
+    add continuation entry point $E4DF 
+
+tracing at address $E4E1...
+  $E4E4 RTS (0x60)  
+
+tracing at address $E640...
+  $E648 JSR (0x20)  
+    add continuation entry point $E64B 
+
+tracing at address $E67D...
+  $E680 BNE 0x67  
+    add external entry point $E6E9 
+    add continuation entry point $E682 
+
+tracing at address $E6E9...
+  $E6EE BEQ 0x03  
+    add external entry point $E6F3 
+    add continuation entry point $E6F0 
+
+tracing at address $E6F3...
+  $E707 JSR (0x20)  
+    add external entry point $E78E 
+    add continuation entry point $E70A 
+
+tracing at address $E78E...
+  $E795 BCC 0x02  
+    add external entry point $E799 
+    add continuation entry point $E797 
+
+tracing at address $E799...
+  $E7B0 RTS (0x60)  
+    add continuation entry point $E7B1 
+
+tracing at address $E69B...
+  $E6A9 BNE 0x3E  
+    add continuation entry point $E6AB 
+
+tracing at address $E7B6...
+  $E7B8 BNE 0x05  
+    add external entry point $E7BF 
+    add continuation entry point $E7BA 
+
+tracing at address $E7BF...
+  $E7BF RTS (0x60)  
+    add continuation entry point $E7C0 
+
+tracing at address $E867...
+  $E867 JSR (0x20)  
+    add external entry point $E609 
+    add continuation entry point $E86A 
+
+tracing at address $E609...
+  $E615 BCC 0x02  
+    add external entry point $E619 
+    add continuation entry point $E617 
+
+tracing at address $E619...
+  $E61A JSR (0x20)  
+    add external entry point $C301 
+    add continuation entry point $E61D 
+
+tracing at address $C301...
+  $C314 JMP (0x6C)  
+    add continuation entry point $C317 
+
+tracing at address $E88E...
+  $E8A4 RTS (0x60)  
+    add continuation entry point $E8A5 
+
+tracing at address $E8E1...
+  $E8F2 JSR (0x20)  
+    add external entry point $E922 
+    add continuation entry point $E8F5 
+
+tracing at address $E922...
+  $E938 RTS (0x60)  
+    add continuation entry point $E939 
+
+tracing at address $E94B...
+  $E95B BCC 0x08  
+    add continuation entry point $E95D 
+
+tracing at address $E965...
+  $E979 BCC 0x01  
+    add external entry point $E97C 
+    add continuation entry point $E97B 
+
+tracing at address $E97C...
+  $E98D BCS 0x0E  
+    add external entry point $E99D 
+    add continuation entry point $E98F 
+
+tracing at address $E99D...
+  $E9A9 RTS (0x60)  
+    add continuation entry point $E9AA 
+
+tracing at address $EADA...
+  $EAFE BCC 0x02  
+    add external entry point $EB02 
+    add continuation entry point $EB00 
+
+tracing at address $EB02...
+  $EB05 BNE 0xE9  
+    add external entry point $EAF0 
+    add continuation entry point $EB07 
+
+tracing at address $EAF0...
+  $EAFE BCC 0x02  
+
+tracing at address $EC85...
+  $EC90 JMP (0x4C)  
+    add external entry point $EBB7 
+    add continuation entry point $EC93 
+
+tracing at address $EBB7...
+  $EBBE BCC 0x02  
+    add external entry point $EBC2 
+    add continuation entry point $EBC0 
+
+tracing at address $EBC2...
+  $EBC8 BCC 0xD1  
+    add external entry point $EB9B 
+    add continuation entry point $EBCA 
+
+tracing at address $EB9B...
+  $EBA0 BEQ 0x15  
+    add continuation entry point $EBA2 
+
+tracing at address $ECD3...
+  $ECD3 JSR (0x20)  
+    add external entry point $ED60 
+    add continuation entry point $ECD6 
+
+tracing at address $ED60...
+  $ED6F RTS (0x60)  
+    add continuation entry point $ED70 
+
+tracing at address $ED14...
+  $ED14 JSR (0x20)  
+    add continuation entry point $ED17 
+
+tracing at address $ED3B...
+  $ED44 JMP (0x4C)  
+    add external entry point $EC04 
+    add continuation entry point $ED47 
+
+tracing at address $EC04...
+  $EC04 JSR (0x20)  
+    add continuation entry point $EC07 
+
+tracing at address $F790...
+  $F79A JSR (0x20)  
+    add continuation entry point $F79D 
+
+tracing at address $C00F...
+  $C016 BNE 0x04  
+    add external entry point $C01C 
+    add continuation entry point $C018 
+
+tracing at address $C01C...
+  $C029 BNE 0xFB  
+
+tracing at address $C0D2...
+  $C0D6 BEQ 0x13  
+    add continuation entry point $C0D8 
+
+tracing at address $C0F1...
+  $C102 RTS (0x60)  
+
+tracing at address $BE03...
+  $BE0C JSR (0x20)  
+    add continuation entry point $BE0F 
+
+tracing at address $C291...
+  $C2A0 BPL 0xFB  
+    add external entry point $C29D 
+    add continuation entry point $C2A2 
+
+tracing at address $C29D...
+  $C2A0 BPL 0xFB  
+
+tracing at address $C23B...
+  $C23D JSR (0x20)  
+    add external entry point $C242 
+    add continuation entry point $C240 
+
+tracing at address $C242...
+  $C25C BNE 0xFA  
+    add external entry point $C258 
+    add continuation entry point $C25E 
+
+tracing at address $C258...
+  $C25C BNE 0xFA  
+
+tracing at address $C02B...
+  $C02E BPL 0xF6  
+    add continuation entry point $C030 
+
+tracing at address $C047...
+  $C047 JSR (0x20)  
+    add continuation entry point $C04A 
+
+tracing at address $C0C2...
+  $C0C2 JSR (0x20)  
+    add external entry point $C500 
+    add continuation entry point $C0C5 
+
+tracing at address $C500...
+  $C51B JSR (0x20)  
+    add external entry point $C6D1 
+    add continuation entry point $C51E 
+
+tracing at address $C6D1...
+  $C6D1 JSR (0x20)  
+    add external entry point $C6E0 
+    add continuation entry point $C6D4 
+
+tracing at address $C6E0...
+  $C6EB BCC 0x01  
+    add external entry point $C6EE 
+    add continuation entry point $C6ED 
+
+tracing at address $C6EE...
+  $C6F1 BMI 0xFA  
+    add continuation entry point $C6F3 
+
+tracing at address $C103...
+  $C114 RTS (0x60)  
+    add continuation entry point $C115 
+
+tracing at address $C11A...
+  $C12A JMP (0x4C)  
+    add external entry point $C18C 
+
+tracing at address $C18C...
+  $C18E BEQ 0x5A  
+    add external entry point $C1EA 
+    add continuation entry point $C190 
+
+tracing at address $C1EA...
+  $C1F0 BMI 0x40  
+    add continuation entry point $C1F2 
+
+tracing at address $C1C4...
+  $C1E9 RTS (0x60)  
+
+tracing at address $C3B8...
+  $C3C0 BCS 0x08  
+    add continuation entry point $C3C2 
+
+tracing at address $C3CD...
+  $C3DE BNE 0xEF  
+    add external entry point $C3CF 
+    add continuation entry point $C3E0 
+
+tracing at address $C3CF...
+  $C3DE BNE 0xEF  
+
+tracing at address $C4B8...
+  $C4C6 JSR (0x20)  
+    add continuation entry point $C4C9 
+
+tracing at address $C4FF...
+  $C4FF RTS (0x60)  
+
+tracing at address $C65E...
+  $C66B BCC 0x06  
+
+tracing at address $C66D...
+  $C678 JMP (0x4C)  
+
+tracing at address $C67B...
+  $C690 JMP (0x4C)  
+
+tracing at address $C859...
+  $C85B BEQ 0x19  
+    add external entry point $C876 
+    add continuation entry point $C85D 
+
+tracing at address $C876...
+  $C876 JSR (0x20)  
+    add continuation entry point $C879 
+
+tracing at address $C868...
+  $C873 JMP (0x4C)  
+
+tracing at address $C88C...
+  $C8A4 BEQ 0x01  
+
+tracing at address $C8A7...
+  $C8AA RTS (0x60)  
+    add continuation entry point $C8AB 
+
+tracing at address $C69A...
+  $C69F BEQ 0x03  
+    add external entry point $C6A4 
+    add continuation entry point $C6A1 
+
+tracing at address $C6A4...
+  $C6A5 BPL 0xF5  
+    add external entry point $C69C 
+
+tracing at address $C69C...
+  $C69F BEQ 0x03  
+
+tracing at address $C6A8...
+  $C6AC JSR (0x20)  
+    add continuation entry point $C6AF 
+
+tracing at address $C8D5...
+  $C8DC BNE 0xED  
+
+tracing at address $C8DE...
+  $C8F3 BCC 0x08  
+    add external entry point $C8FD 
+    add continuation entry point $C8F5 
+
+tracing at address $C8FD...
+  $C8FD JMP (0x4C)  
+    add external entry point $C90B 
+    add continuation entry point $C900 
+
+tracing at address $C90B...
+  $C912 BNE 0x9B  
+    add external entry point $C8AF 
+    add continuation entry point $C914 
+
+tracing at address $C8AF...
+  $C8AF RTS (0x60)  
+    add continuation entry point $C8B0 
+
+tracing at address $C937...
+  $C943 JSR (0x20)  
+    add continuation entry point $C946 
+
+tracing at address $CBAD...
+  $CBB0 BNE 0x0F  
+
+tracing at address $C95E...
+  $C96A JMP (0x4C)  
+
+tracing at address $C96D...
+  $C96F BNE 0x51  
+    add external entry point $C9C2 
+    add continuation entry point $C971 
+
+tracing at address $C9C2...
+  $C9C2 RTS (0x60)  
+    add continuation entry point $C9C3 
+
+tracing at address $C194...
+  $C196 BEQ 0xF8  
+    add continuation entry point $C198 
+
+tracing at address $C99D...
+  $C99E JMP (0x4C)  
+
+tracing at address $C9A5...
+  $C9A8 BCC 0x73  
+    add continuation entry point $C9AA 
+
+tracing at address $C130...
+  $C144 JSR (0x20)  
+
+tracing at address $C9DD...
+  $C9E0 JSR (0x20)  
+
+tracing at address $C9E3...
+  $C9EB JSR (0x20)  
+    add external entry point $CA25 
+    add continuation entry point $C9EE 
+
+tracing at address $CA25...
+  $CA35 BNE 0x03  
+
+tracing at address $CA1D...
+  $CA35 BNE 0x03  
+
+tracing at address $CA37...
+  $CA40 JSR (0x20)  
+
+tracing at address $CA43...
+  $CA49 BNE 0x01  
+    add external entry point $CA4C 
+    add continuation entry point $CA4B 
+
+tracing at address $CA4C...
+  $CA58 BCC 0x02  
+    add external entry point $CA5C 
+    add continuation entry point $CA5A 
+
+tracing at address $CA5C...
+  $CA67 BCS 0x19  
+    add external entry point $CA82 
+    add continuation entry point $CA69 
+
+tracing at address $CA82...
+  $CA8C BPL 0xF8  
+    add external entry point $CA86 
+    add continuation entry point $CA8E 
+
+tracing at address $CA86...
+  $CA8C BPL 0xF8  
+
+tracing at address $C17A...
+  $C17E JSR (0x20)  
+    add external entry point $C1AA 
+    add continuation entry point $C181 
+
+tracing at address $C1AA...
+  $C1AB BNE 0x0A  
+    add external entry point $C1B7 
+    add continuation entry point $C1AD 
+
+tracing at address $C1B7...
+  $C1BC RTS (0x60)  
+
+tracing at address $CAA2...
+  $CAA6 JSR (0x20)  
+    add external entry point $CABB 
+    add continuation entry point $CAA9 
+
+tracing at address $CABB...
+  $CABD BNE 0x01  
+    add external entry point $CAC0 
+    add continuation entry point $CABF 
+
+tracing at address $CAC0...
+  $CAC1 BNE 0x33  
+    add continuation entry point $CAC3 
+
+tracing at address $C265...
+  $C26C BCC 0x02  
+    add external entry point $C270 
+    add continuation entry point $C26E 
+
+tracing at address $C270...
+  $C272 BNE 0xEE  
+    add continuation entry point $C274 
+
+tracing at address $C147...
+  $C14F BNE 0xF8  
+    add external entry point $C149 
+    add continuation entry point $C151 
+
+tracing at address $C149...
+  $C14F BNE 0xF8  
+
+tracing at address $CAFD...
+  $CAFF BEQ 0x0D  
+    add external entry point $CB0E 
+    add continuation entry point $CB01 
+
+tracing at address $CB0E...
+  $CB12 RTS (0x60)  
+    add continuation entry point $CB13 
+
+tracing at address $CAD9...
+  $CAEB JSR (0x20)  
+    add external entry point $C174 
+    add continuation entry point $CAEE 
+
+tracing at address $C174...
+  $C174 JSR (0x20)  
+
+tracing at address $CB4B...
+  $CB52 BCC 0x02  
+    add continuation entry point $CB54 
+
+tracing at address $CB65...
+  $CB6A RTS (0x60)  
+    add continuation entry point $CB6B 
+
+tracing at address $C15F...
+  $C15F JSR (0x20)  
+    add continuation entry point $C162 
+
+tracing at address $CB7E...
+  $CB80 BNE 0xF9  
+    add external entry point $CB7B 
+    add continuation entry point $CB82 
+
+tracing at address $CB7B...
+  $CB7B JSR (0x20)  
+
+tracing at address $CC05...
+  $CC0C BCC 0x02  
+    add external entry point $CC10 
+    add continuation entry point $CC0E 
+
+tracing at address $CC10...
+  $CC14 BEQ 0x07  
+    add external entry point $CC1D 
+    add continuation entry point $CC16 
+
+tracing at address $CC1D...
+  $CC1D JMP (0x4C)  
+    add continuation entry point $CC20 
+
+tracing at address $CBC1...
+  $CBC8 BCC 0x1C  
+    add continuation entry point $CBCA 
+
+tracing at address $C3AD...
+  $C3B2 BPL 0xF1  
+    add external entry point $C3A5 
+    add continuation entry point $C3B4 
+
+tracing at address $C3A5...
+  $C3AB BCC 0x08  
+
+tracing at address $CC40...
+  $CC42 BNE 0x1B  
+    add continuation entry point $CC44 
+
+tracing at address $CC5F...
+  $CC62 BMI 0x0C  
+    add continuation entry point $CC64 
+
+tracing at address $CC8D...
+  $CC94 BCC 0x44  
+    add continuation entry point $CC96 
+
+tracing at address $CCE1...
+  $CCED JMP (0x4C)  
+
+tracing at address $CCF0...
+  $CD16 BCC 0x02  
+    add continuation entry point $CD18 
+
+tracing at address $CD1F...
+  $CD2E BPL 0xFB  
+    add external entry point $CD2B 
+    add continuation entry point $CD30 
+
+tracing at address $CD2B...
+  $CD2E BPL 0xFB  
+
+tracing at address $CDB7...
+  $CDBD JSR (0x20)  
+    add continuation entry point $CDC0 
+
+tracing at address $CDE9...
+  $CDE9 JSR (0x20)  
+    add external entry point $BE33 
+    add continuation entry point $CDEC 
+
+tracing at address $BE33...
+  $BE37 BNE 0x19  
+    add external entry point $BE52 
+    add continuation entry point $BE39 
+
+tracing at address $BE52...
+  $BE56 JMP (0x4C)  
+    add continuation entry point $BE59 
+
+tracing at address $CE03...
+  $CE07 BNE 0x66  
+    add continuation entry point $CE09 
+
+tracing at address $CE54...
+  $CE58 JSR (0x20)  
+    add continuation entry point $CE5B 
+
+tracing at address $CE68...
+  $CE6C JMP (0x4C)  
+
+tracing at address $CE6F...
+  $CE79 JSR (0x20)  
+    add external entry point $EAE4 
+    add continuation entry point $CE7C 
+
+tracing at address $EAE4...
+  $EAFE BCC 0x02  
+
+tracing at address $CF01...
+  $CF04 BNE 0x17  
+    add external entry point $CF1D 
+    add continuation entry point $CF06 
+
+tracing at address $CF1D...
+  $CF20 BNE 0x23  
+    add external entry point $CF45 
+    add continuation entry point $CF22 
+
+tracing at address $CF45...
+  $CF49 BEQ 0xC0  
+    add external entry point $CF0B 
+    add continuation entry point $CF4B 
+
+tracing at address $CF0B...
+  $CF0B JSR (0x20)  
+    add external entry point $CFFD 
+    add continuation entry point $CF0E 
+
+tracing at address $CFFD...
+  $D001 JSR (0x20)  
+    add continuation entry point $D004 
+
+tracing at address $D22E...
+  $D22E JSR (0x20)  
+    add external entry point $D238 
+    add continuation entry point $D231 
+
+tracing at address $D238...
+  $D238 JSR (0x20)  
+    add external entry point $CAB3 
+    add continuation entry point $D23B 
+
+tracing at address $CAB3...
+  $CAB9 BNE 0x04  
+
+tracing at address $CF55...
+  $CF59 JSR (0x20)  
+    add continuation entry point $CF5C 
+
+tracing at address $D047...
+  $D049 JSR (0x20)  
+    add continuation entry point $D04C 
+
+tracing at address $D274...
+  $D277 BEQ 0xBE  
+    add external entry point $D237 
+    add continuation entry point $D279 
+
+tracing at address $D237...
+  $D237 RTS (0x60)  
+
+tracing at address $D29C...
+  $D29C JSR (0x20)  
+    add continuation entry point $D29F 
+
+tracing at address $D404...
+  $D408 JSR (0x20)  
+    add continuation entry point $D40B 
+
+tracing at address $D41F...
+  $D421 BEQ 0x32  
+    add external entry point $D455 
+    add continuation entry point $D423 
+
+tracing at address $D455...
+  $D460 BEQ 0x2A  
+    add external entry point $D48C 
+    add continuation entry point $D462 
+
+tracing at address $D48C...
+  $D490 BNE 0x04  
+    add external entry point $D496 
+    add continuation entry point $D492 
+
+tracing at address $D496...
+  $D4A0 BNE 0xBB  
+    add external entry point $D45D 
+    add continuation entry point $D4A2 
+
+tracing at address $D45D...
+  $D460 BEQ 0x2A  
+
+tracing at address $D50F...
+  $D513 BPL 0xF4  
+
+tracing at address $D515...
+  $D515 JMP (0x4C)  
+
+tracing at address $D62C...
+  $D633 BEQ 0xEF  
+    add continuation entry point $D635 
+
+tracing at address $D745...
+  $D745 JMP (0x4C)  
+    add external entry point $D575 
+
+tracing at address $D575...
+  $D579 BEQ 0xF3  
+    add external entry point $D56E 
+    add continuation entry point $D57B 
+
+tracing at address $D56E...
+  $D56E RTS (0x60)  
+
+tracing at address $D749...
+  $D74E BCC 0xF8  
+    add continuation entry point $D750 
+
+tracing at address $D6EE...
+  $D6F0 JMP (0x4C)  
+    add continuation entry point $D6F3 
+
+tracing at address $D4FB...
+  $D505 BCC 0x02  
+    add continuation entry point $D507 
+
+tracing at address $D7BE...
+  $D7C1 JSR (0x20)  
+    add continuation entry point $D7C4 
+
+tracing at address $D7B0...
+  $D7B0 JSR (0x20)  
+    add continuation entry point $D7B3 
+
+tracing at address $D7E5...
+  $D808 BCC 0x02  
+    add continuation entry point $D80A 
+
+tracing at address $D816...  $D816 is marked as data in cdl, skipping
+
+tracing at address $D873...
+  $D873 RTS (0x60)  
+    add continuation entry point $D874 
+
+tracing at address $D825...
+  $D871 BPL 0xFB  
+
+tracing at address $D88C...
+  $D891 BPL 0x45  
+    add external entry point $D8D8 
+    add continuation entry point $D893 
+
+tracing at address $D8D8...
+  $D8DE BCS 0x03  
+    add external entry point $D8E3 
+    add continuation entry point $D8E0 
+
+tracing at address $D8E3...
+  $D8E7 JSR (0x20)  
+    add external entry point $DAD8 
+    add continuation entry point $D8EA 
+
+tracing at address $DAD8...
+  $DADF BPL 0xFB  
+    add external entry point $DADC 
+    add continuation entry point $DAE1 
+
+tracing at address $DADC...
+  $DADF BPL 0xFB  
+
+tracing at address $D918...
+  $D91E BEQ 0xF3  
+    add continuation entry point $D920 
+
+tracing at address $D92B...
+  $D937 JSR (0x20)  
+    add external entry point $DB10 
+    add continuation entry point $D93A 
+
+tracing at address $DB10...
+  $DB18 BMI 0x07  
+    add external entry point $DB21 
+    add continuation entry point $DB1A 
+
+tracing at address $DB21...
+  $DB32 BNE 0xF5  
+    add external entry point $DB29 
+    add continuation entry point $DB34 
+
+tracing at address $DB29...
+  $DB32 BNE 0xF5  
+
+tracing at address $D951...
+  $D957 BCC 0x0D  
+    add external entry point $D966 
+    add continuation entry point $D959 
+
+tracing at address $D966...
+  $D96B BCS 0xE3  
+    add external entry point $D950 
+    add continuation entry point $D96D 
+
+tracing at address $D950...
+  $D950 RTS (0x60)  
+
+tracing at address $D9A9...
+  $D9C1 JSR (0x20)  
+    add continuation entry point $D9C4 
+
+tracing at address $DAEA...
+  $DAF2 BCS 0x05  
+
+tracing at address $DAF4...
+  $DAFB JSR (0x20)  
+
+tracing at address $DAFE...
+  $DB00 JSR (0x20)  
+    add continuation entry point $DB03 
+
+tracing at address $D529...
+  $D52C BCC 0x01  
+    add continuation entry point $D52E 
+
+tracing at address $D538...
+  $D53E BCS 0x09  
+    add external entry point $D549 
+    add continuation entry point $D540 
+
+tracing at address $D549...
+  $D553 BCC 0x06  
+    add external entry point $D55B 
+    add continuation entry point $D555 
+
+tracing at address $D55B...
+  $D56E RTS (0x60)  
+
+tracing at address $D56F...
+  $D579 BEQ 0xF3  
+
+tracing at address $D9D5...
+  $D9DE BCC 0x10  
+    add continuation entry point $D9E0 
+
+tracing at address $D9F3...
+  $D9FC JSR (0x20)  
+    add continuation entry point $D9FF 
+
+tracing at address $DA78...
+  $DA81 BCS 0x01  
+    add external entry point $DA84 
+    add continuation entry point $DA83 
+
+tracing at address $DA84...
+  $DA8D BNE 0x06  
+    add external entry point $DA95 
+    add continuation entry point $DA8F 
+
+tracing at address $DA95...
+  $DA9F JSR (0x20)  
+    add continuation entry point $DAA2 
+
+tracing at address $DAB3...
+  $DAB3 RTS (0x60)  
+
+tracing at address $DABF...
+  $DAC2 BCC 0xF2  
+    add external entry point $DAB6 
+    add continuation entry point $DAC4 
+
+tracing at address $DAB6...
+  $DABD BNE 0x06  
+
+tracing at address $DAD2...
+  $DAD7 RTS (0x60)  
+
+tracing at address $DA63...
+  $DA72 RTS (0x60)  
+
+tracing at address $DA3D...
+  $DA3D JSR (0x20)  
+    add continuation entry point $DA40 
+
+tracing at address $DB4B...
+  $DB4B JSR (0x20)  
+    add external entry point $DB5A 
+
+tracing at address $DB5A...
+  $DB5A JSR (0x20)  
+    add continuation entry point $DB5D 
+
+tracing at address $DB59...
+  $DB59 RTS (0x60)  
+
+tracing at address $DB93...
+  $DB99 BEQ 0x43  
+    add external entry point $DBDE 
+    add continuation entry point $DB9B 
+
+tracing at address $DBDE...
+  $DBDE RTS (0x60)  
+
+tracing at address $DBE5...
+  $DBEA JSR (0x20)  
+    add external entry point $E016 
+
+tracing at address $E016...
+  $E01F RTS (0x60)  
+    add continuation entry point $E020 
+
+tracing at address $DBF0...
+  $DBF1 BCS 0x05  
+    add external entry point $DBF8 
+    add continuation entry point $DBF3 
+
+tracing at address $DBF8...
+  $DBF9 BCS 0x42  
+    add continuation entry point $DBFB 
+
+tracing at address $E002...
+  $E00B RTS (0x60)  
+    add continuation entry point $E00C 
+
+tracing at address $DC3D...
+  $DC3E BCS 0x0B  
+    add external entry point $DC4B 
+    add continuation entry point $DC40 
+
+tracing at address $DC4B...
+  $DC4F JSR (0x20)  
+    add continuation entry point $DC52 
+
+tracing at address $DC71...
+  $DC76 BCC 0x06  
+    add external entry point $DC7E 
+    add continuation entry point $DC78 
+
+tracing at address $DC7E...
+  $DC84 BPL 0x36  
+    add external entry point $DCBC 
+    add continuation entry point $DC86 
+
+tracing at address $DCBC...
+  $DCBC JMP (0x4C)  
+    add continuation entry point $DCBF 
+
+tracing at address $DD2A...
+  $DD30 BPL 0x02  
+    add external entry point $DD34 
+    add continuation entry point $DD32 
+
+tracing at address $DD34...
+  $DD36 JSR (0x20)  
+    add continuation entry point $DD39 
+
+tracing at address $DD08...
+  $DD0E BPL 0x07  
+    add external entry point $DD17 
+    add continuation entry point $DD10 
+
+tracing at address $DD17...
+  $DD1C BNE 0x20  
+    add external entry point $DD3E 
+
+tracing at address $DD3E...
+  $DD47 BNE 0x83  
+    add external entry point $DCCC 
+    add continuation entry point $DD49 
+
+tracing at address $DCCC...
+  $DCCC JMP (0x4C)  
+    add continuation entry point $DCCF 
+
+tracing at address $D7A0...
+  $D7A9 RTS (0x60)  
+
+tracing at address $D77C...
+  $D780 RTS (0x60)  
+
+tracing at address $DD92...
+  $DD95 BNE 0xE0  
+    add external entry point $DD77 
+    add continuation entry point $DD97 
+
+tracing at address $DD77...
+  $DD77 JMP (0x4C)  
+    add continuation entry point $DD7A 
+
+tracing at address $DDF1...
+  $DDF9 BEQ 0x09  
+    add external entry point $DE04 
+    add continuation entry point $DDFB 
+
+tracing at address $DE04...
+  $DE0A BNE 0x04  
+    add continuation entry point $DE0C 
+
+tracing at address $DE13...
+  $DE1B BEQ 0x09  
+    add external entry point $DE26 
+    add continuation entry point $DE1D 
+
+tracing at address $DE26...
+  $DE2C BEQ 0x01  
+    add external entry point $DE2F 
+    add continuation entry point $DE2E 
+
+tracing at address $DE2F...
+  $DE36 BEQ 0x18  
+    add continuation entry point $DE38 
+
+tracing at address $DE4F...
+  $DE4F RTS (0x60)  
+
+tracing at address $DE54...
+  $DE5A BEQ 0x11  
+    add external entry point $DE6D 
+    add continuation entry point $DE5C 
+
+tracing at address $DE6D...
+  $DE75 RTS (0x60)  
+
+tracing at address $DE89...
+  $DE94 JSR (0x20)  
+    add external entry point $C45F 
+    add continuation entry point $DE97 
+
+tracing at address $C45F...
+  $C469 JSR (0x20)  
+    add external entry point $C409 
+    add continuation entry point $C46C 
+
+tracing at address $C409...
+  $C410 BCS 0x09  
+    add external entry point $C41B 
+    add continuation entry point $C412 
+
+tracing at address $C41B...
+  $C422 BCS 0x09  
+    add external entry point $C42D 
+    add continuation entry point $C424 
+
+tracing at address $C42D...
+  $C433 BCS 0x07  
+    add external entry point $C43C 
+    add continuation entry point $C435 
+
+tracing at address $C43C...
+  $C449 BCS 0x0E  
+    add external entry point $C459 
+    add continuation entry point $C44B 
+
+tracing at address $C459...
+  $C45E RTS (0x60)  
+
+tracing at address $DEF8...
+  $DEF8 JSR (0x20)  
+    add continuation entry point $DEFB 
+
+tracing at address $DF9D...
+  $DFBB RTS (0x60)  
+    add continuation entry point $DFBC 
+
+tracing at address $DFE0...
+  $DFF0 RTS (0x60)  
+
+tracing at address $E046...
+  $E04A BNE 0x04  
+    add external entry point $E050 
+    add continuation entry point $E04C 
+
+tracing at address $E050...
+  $E056 BCC 0x40  
+
+tracing at address $E063...
+  $E068 BPL 0x2E  
+
+tracing at address $E08B...
+  $E095 JSR (0x20)  
+
+tracing at address $E098...
+  $E09A JSR (0x20)  
+    add external entry point $E09F 
+    add continuation entry point $E09D 
+
+tracing at address $E09F...
+  $E0A2 BMI 0x1A  
+    add external entry point $E0BE 
+    add continuation entry point $E0A4 
+
+tracing at address $E0BE...
+  $E0C1 BMI 0x15  
+    add external entry point $E0D8 
+    add continuation entry point $E0C3 
+
+tracing at address $E0D8...
+  $E0D8 RTS (0x60)  
+    add continuation entry point $E0D9 
+
+tracing at address $C339...
+  $C343 BPL 0x5F  
+
+tracing at address $C345...
+  $C35D BPL 0xEC  
+    add external entry point $C34B 
+    add continuation entry point $C35F 
+
+tracing at address $C34B...
+  $C35D BPL 0xEC  
+
+tracing at address $E117...
+  $E119 BNE 0x75  
+
+tracing at address $E122...
+  $E124 BNE 0x6A  
+    add continuation entry point $E126 
+
+tracing at address $E196...
+  $E1A2 BCS 0x25  
+    add external entry point $E1C9 
+    add continuation entry point $E1A4 
+
+tracing at address $E1C9...
+  $E1D0 BMI 0xED  
+    add continuation entry point $E1D2 
+
+tracing at address $E1C8...
+  $E1C8 RTS (0x60)  
+
+tracing at address $E1EE...
+  $E1F2 BNE 0x2F  
+    add continuation entry point $E1F4 
+
+tracing at address $E26A...
+  $E26B BCS 0xFC  
+    add continuation entry point $E26D 
+
+tracing at address $E266...
+  $E267 BCS 0x1A  
+    add external entry point $E283 
+
+tracing at address $E283...
+  $E28E BCC 0x01  
+    add external entry point $E291 
+    add continuation entry point $E290 
+
+tracing at address $E291...
+  $E293 BCC 0x03  
+    add external entry point $E298 
+    add continuation entry point $E295 
+
+tracing at address $E298...
+  $E298 RTS (0x60)  
+    add continuation entry point $E299 
+
+tracing at address $E2CE...
+  $E2D3 BMI 0xED  
+    add external entry point $E2C2 
+    add continuation entry point $E2D5 
+
+tracing at address $E2C2...
+  $E2C8 JMP (0x4C)  
+
+tracing at address $E2F2...
+  $E2FA BEQ 0x03  
+    add continuation entry point $E2FC 
+
+tracing at address $E305...
+  $E32D JSR (0x20)  
+    add continuation entry point $E330 
+
+tracing at address $E38A...
+  $E394 BEQ 0x04  
+    add external entry point $E39A 
+    add continuation entry point $E396 
+
+tracing at address $E39A...
+  $E3A9 JMP (0x4C)  
+    add continuation entry point $E3AC 
+
+tracing at address $E378...
+  $E382 RTS (0x60)  
+
+tracing at address $E3DD...
+  $E3E0 BPL 0x0C  
+
+tracing at address $E3EB...
+  $E3EB JMP (0x4C)  
+
+tracing at address $E406...
+  $E416 BPL 0xFA  
+    add external entry point $E412 
+    add continuation entry point $E418 
+
+tracing at address $E412...
+  $E416 BPL 0xFA  
+
+tracing at address $E22C...
+  $E22E BNE 0x1D  
+    add continuation entry point $E230 
+
+tracing at address $E42F...
+  $E440 BNE 0x0D  
+
+tracing at address $E442...
+  $E445 BNE 0x0B  
+    add external entry point $E452 
+    add continuation entry point $E447 
+
+tracing at address $E452...
+  $E457 JSR (0x20)  
+
+tracing at address $E45A...
+  $E45A JMP (0x4C)  
+    add continuation entry point $E45D 
+
+tracing at address $E4EF...
+  $E4F4 RTS (0x60)  
+
+tracing at address $E4F5...
+  $E501 BMI 0x1B  
+    add external entry point $E51E 
+    add continuation entry point $E503 
+
+tracing at address $E51E...
+  $E525 BMI 0xD6  
+    add external entry point $E4FD 
+    add continuation entry point $E527 
+
+tracing at address $E4FD...
+  $E501 BMI 0x1B  
+
+tracing at address $E488...
+  $E48B BEQ 0x03  
+    add external entry point $E490 
+    add continuation entry point $E48D 
+
+tracing at address $E490...
+  $E495 BEQ 0x0A  
+    add continuation entry point $E497 
+
+tracing at address $E4A8...
+  $E4AB RTS (0x60)  
+
+tracing at address $E4B5...
+  $E4B9 RTS (0x60)  
+
+tracing at address $E4C5...
+  $E4D4 RTS (0x60)  
+
+tracing at address $E4DF...
+  $E4E4 RTS (0x60)  
+
+tracing at address $E64B...
+  $E650 RTS (0x60)  
+    add continuation entry point $E651 
+
+tracing at address $E682...
+  $E687 BNE 0x60  
+    add continuation entry point $E689 
+
+tracing at address $E6F0...
+  $E707 JSR (0x20)  
+
+tracing at address $E70A...
+  $E713 BCS 0x02  
+    add external entry point $E717 
+    add continuation entry point $E715 
+
+tracing at address $E717...
+  $E71A JSR (0x20)  
+    add continuation entry point $E71D 
+
+tracing at address $E797...
+  $E7B0 RTS (0x60)  
+
+tracing at address $E7B1...  $E7B1 is marked as data in cdl, skipping
+
+tracing at address $E6AB...
+  $E6AB BEQ 0x1B  
+    add external entry point $E6C8 
+    add continuation entry point $E6AD 
+
+tracing at address $E6C8...
+  $E6D4 JSR (0x20)  
+    add continuation entry point $E6D7 
+
+tracing at address $E7BA...
+  $E7BD BPL 0x01  
+
+tracing at address $E7C0...
+  $E7C4 BCS 0xF9  
+    add continuation entry point $E7C6 
+
+tracing at address $E86A...
+  $E86A JMP (0x4C)  
+    add external entry point $E877 
+    add continuation entry point $E86D 
+
+tracing at address $E877...
+  $E880 BNE 0x29  
+    add external entry point $E8AB 
+    add continuation entry point $E882 
+
+tracing at address $E8AB...
+  $E8C8 BEQ 0x0C  
+    add external entry point $E8D6 
+    add continuation entry point $E8CA 
+
+tracing at address $E8D6...
+  $E8D6 RTS (0x60)  
+    add continuation entry point $E8D7 
+
+tracing at address $E617...
+  $E61A JSR (0x20)  
+
+tracing at address $E61D...
+  $E61F RTI (0x40)  
+    add continuation entry point $E620 
+
+tracing at address $C317...
+  $C326 BCC 0x04  
+    add external entry point $C32C 
+    add continuation entry point $C328 
+
+tracing at address $C32C...
+  $C32C BNE 0x02  
+    add external entry point $C330 
+    add continuation entry point $C32E 
+
+tracing at address $C330...
+  $C334 RTS (0x60)  
+
+tracing at address $E8A5...
+  $E8A8 JMP (0x4C)  
+
+tracing at address $E8F5...
+  $E8F7 BNE 0xF9  
+    add external entry point $E8F2 
+    add continuation entry point $E8F9 
+
+tracing at address $E8F2...
+  $E8F2 JSR (0x20)  
+
+tracing at address $E939...
+  $E941 BCC 0x0D  
+    add external entry point $E950 
+    add continuation entry point $E943 
+
+tracing at address $E950...
+  $E95B BCC 0x08  
+
+tracing at address $E95D...
+  $E961 BCC 0x02  
+    add continuation entry point $E963 
+
+tracing at address $E97B...
+  $E98D BCS 0x0E  
+
+tracing at address $E98F...
+  $E993 BCS 0x08  
+    add continuation entry point $E995 
+
+tracing at address $E9AA...  $E9AA is marked as data in cdl, skipping
+
+tracing at address $EB00...
+  $EB05 BNE 0xE9  
+
+tracing at address $EB07...
+  $EB07 RTS (0x60)  
+    add continuation entry point $EB08 
+
+tracing at address $EC93...
+  $EC93 JSR (0x20)  
+    add continuation entry point $EC96 
+
+tracing at address $EBC0...
+  $EBC8 BCC 0xD1  
+
+tracing at address $EBCA...
+  $EBCA RTS (0x60)  
+    add continuation entry point $EBCB 
+
+tracing at address $EBA2...
+  $EBA3 BNE 0x07  
+    add external entry point $EBAC 
+    add continuation entry point $EBA5 
+
+tracing at address $EBAC...
+  $EBB5 BEQ 0x4A  
+    add external entry point $EC01 
+
+tracing at address $EC01...
+  $EC01 JSR (0x20)  
+    add external entry point $ED51 
+
+tracing at address $ED51...
+  $ED5F RTS (0x60)  
+
+tracing at address $ECD6...
+  $ECDA JMP (0x4C)  
+    add continuation entry point $ECDD 
+
+tracing at address $ED70...
+  $ED78 BCC 0x02  
+    add external entry point $ED7C 
+    add continuation entry point $ED7A 
+
+tracing at address $ED7C...
+  $ED81 BCC 0x02  
+    add external entry point $ED85 
+    add continuation entry point $ED83 
+
+tracing at address $ED85...
+  $ED8D RTS (0x60)  
+    add continuation entry point $ED8E 
+
+tracing at address $ED17...
+  $ED1B BNE 0x1E  
+    add continuation entry point $ED1D 
+
+tracing at address $ED47...
+  $ED47 JSR (0x20)  
+    add continuation entry point $ED4A 
+
+tracing at address $EC07...
+  $EC09 BCS 0x51  
+    add external entry point $EC5C 
+    add continuation entry point $EC0B 
+
+tracing at address $EC5C...
+  $EC5E JSR (0x20)  
+    add continuation entry point $EC61 
+
+tracing at address $F79D...
+  $F7A0 BNE 0xF2  
+    add external entry point $F794 
+    add continuation entry point $F7A2 
+
+tracing at address $F794...
+  $F79A JSR (0x20)  
+
+tracing at address $C018...
+  $C01A BMI 0x02  
+
+tracing at address $C0D8...
+  $C0E5 JSR (0x20)  
+    add continuation entry point $C0E8 
+
+tracing at address $BE0F...
+  $BE0F JSR (0x20)  
+    add continuation entry point $BE12 
+
+tracing at address $C2A2...
+  $C2A2 JSR (0x20)  
+    add continuation entry point $C2A5 
+
+tracing at address $C240...
+  $C25C BNE 0xFA  
+
+tracing at address $C25E...
+  $C25F BPL 0xF7  
+    add continuation entry point $C261 
+
+tracing at address $C030...
+  $C034 BEQ 0x0E  
+    add continuation entry point $C036 
+
+tracing at address $C04A...
+  $C04A JSR (0x20)  
+    add continuation entry point $C04D 
+
+tracing at address $C0C5...
+  $C0C5 JMP (0x4C)  
+    add external entry point $C075 
+
+tracing at address $C075...
+  $C07B BNE 0xFC  
+    add external entry point $C079 
+    add continuation entry point $C07D 
+
+tracing at address $C079...
+  $C07B BNE 0xFC  
+
+tracing at address $C51E...
+  $C52A JSR (0x20)  
+    add external entry point $C5E5 
+    add continuation entry point $C52D 
+
+tracing at address $C5E5...
+  $C5E5 JSR (0x20)  
+    add external entry point $C607 
+    add continuation entry point $C5E8 
+
+tracing at address $C607...
+  $C610 BCC 0x01  
+    add external entry point $C613 
+    add continuation entry point $C612 
+
+tracing at address $C613...
+  $C617 BMI 0xF9  
+    add continuation entry point $C619 
+
+tracing at address $C6D4...
+  $C6DD BNE 0xF2  
+    add continuation entry point $C6DF 
+
+tracing at address $C6ED...
+  $C6ED RTS (0x60)  
+
+tracing at address $C6F3...
+  $C70D JMP (0x4C)  
+    add continuation entry point $C710 
+
+tracing at address $C115...  $C115 is marked as data in cdl, skipping
+
+tracing at address $C190...
+  $C190 RTS (0x60)  
+
+tracing at address $C1F2...
+  $C21C BNE 0xF6  
+    add external entry point $C214 
+    add continuation entry point $C21E 
+
+tracing at address $C214...
+  $C21C BNE 0xF6  
+
+tracing at address $C3C2...
+  $C3C7 BPL 0xF3  
+    add external entry point $C3BC 
+    add continuation entry point $C3C9 
+
+tracing at address $C3BC...
+  $C3C0 BCS 0x08  
+
+tracing at address $C3E0...
+  $C3F8 BPL 0xE8  
+    add external entry point $C3E2 
+    add continuation entry point $C3FA 
+
+tracing at address $C3E2...
+  $C3F8 BPL 0xE8  
+
+tracing at address $C4C9...
+  $C4D7 JSR (0x20)  
+    add continuation entry point $C4DA 
+
+tracing at address $C85D...
+  $C865 JSR (0x20)  
+
+tracing at address $C879...
+  $C88A BCS 0x1A  
+
+tracing at address $C8AB...
+  $C8AD BNE 0x01  
+
+tracing at address $C6A1...
+  $C6A1 JSR (0x20)  
+
+tracing at address $C6AF...
+  $C6C5 BCC 0x02  
+    add external entry point $C6C9 
+    add continuation entry point $C6C7 
+
+tracing at address $C6C9...
+  $C6CB JSR (0x20)  
+    add continuation entry point $C6CE 
+
+tracing at address $C8F5...
+  $C8F5 BNE 0x0B  
+    add external entry point $C902 
+    add continuation entry point $C8F7 
+
+tracing at address $C902...
+  $C909 BNE 0xF5  
+
+tracing at address $C900...
+  $C909 BNE 0xF5  
+
+tracing at address $C914...
+  $C917 BNE 0x07  
+    add external entry point $C920 
+    add continuation entry point $C919 
+
+tracing at address $C920...
+  $C925 BCC 0x02  
+    add continuation entry point $C927 
+
+tracing at address $C8B0...
+  $C8BC BNE 0x04  
+    add external entry point $C8C2 
+    add continuation entry point $C8BE 
+
+tracing at address $C8C2...
+  $C8D3 BCC 0x02  
+
+tracing at address $C946...
+  $C946 JSR (0x20)  
+    add continuation entry point $C949 
+
+tracing at address $C971...
+  $C974 BEQ 0x1D  
+    add continuation entry point $C976 
+
+tracing at address $C9C3...
+  $C9CA BEQ 0x35  
+    add external entry point $CA01 
+    add continuation entry point $C9CC 
+
+tracing at address $CA01...
+  $CA0D BMI 0x1A  
+    add continuation entry point $CA0F 
+
+tracing at address $C198...
+  $C1A3 BCC 0x02  
+    add external entry point $C1A7 
+    add continuation entry point $C1A5 
+
+tracing at address $C1A7...
+  $C1A7 JMP (0x4C)  
+
+tracing at address $C9AA...
+  $C9AA BCS 0x17  
+    add continuation entry point $C9AC 
+
+tracing at address $C9EE...
+  $C9F2 JSR (0x20)  
+    add external entry point $CA09 
+    add continuation entry point $C9F5 
+
+tracing at address $CA09...
+  $CA0D BMI 0x1A  
+
+tracing at address $CA4B...
+  $CA4B RTS (0x60)  
+
+tracing at address $CA5A...
+  $CA67 BCS 0x19  
+
+tracing at address $CA69...
+  $CA72 BPL 0xFB  
+    add external entry point $CA6F 
+    add continuation entry point $CA74 
+
+tracing at address $CA6F...
+  $CA72 BPL 0xFB  
+
+tracing at address $CA8E...
+  $CA8E JMP (0x4C)  
+
+tracing at address $C181...
+  $C188 BNE 0xF2  
+    add external entry point $C17C 
+    add continuation entry point $C18A 
+
+tracing at address $C17C...
+  $C17E JSR (0x20)  
+
+tracing at address $C1AD...
+  $C1AF BEQ 0x0A  
+    add external entry point $C1BB 
+    add continuation entry point $C1B1 
+
+tracing at address $C1BB...
+  $C1BC RTS (0x60)  
+
+tracing at address $CAA9...
+  $CAAB BNE 0xF9  
+    add external entry point $CAA6 
+    add continuation entry point $CAAD 
+
+tracing at address $CAA6...
+  $CAA6 JSR (0x20)  
+
+tracing at address $CABF...
+  $CABF RTS (0x60)  
+
+tracing at address $CAC3...
+  $CACF JMP (0x4C)  
+
+tracing at address $C26E...
+  $C272 BNE 0xEE  
+
+tracing at address $C274...
+  $C274 RTS (0x60)  
+    add continuation entry point $C275 
+
+tracing at address $C151...
+  $C153 JMP (0x4C)  
+
+tracing at address $CB01...
+  $CB06 BCS 0x0B  
+    add continuation entry point $CB08 
+
+tracing at address $CB13...
+  $CB1A BNE 0x03  
+    add external entry point $CB1F 
+    add continuation entry point $CB1C 
+
+tracing at address $CB1F...
+  $CB2D BCC 0x09  
+    add continuation entry point $CB2F 
+
+tracing at address $CAEE...
+  $CAF3 JMP (0x4C)  
+
+tracing at address $CB54...
+  $CB62 JSR (0x20)  
+
+tracing at address $CB6B...
+  $CB6B JSR (0x20)  
+    add continuation entry point $CB6E 
+
+tracing at address $C162...
+  $C16D BNE 0xF5  
+    add external entry point $C164 
+    add continuation entry point $C16F 
+
+tracing at address $C164...
+  $C16D BNE 0xF5  
+
+tracing at address $CB82...
+  $CB87 BCS 0x41  
+    add continuation entry point $CB89 
+
+tracing at address $CC0E...
+  $CC14 BEQ 0x07  
+
+tracing at address $CC16...
+  $CC1D JMP (0x4C)  
+
+tracing at address $CC20...
+  $CC2F JMP (0x4C)  
+    add continuation entry point $CC32 
+
+tracing at address $CBCA...
+  $CBDB JMP (0x4C)  
+
+tracing at address $C3B4...
+  $C3B4 RTS (0x60)  
+
+tracing at address $CC44...
+  $CC46 BEQ 0x16  
+    add continuation entry point $CC48 
+
+tracing at address $CC64...
+  $CC65 JSR (0x20)  
+    add continuation entry point $CC68 
+
+tracing at address $CC96...
+  $CC9E BEQ 0x13  
+    add external entry point $CCB3 
+    add continuation entry point $CCA0 
+
+tracing at address $CCB3...
+  $CCB5 BMI 0x09  
+    add external entry point $CCC0 
+    add continuation entry point $CCB7 
+
+tracing at address $CCC0...
+  $CCC6 JSR (0x20)  
+    add continuation entry point $CCC9 
+
+tracing at address $CD18...
+  $CD1E RTS (0x60)  
+
+tracing at address $CD30...
+  $CD34 JSR (0x20)  
+    add external entry point $CD3A 
+    add continuation entry point $CD37 
+
+tracing at address $CD3A...
+  $CD42 BNE 0xFA  
+    add external entry point $CD3E 
+    add continuation entry point $CD44 
+
+tracing at address $CD3E...
+  $CD42 BNE 0xFA  
+
+tracing at address $CDC0...
+  $CDC0 JSR (0x20)  
+    add continuation entry point $CDC3 
+
+tracing at address $CDEC...
+  $CDF0 BEQ 0x0E  
+    add continuation entry point $CDF2 
+
+tracing at address $BE39...
+  $BE4F JMP (0x4C)  
+
+tracing at address $BE59...
+  $BE59 illegal opcode ISC(0xFF), cdl does not flag as code, stopping
+  potential issues, not marking as code
+
+tracing at address $CE09...
+  $CE0D BCC 0xD7  
+    add external entry point $CDE6 
+    add continuation entry point $CE0F 
+
+tracing at address $CDE6...
+  $CDE6 JSR (0x20)  
+
+tracing at address $CE5B...
+  $CE5F BNE 0x0B  
+
+tracing at address $CE7C...
+  $CE7C JSR (0x20)  
+    add continuation entry point $CE7F 
+
+tracing at address $CF06...
+  $CF09 BEQ 0x06  
+    add external entry point $CF11 
+
+tracing at address $CF11...
+  $CF11 JSR (0x20)  
+    add continuation entry point $CF14 
+
+tracing at address $CF22...
+  $CF22 JSR (0x20)  
+    add continuation entry point $CF25 
+
+tracing at address $CF4B...
+  $CF4E BEQ 0xBB  
+    add continuation entry point $CF50 
+
+tracing at address $CF0E...
+  $CF0E JMP (0x4C)  
+    add external entry point $CE82 
+
+tracing at address $CE82...
+  $CE82 JSR (0x20)  
+    add continuation entry point $CE85 
+
+tracing at address $D004...
+  $D004 JSR (0x20)  
+    add continuation entry point $D007 
+
+tracing at address $D231...
+  $D235 BNE 0xF3  
+
+tracing at address $D23B...
+  $D23B JSR (0x20)  
+    add external entry point $DB35 
+    add continuation entry point $D23E 
+
+tracing at address $DB35...
+  $DB3F BNE 0x02  
+    add continuation entry point $DB41 
+
+tracing at address $CF5C...
+  $CF5C JSR (0x20)  
+    add continuation entry point $CF5F 
+
+tracing at address $D04C...
+  $D04C JSR (0x20)  
+    add continuation entry point $D04F 
+
+tracing at address $D279...
+  $D27D JSR (0x20)  
+    add continuation entry point $D280 
+
+tracing at address $D29F...
+  $D2A5 JSR (0x20)  
+    add continuation entry point $D2A8 
+
+tracing at address $D40B...
+  $D41D BPL 0xFA  
+
+tracing at address $D423...
+  $D42A BEQ 0x1F  
+    add external entry point $D44B 
+    add continuation entry point $D42C 
+
+tracing at address $D44B...
+  $D450 BNE 0xD5  
+    add external entry point $D427 
+    add continuation entry point $D452 
+
+tracing at address $D427...
+  $D42A BEQ 0x1F  
+
+tracing at address $D462...
+  $D464 BNE 0x16  
+    add external entry point $D47C 
+    add continuation entry point $D466 
+
+tracing at address $D47C...
+  $D484 BNE 0xFA  
+    add external entry point $D480 
+    add continuation entry point $D486 
+
+tracing at address $D480...
+  $D484 BNE 0xFA  
+
+tracing at address $D492...
+  $D4A0 BNE 0xBB  
+
+tracing at address $D4A2...
+  $D4A6 BNE 0x04  
+    add external entry point $D4AC 
+    add continuation entry point $D4A8 
+
+tracing at address $D4AC...
+  $D4AC JMP (0x4C)  
+    add continuation entry point $D4AF 
+
+tracing at address $D635...
+  $D636 BPL 0xF6  
+    add external entry point $D62E 
+    add continuation entry point $D638 
+
+tracing at address $D62E...
+  $D633 BEQ 0xEF  
+
+tracing at address $D57B...
+  $D580 BEQ 0x75  
+    add external entry point $D5F7 
+    add continuation entry point $D582 
+
+tracing at address $D5F7...
+  $D5F7 JSR (0x20)  
+    add external entry point $D5FD 
+    add continuation entry point $D5FA 
+
+tracing at address $D5FD...
+  $D60B JMP (0x4C)  
+    add external entry point $C15C 
+    add continuation entry point $D60E 
+
+tracing at address $C15C...
+  $C15C JSR (0x20)  
+
+tracing at address $D750...
+  $D753 BCC 0x02  
+    add external entry point $D757 
+    add continuation entry point $D755 
+
+tracing at address $D757...
+  $D75C BCC 0x01  
+    add external entry point $D75F 
+    add continuation entry point $D75E 
+
+tracing at address $D75F...
+  $D76C BCC 0x01  
+    add external entry point $D76F 
+    add continuation entry point $D76E 
+
+tracing at address $D76F...
+  $D773 JMP (0x4C)  
+
+tracing at address $D6F3...
+  $D6F9 BNE 0xFA  
+    add external entry point $D6F5 
+    add continuation entry point $D6FB 
+
+tracing at address $D6F5...
+  $D6F9 BNE 0xFA  
+
+tracing at address $D507...
+  $D50D BEQ 0x03  
+
+tracing at address $D7C4...
+  $D7C6 RTS (0x60)  
+    add continuation entry point $D7C7 
+
+tracing at address $D7B3...
+  $D7B9 RTS (0x60)  
+
+tracing at address $D80A...
+  $D813 JMP (0x4C)  
+
+tracing at address $D874...
+  $D877 JSR (0x20)  
+    add continuation entry point $D87A 
+
+tracing at address $D893...
+  $D898 BEQ 0x01  
+    add external entry point $D89B 
+    add continuation entry point $D89A 
+
+tracing at address $D89B...
+  $D89F BEQ 0xF9  
+    add continuation entry point $D8A1 
+
+tracing at address $D8E0...
+  $D8E2 RTS (0x60)  
+
+tracing at address $D8EA...
+  $D8F1 BEQ 0x20  
+    add continuation entry point $D8F3 
+
+tracing at address $DAE1...
+  $DAE1 RTS (0x60)  
+
+tracing at address $D920...
+  $D920 BPL 0xC5  
+    add external entry point $D8E7 
+    add continuation entry point $D922 
+
+tracing at address $D8E7...
+  $D8E7 JSR (0x20)  
+
+tracing at address $D93A...
+  $D93C JMP (0x4C)  
+
+tracing at address $DB1A...
+  $DB1F BNE 0xF4  
+    add external entry point $DB15 
+
+tracing at address $DB15...
+  $DB18 BMI 0x07  
+
+tracing at address $DB34...
+  $DB34 RTS (0x60)  
+
+tracing at address $D959...
+  $D964 BCS 0xEA  
+
+tracing at address $D96D...
+  $D96F BNE 0xDF  
+    add continuation entry point $D971 
+
+tracing at address $D9C4...
+  $D9C6 JSR (0x20)  
+    add continuation entry point $D9C9 
+
+tracing at address $DB03...
+  $DB18 BMI 0x07  
+
+tracing at address $D52E...
+  $D535 JMP (0x4C)  
+
+tracing at address $D540...
+  $D542 BCC 0x05  
+    add continuation entry point $D544 
+
+tracing at address $D555...
+  $D558 BCC 0x01  
+    add continuation entry point $D55A 
+
+tracing at address $D9E0...
+  $D9E9 BNE 0x08  
+    add continuation entry point $D9EB 
+
+tracing at address $D9FF...
+  $DA05 BNE 0x13  
+    add external entry point $DA1A 
+    add continuation entry point $DA07 
+
+tracing at address $DA1A...
+  $DA1E JSR (0x20)  
+    add continuation entry point $DA21 
+
+tracing at address $DA83...
+  $DA83 RTS (0x60)  
+
+tracing at address $DA8F...
+  $DA92 BCC 0xF2  
+    add external entry point $DA86 
+    add continuation entry point $DA94 
+
+tracing at address $DA86...
+  $DA8D BNE 0x06  
+
+tracing at address $DAA2...
+  $DAA7 RTS (0x60)  
+
+tracing at address $DAC4...
+  $DAC4 RTS (0x60)  
+
+tracing at address $DA40...
+  $DA52 JSR (0x20)  
+    add continuation entry point $DA55 
+
+tracing at address $DB5D...
+  $DB63 JSR (0x20)  
+    add continuation entry point $DB66 
+
+tracing at address $DB9B...
+  $DBB6 JSR (0x20)  
+    add external entry point $C3FB 
+    add continuation entry point $DBB9 
+
+tracing at address $C3FB...
+  $C3FB BMI 0x05  
+    add external entry point $C402 
+    add continuation entry point $C3FD 
+
+tracing at address $C402...
+  $C408 RTS (0x60)  
+
+tracing at address $E020...
+  $E023 BMI 0x73  
+    add continuation entry point $E025 
+
+tracing at address $DBF3...
+  $DBF4 BCS 0x19  
+    add external entry point $DC0F 
+    add continuation entry point $DBF6 
+
+tracing at address $DC0F...
+  $DC14 BCS 0xEC  
+    add external entry point $DC02 
+    add continuation entry point $DC16 
+
+tracing at address $DC02...
+  $DC09 BCS 0x18  
+    add external entry point $DC23 
+    add continuation entry point $DC0B 
+
+tracing at address $DC23...
+  $DC34 BPL 0x02  
+    add continuation entry point $DC36 
+
+tracing at address $DBFB...
+  $DC00 BCS 0x14  
+
+tracing at address $E00C...
+  $E015 RTS (0x60)  
+
+tracing at address $DC40...
+  $DC48 JMP (0x4C)  
+
+tracing at address $DC52...
+  $DC55 illegal opcode NOP(0xDC), cdl flagged as code, not really stopping
+  $DC5A illegal opcode LAX(0xAF), cdl flagged as code, not really stopping
+  $DC5D illegal opcode NOP(0xDC), cdl flagged as code, not really stopping
+  $DC60 illegal opcode DCP(0xCF), cdl flagged as code, not really stopping
+  $DC6A illegal opcode NOP(0x7A), cdl flagged as code, not really stopping
+  $DC6E JSR (0x20)  
+  potential issues, not marking as code
+
+tracing at address $DC78...
+  $DC84 BPL 0x36  
+
+tracing at address $DC86...
+  $DC86 JSR (0x20)  
+    add continuation entry point $DC89 
+
+tracing at address $DCBF...
+  $DCC5 BEQ 0x03  
+    add external entry point $DCCA 
+    add continuation entry point $DCC7 
+
+tracing at address $DCCA...
+  $DCCC JMP (0x4C)  
+
+tracing at address $DD32...
+  $DD36 JSR (0x20)  
+
+tracing at address $DD39...
+  $DD47 BNE 0x83  
+
+tracing at address $DD10...
+  $DD15 BNE 0x27  
+
+tracing at address $DD49...
+  $DD4B BNE 0x05  
+    add external entry point $DD52 
+    add continuation entry point $DD4D 
+
+tracing at address $DD52...
+  $DD56 BNE 0x03  
+    add external entry point $DD5B 
+    add continuation entry point $DD58 
+
+tracing at address $DD5B...
+  $DD65 JMP (0x4C)  
+    add continuation entry point $DD68 
+
+tracing at address $DCCF...
+  $DCD2 BEQ 0xF8  
+    add continuation entry point $DCD4 
+
+tracing at address $DD97...
+  $DDA0 BCS 0x20  
+    add external entry point $DDC2 
+    add continuation entry point $DDA2 
+
+tracing at address $DDC2...
+  $DDD5 JMP (0x4C)  
+    add continuation entry point $DDD8 
+
+tracing at address $DD7A...
+  $DD7C BNE 0x02  
+    add continuation entry point $DD7E 
+
+tracing at address $DDFB...
+  $DDFD BCS 0x03  
+    add external entry point $DE02 
+    add continuation entry point $DDFF 
+
+tracing at address $DE02...
+  $DE0A BNE 0x04  
+
+tracing at address $DE0C...
+  $DE0E BPL 0x03  
+
+tracing at address $DE1D...
+  $DE1F BCS 0x03  
+    add external entry point $DE24 
+    add continuation entry point $DE21 
+
+tracing at address $DE24...
+  $DE2C BEQ 0x01  
+
+tracing at address $DE2E...
+  $DE2E RTS (0x60)  
+
+tracing at address $DE38...
+  $DE3A BCC 0x09  
+    add external entry point $DE45 
+    add continuation entry point $DE3C 
+
+tracing at address $DE45...
+  $DE46 BPL 0x02  
+    add continuation entry point $DE48 
+
+tracing at address $DE5C...
+  $DE5E BNE 0x05  
+    add external entry point $DE65 
+    add continuation entry point $DE60 
+
+tracing at address $DE65...
+  $DE67 JSR (0x20)  
+    add continuation entry point $DE6A 
+
+tracing at address $DE97...
+  $DE9F BEQ 0x0A  
+    add external entry point $DEAB 
+    add continuation entry point $DEA1 
+
+tracing at address $DEAB...
+  $DEB4 RTS (0x60)  
+    add continuation entry point $DEB5 
+
+tracing at address $C46C...
+  $C470 BCS 0x05  
+    add external entry point $C477 
+    add continuation entry point $C472 
+
+tracing at address $C477...
+  $C479 BCC 0x02  
+    add external entry point $C47D 
+    add continuation entry point $C47B 
+
+tracing at address $C47D...
+  $C47F RTS (0x60)  
+    add continuation entry point $C480 
+
+tracing at address $C412...
+  $C422 BCS 0x09  
+
+tracing at address $C424...
+  $C433 BCS 0x07  
+
+tracing at address $C435...
+  $C449 BCS 0x0E  
+
+tracing at address $C44B...
+  $C450 BCS 0x07  
+    add continuation entry point $C452 
+
+tracing at address $DEFB...
+  $DF00 BCS 0x07  
+    add external entry point $DF09 
+    add continuation entry point $DF02 
+
+tracing at address $DF09...
+  $DF16 BCS 0x05  
+    add external entry point $DF1D 
+    add continuation entry point $DF18 
+
+tracing at address $DF1D...
+  $DF1F BCC 0x05  
+    add external entry point $DF26 
+    add continuation entry point $DF21 
+
+tracing at address $DF26...
+  $DF28 BEQ 0x27  
+    add external entry point $DF51 
+    add continuation entry point $DF2A 
+
+tracing at address $DF51...
+  $DF53 BMI 0x13  
+    add external entry point $DF68 
+    add continuation entry point $DF55 
+
+tracing at address $DF68...
+  $DF6C JMP (0x4C)  
+    add continuation entry point $DF6F 
+
+tracing at address $DFBC...
+  $DFBE BEQ 0x11  
+    add continuation entry point $DFC0 
+
+tracing at address $E04C...
+  $E04E BEQ 0x48  
+
+tracing at address $E09D...
+  $E0A2 BMI 0x1A  
+
+tracing at address $E0A4...
+  $E0A5 JSR (0x20)  
+    add continuation entry point $E0A8 
+
+tracing at address $E0C3...
+  $E0D8 RTS (0x60)  
+
+tracing at address $E0D9...
+  $E0E9 JSR (0x20)  
+    add continuation entry point $E0EC 
+
+tracing at address $C35F...
+  $C360 BEQ 0x2C  
+    add external entry point $C38E 
+    add continuation entry point $C362 
+
+tracing at address $C38E...
+  $C38E RTS (0x60)  
+    add continuation entry point $C38F 
+
+tracing at address $E126...
+  $E12B BNE 0x42  
+    add external entry point $E16F 
+    add continuation entry point $E12D 
+
+tracing at address $E16F...
+  $E16F JMP (0x4C)  
+    add continuation entry point $E172 
+
+tracing at address $E1A4...
+  $E1B0 JSR (0x20)  
+    add continuation entry point $E1B3 
+
+tracing at address $E1D2...
+  $E1D4 JSR (0x20)  
+    add continuation entry point $E1D7 
+
+tracing at address $E1F4...
+  $E1FC BCS 0x25  
+    add continuation entry point $E1FE 
+
+tracing at address $E26D...
+  $E278 BCC 0x01  
+    add external entry point $E27B 
+    add continuation entry point $E27A 
+
+tracing at address $E27B...
+  $E27D BCS 0x03  
+    add external entry point $E282 
+    add continuation entry point $E27F 
+
+tracing at address $E282...
+  $E282 RTS (0x60)  
+
+tracing at address $E290...
+  $E293 BCC 0x03  
+
+tracing at address $E295...
+  $E298 RTS (0x60)  
+
+tracing at address $E299...
+  $E29C BEQ 0x03  
+    add external entry point $E2A1 
+    add continuation entry point $E29E 
+
+tracing at address $E2A1...
+  $E2A9 BCC 0xED  
+    add continuation entry point $E2AB 
+
+tracing at address $E2D5...
+  $E2DA BEQ 0x0B  
+    add continuation entry point $E2DC 
+
+tracing at address $E2FC...
+  $E2FF RTS (0x60)  
+
+tracing at address $E330...
+  $E335 RTS (0x60)  
+    add continuation entry point $E336 
+
+tracing at address $E396...
+  $E399 RTS (0x60)  
+
+tracing at address $E3AC...
+  $E3B1 BEQ 0x14  
+    add external entry point $E3C7 
+    add continuation entry point $E3B3 
+
+tracing at address $E3C7...
+  $E3CD BNE 0x05  
+    add continuation entry point $E3CF 
+
+tracing at address $E418...
+  $E418 JSR (0x20)  
+    add continuation entry point $E41B 
+
+tracing at address $E230...
+  $E232 BPL 0x11  
+    add external entry point $E245 
+    add continuation entry point $E234 
+
+tracing at address $E245...
+  $E264 BCS 0x04  
+
+tracing at address $E447...
+  $E44A BNE 0x06  
+    add continuation entry point $E44C 
+
+tracing at address $E45D...
+  $E461 JSR (0x20)  
+    add external entry point $E227 
+    add continuation entry point $E464 
+
+tracing at address $E227...
+  $E22A BMI 0x3D  
+
+tracing at address $E503...
+  $E51B JSR (0x20)  
+    add external entry point $E540 
+
+tracing at address $E540...
+  $E544 BEQ 0x04  
+    add external entry point $E54A 
+    add continuation entry point $E546 
+
+tracing at address $E54A...
+  $E54F BMI 0x1D  
+    add external entry point $E56E 
+    add continuation entry point $E551 
+
+tracing at address $E56E...
+  $E578 BCC 0xD2  
+    add external entry point $E54C 
+    add continuation entry point $E57A 
+
+tracing at address $E54C...
+  $E54F BMI 0x1D  
+
+tracing at address $E527...
+  $E52A BNE 0x13  
+    add external entry point $E53F 
+    add continuation entry point $E52C 
+
+tracing at address $E53F...
+  $E53F RTS (0x60)  
+
+tracing at address $E48D...
+  $E48D JMP (0x4C)  
+
+tracing at address $E497...
+  $E497 BCS 0x04  
+    add external entry point $E49D 
+    add continuation entry point $E499 
+
+tracing at address $E49D...
+  $E4A0 RTS (0x60)  
+
+tracing at address $E651...
+  $E66A BEQ 0x5C  
+    add continuation entry point $E66C 
+
+tracing at address $E689...
+  $E696 BPL 0x51  
+    add continuation entry point $E698 
+
+tracing at address $E715...
+  $E71A JSR (0x20)  
+
+tracing at address $E71D...
+  $E71D RTS (0x60)  
+    add continuation entry point $E71E 
+
+tracing at address $E6AD...
+  $E6BB BNE 0x2C  
+    add continuation entry point $E6BD 
+
+tracing at address $E6D7...
+  $E6DB BNE 0x0C  
+    add continuation entry point $E6DD 
+
+tracing at address $E7C6...
+  $E7CB BNE 0xF2  
+    add continuation entry point $E7CD 
+
+tracing at address $E86D...
+  $E880 BNE 0x29  
+
+tracing at address $E882...
+  $E884 BCS 0x1F  
+    add continuation entry point $E886 
+
+tracing at address $E8CA...
+  $E8CC BEQ 0x08  
+    add continuation entry point $E8CE 
+
+tracing at address $E8D7...
+  $E8DD BCC 0x02  
+    add continuation entry point $E8DF 
+
+tracing at address $E620...
+  $E62A BRK (0x00)  
+    add continuation entry point $E62B 
+
+tracing at address $C328...
+  $C328 BEQ 0x06  
+    add continuation entry point $C32A 
+
+tracing at address $C32E...
+  $C334 RTS (0x60)  
+
+tracing at address $E8F9...
+  $E921 RTS (0x60)  
+
+tracing at address $E943...
+  $E946 BNE 0x03  
+    add continuation entry point $E948 
+
+tracing at address $E963...
+  $E979 BCC 0x01  
+
+tracing at address $E995...
+  $E999 BCS 0x02  
+    add continuation entry point $E99B 
+
+tracing at address $EB08...
+  $EB0C BEQ 0x04  
+    add external entry point $EB12 
+    add continuation entry point $EB0E 
+
+tracing at address $EB12...
+  $EB2E BEQ 0x35  
+    add external entry point $EB65 
+    add continuation entry point $EB30 
+
+tracing at address $EB65...
+  $EB6C BCC 0x02  
+    add external entry point $EB70 
+    add continuation entry point $EB6E 
+
+tracing at address $EB70...
+  $EB72 BNE 0xB6  
+    add external entry point $EB2A 
+    add continuation entry point $EB74 
+
+tracing at address $EB2A...
+  $EB2E BEQ 0x35  
+
+tracing at address $EC96...
+  $ECA2 JMP (0x4C)  
+    add continuation entry point $ECA5 
+
+tracing at address $EBCB...
+  $EBD1 JSR (0x20)  
+    add continuation entry point $EBD4 
+
+tracing at address $EBA5...
+  $EBAA BPL 0x1F  
+
+tracing at address $ECDD...
+  $ECDD JSR (0x20)  
+    add continuation entry point $ECE0 
+
+tracing at address $ED7A...
+  $ED81 BCC 0x02  
+
+tracing at address $ED83...
+  $ED8D RTS (0x60)  
+
+tracing at address $ED8E...  $ED8E is marked as data in cdl, skipping
+
+tracing at address $ED1D...
+  $ED21 BEQ 0x24  
+    add continuation entry point $ED23 
+
+tracing at address $ED4A...
+  $ED4E JMP (0x4C)  
+
+tracing at address $EC0B...
+  $EC0D BEQ 0x3B  
+    add external entry point $EC4A 
+    add continuation entry point $EC0F 
+
+tracing at address $EC4A...
+  $EC51 JMP (0x4C)  
+    add continuation entry point $EC54 
+
+tracing at address $EC61...
+  $EC63 illegal opcode AHX(0x93), cdl flagged as code, not really stopping
+  $EC67 illegal opcode LAX(0xB7), cdl does not flag as code, stopping
+  potential issues, not marking as code
+
+tracing at address $F7A2...
+  $F7A2 JSR (0x20)  
+    add continuation entry point $F7A5 
+
+tracing at address $C0E8...
+  $C0E8 JSR (0x20)  
+
+tracing at address $BE12...
+  $BE1E JSR (0x20)  
+    add continuation entry point $BE21 
+
+tracing at address $C2A5...
+  $C2A5 JSR (0x20)  
+    add continuation entry point $C2A8 
+
+tracing at address $C261...
+  $C261 RTS (0x60)  
+
+tracing at address $C036...
+  $C044 JSR (0x20)  
+
+tracing at address $C04D...
+  $C04D JSR (0x20)  
+    add external entry point $C2BC 
+    add continuation entry point $C050 
+
+tracing at address $C2BC...
+  $C2C8 JSR (0x20)  
+    add continuation entry point $C2CB 
+
+tracing at address $C07D...
+  $C07D JSR (0x20)  
+    add continuation entry point $C080 
+
+tracing at address $C52D...
+  $C52D JSR (0x20)  
+    add external entry point $C7A8 
+    add continuation entry point $C530 
+
+tracing at address $C7A8...
+  $C7AB BEQ 0x19  
+    add external entry point $C7C6 
+    add continuation entry point $C7AD 
+
+tracing at address $C7C6...
+  $C7C6 RTS (0x60)  
+    add continuation entry point $C7C7 
+
+tracing at address $C5E8...
+  $C5F1 BNE 0xF2  
+    add continuation entry point $C5F3 
+
+tracing at address $C612...
+  $C612 RTS (0x60)  
+
+tracing at address $C619...
+  $C628 BEQ 0x51  
+    add continuation entry point $C62A 
+
+tracing at address $C6DF...
+  $C6DF RTS (0x60)  
+
+tracing at address $C710...
+  $C720 BEQ 0x03  
+    add external entry point $C725 
+    add continuation entry point $C722 
+
+tracing at address $C725...
+  $C72E BNE 0xEC  
+    add external entry point $C71C 
+    add continuation entry point $C730 
+
+tracing at address $C71C...
+  $C720 BEQ 0x03  
+
+tracing at address $C21E...
+  $C220 BNE 0xD2  
+    add external entry point $C1F4 
+    add continuation entry point $C222 
+
+tracing at address $C1F4...
+  $C21C BNE 0xF6  
+
+tracing at address $C3C9...
+  $C3C9 RTS (0x60)  
+
+tracing at address $C3FA...
+  $C3FA RTS (0x60)  
+
+tracing at address $C4DA...
+  $C4FD BNE 0xF2  
+
+tracing at address $C6C7...
+  $C6CB JSR (0x20)  
+
+tracing at address $C6CE...
+  $C6D0 RTS (0x60)  
+
+tracing at address $C8F7...
+  $C8FB BNE 0xF1  
+    add external entry point $C8EE 
+
+tracing at address $C8EE...
+  $C8F3 BCC 0x08  
+
+tracing at address $C919...
+  $C91E BPL 0x09  
+
+tracing at address $C927...
+  $C934 JMP (0x4C)  
+
+tracing at address $C8BE...
+  $C8C0 BMI 0x02  
+
+tracing at address $C949...
+  $C949 JSR (0x20)  
+    add continuation entry point $C94C 
+
+tracing at address $C976...
+  $C977 BNE 0x49  
+    add continuation entry point $C979 
+
+tracing at address $C9CC...
+  $C9CC BNE 0x41  
+
+tracing at address $CA0F...
+  $CA1B BMI 0x0C  
+
+tracing at address $C1A5...
+  $C1A7 JMP (0x4C)  
+
+tracing at address $C9AC...
+  $C9AE BEQ 0x12  
+    add continuation entry point $C9B0 
+
+tracing at address $C9F5...
+  $C9F8 BEQ 0xC8  
+    add continuation entry point $C9FA 
+
+tracing at address $CA74...
+  $CA7D BNE 0xF9  
+    add external entry point $CA78 
+    add continuation entry point $CA7F 
+
+tracing at address $CA78...
+  $CA7D BNE 0xF9  
+
+tracing at address $C18A...
+  $C18E BEQ 0x5A  
+
+tracing at address $C1B1...
+  $C1B6 RTS (0x60)  
+
+tracing at address $CAAD...
+  $CAB2 RTS (0x60)  
+
+tracing at address $C275...
+  $C289 RTS (0x60)  
+
+tracing at address $CB08...
+  $CB0C BPL 0xF5  
+    add external entry point $CB03 
+
+tracing at address $CB03...
+  $CB06 BCS 0x0B  
+
+tracing at address $CB1C...
+  $CB1C JSR (0x20)  
+
+tracing at address $CB2F...
+  $CB48 JSR (0x20)  
+
+tracing at address $CB6E...
+  $CB71 BEQ 0x16  
+    add continuation entry point $CB73 
+
+tracing at address $C16F...
+  $C171 JMP (0x4C)  
+
+tracing at address $CB89...
+  $CB89 RTS (0x60)  
+    add continuation entry point $CB8A 
+
+tracing at address $CC32...  $CC32 is marked as data in cdl, skipping
+
+tracing at address $CC48...
+  $CC4B BEQ 0x11  
+    add continuation entry point $CC4D 
+
+tracing at address $CC68...
+  $CC6E illegal opcode LAX(0xB3), cdl flagged as code, not really stopping
+  $CC8B BNE 0x4D  
+  potential issues, not marking as code
+
+tracing at address $CCA0...
+  $CCA0 JSR (0x20)  
+    add continuation entry point $CCA3 
+
+tracing at address $CCB7...
+  $CCB7 JSR (0x20)  
+    add continuation entry point $CCBA 
+
+tracing at address $CCC9...
+  $CCCD JMP (0x4C)  
+    add continuation entry point $CCD0 
+
+tracing at address $CD37...
+  $CD37 JSR (0x20)  
+
+tracing at address $CD44...
+  $CD49 BNE 0xFB  
+    add external entry point $CD46 
+    add continuation entry point $CD4B 
+
+tracing at address $CD46...
+  $CD49 BNE 0xFB  
+
+tracing at address $CDC3...
+  $CDC3 JSR (0x20)  
+    add continuation entry point $CDC6 
+
+tracing at address $CDF2...
+  $CDFC BCC 0x02  
+    add continuation entry point $CDFE 
+
+tracing at address $CE0F...
+  $CE17 JSR (0x20)  
+    add continuation entry point $CE1A 
+
+tracing at address $CE7F...
+  $CE7F JMP (0x4C)  
+    add external entry point $CE8B 
+
+tracing at address $CE8B...
+  $CE8D BEQ 0x03  
+    add external entry point $CE92 
+    add continuation entry point $CE8F 
+
+tracing at address $CE92...
+  $CE94 BNE 0x4A  
+    add external entry point $CEE0 
+    add continuation entry point $CE96 
+
+tracing at address $CEE0...
+  $CEE8 BNE 0x98  
+    add continuation entry point $CEEA 
+
+tracing at address $CF14...
+  $CF14 JSR (0x20)  
+    add continuation entry point $CF17 
+
+tracing at address $CF25...
+  $CF28 BEQ 0xEA  
+    add continuation entry point $CF2A 
+
+tracing at address $CF50...
+  $CF50 BNE 0xD8  
+
+tracing at address $CE85...
+  $CE85 JSR (0x20)  
+    add continuation entry point $CE88 
+
+tracing at address $D007...
+  $D009 JSR (0x20)  
+    add continuation entry point $D00C 
+
+tracing at address $D23E...
+  $D23E JSR (0x20)  
+    add continuation entry point $D241 
+
+tracing at address $DB41...
+  $DB49 BMI 0x03  
+
+tracing at address $CF5F...
+  $CF61 JSR (0x20)  
+    add continuation entry point $CF64 
+
+tracing at address $D04F...
+  $D057 BEQ 0x40  
+    add external entry point $D099 
+    add continuation entry point $D059 
+
+tracing at address $D099...
+  $D099 JSR (0x20)  
+    add external entry point $CD95 
+    add continuation entry point $D09C 
+
+tracing at address $CD95...
+  $CD95 JSR (0x20)  
+    add external entry point $CD9C 
+    add continuation entry point $CD98 
+
+tracing at address $CD9C...
+  $CDA8 JSR (0x20)  
+    add continuation entry point $CDAB 
+
+tracing at address $D280...
+  $D290 JMP (0x4C)  
+
+tracing at address $D2A8...
+  $D2A8 JSR (0x20)  
+    add continuation entry point $D2AB 
+
+tracing at address $D42C...
+  $D42E BNE 0x0B  
+    add external entry point $D43B 
+    add continuation entry point $D430 
+
+tracing at address $D43B...
+  $D443 BNE 0xFA  
+    add external entry point $D43F 
+    add continuation entry point $D445 
+
+tracing at address $D43F...
+  $D443 BNE 0xFA  
+
+tracing at address $D452...
+  $D452 JMP (0x4C)  
+
+tracing at address $D466...
+  $D46A BNE 0x05  
+    add external entry point $D471 
+    add continuation entry point $D46C 
+
+tracing at address $D471...
+  $D479 JMP (0x4C)  
+
+tracing at address $D486...
+  $D490 BNE 0x04  
+
+tracing at address $D4A8...
+  $D4AC JMP (0x4C)  
+
+tracing at address $D4AF...
+  $D4BD BCC 0x02  
+    add external entry point $D4C1 
+    add continuation entry point $D4BF 
+
+tracing at address $D4C1...
+  $D4D7 BEQ 0x16  
+    add external entry point $D4EF 
+    add continuation entry point $D4D9 
+
+tracing at address $D4EF...
+  $D4F6 BCC 0xDD  
+    add external entry point $D4D5 
+
+tracing at address $D4D5...
+  $D4D7 BEQ 0x16  
+
+tracing at address $D638...
+  $D654 BCS 0x09  
+    add external entry point $D65F 
+    add continuation entry point $D656 
+
+tracing at address $D65F...
+  $D66A BNE 0x02  
+    add external entry point $D66E 
+    add continuation entry point $D66C 
+
+tracing at address $D66E...
+  $D67B BNE 0x02  
+    add external entry point $D67F 
+    add continuation entry point $D67D 
+
+tracing at address $D67F...
+  $D681 JMP (0x4C)  
+    add external entry point $D6E9 
+    add continuation entry point $D684 
+
+tracing at address $D6E9...
+  $D6EB JSR (0x20)  
+
+tracing at address $D582...
+  $D588 BCS 0x03  
+    add external entry point $D58D 
+    add continuation entry point $D58A 
+
+tracing at address $D58D...
+  $D5B5 BCS 0x05  
+    add external entry point $D5BC 
+    add continuation entry point $D5B7 
+
+tracing at address $D5BC...
+  $D5DB BMI 0x11  
+    add external entry point $D5EE 
+    add continuation entry point $D5DD 
+
+tracing at address $D5EE...
+  $D5F4 JMP (0x4C)  
+    add external entry point $D736 
+
+tracing at address $D736...
+  $D736 JSR (0x20)  
+
+tracing at address $D5FA...
+  $D5FA JMP (0x4C)  
+
+tracing at address $D60E...
+  $D611 BEQ 0x0A  
+    add external entry point $D61D 
+    add continuation entry point $D613 
+
+tracing at address $D61D...
+  $D621 JMP (0x4C)  
+
+tracing at address $D755...
+  $D75C BCC 0x01  
+
+tracing at address $D75E...
+  $D76C BCC 0x01  
+
+tracing at address $D76E...
+  $D76E RTS (0x60)  
+
+tracing at address $D6FB...
+  $D700 JMP (0x4C)  
+    add continuation entry point $D703 
+
+tracing at address $D7C7...
+  $D7CD BNE 0x02  
+    add continuation entry point $D7CF 
+
+tracing at address $D87A...
+  $D88B RTS (0x60)  
+
+tracing at address $D89A...
+  $D89A RTS (0x60)  
+
+tracing at address $D8A1...
+  $D8A3 BPL 0xF5  
+    add continuation entry point $D8A5 
+
+tracing at address $D8F3...
+  $D8F5 BNE 0x31  
+    add external entry point $D928 
+    add continuation entry point $D8F7 
+
+tracing at address $D928...
+  $D928 JSR (0x20)  
+
+tracing at address $D922...
+  $D922 JMP (0x4C)  
+
+tracing at address $D971...
+  $D971 JSR (0x20)  
+    add continuation entry point $D974 
+
+tracing at address $D9C9...  $D9C9 exists in data points list, skipping
+
+tracing at address $D544...
+  $D553 BCC 0x06  
+
+tracing at address $D55A...
+  $D56E RTS (0x60)  
+
+tracing at address $D9EB...
+  $D9EE BCC 0xF2  
+    add external entry point $D9E2 
+
+tracing at address $D9E2...
+  $D9E9 BNE 0x08  
+
+tracing at address $DA07...
+  $DA0E BCC 0x0A  
+    add continuation entry point $DA10 
+
+tracing at address $DA21...
+  $DA3B BEQ 0x20  
+
+tracing at address $DA94...
+  $DA94 RTS (0x60)  
+
+tracing at address $DA55...
+  $DA5B BCS 0x06  
+
+tracing at address $DB66...
+  $DB66 illegal opcode NOP(0x80), cdl flagged as code, not really stopping
+  $DB6E illegal opcode RRA(0x6F), cdl flagged as code, not really stopping
+  $DB71 illegal opcode DCP(0xDF), cdl flagged as code, not really stopping
+  $DB7B illegal opcode DCP(0xDF), cdl flagged as code, not really stopping
+  $DB91 BMI 0x4C  
+  potential issues, not marking as code
+
+tracing at address $DBB9...
+  $DBD4 JSR (0x20)  
+    add continuation entry point $DBD7 
+
+tracing at address $C3FD...
+  $C401 RTS (0x60)  
+
+tracing at address $E025...
+  $E029 BEQ 0x6D  
+    add continuation entry point $E02B 
+
+tracing at address $DBF6...
+  $DBF6 BCC 0x2D  
+    add external entry point $DC25 
+
+tracing at address $DC25...
+  $DC34 BPL 0x02  
+
+tracing at address $DC16...
+  $DC1F BCC 0x02  
+    add continuation entry point $DC21 
+
+tracing at address $DC0B...
+  $DC0D BCC 0x14  
+
+tracing at address $DC36...
+  $DC3A JMP (0x4C)  
+
+tracing at address $DC89...
+  $DC8D BPL 0x2D  
+    add continuation entry point $DC8F 
+
+tracing at address $DCC7...
+  $DCCC JMP (0x4C)  
+
+tracing at address $DD4D...
+  $DD50 BNE 0x25  
+
+tracing at address $DD58...
+  $DD58 JSR (0x20)  
+
+tracing at address $DD68...
+  $DD68 JSR (0x20)  
+    add continuation entry point $DD6B 
+
+tracing at address $DCD4...
+  $DCDA BNE 0xF0  
+    add continuation entry point $DCDC 
+
+tracing at address $DDA2...
+  $DDBA JSR (0x20)  
+    add continuation entry point $DDBD 
+
+tracing at address $DDD8...
+  $DDEA BNE 0x02  
+    add continuation entry point $DDEC 
+
+tracing at address $DD7E...
+  $DD90 BNE 0xF5  
+
+tracing at address $DDFF...
+  $DE0A BNE 0x04  
+
+tracing at address $DE21...
+  $DE2C BEQ 0x01  
+
+tracing at address $DE3C...
+  $DE3F BCC 0x09  
+    add continuation entry point $DE41 
+
+tracing at address $DE48...
+  $DE4D BEQ 0x01  
+
+tracing at address $DE60...
+  $DE67 JSR (0x20)  
+
+tracing at address $DE6A...
+  $DE6A JMP (0x4C)  
+    add external entry point $DF84 
+
+tracing at address $DF84...
+  $DF8D RTS (0x60)  
+    add continuation entry point $DF8E 
+
+tracing at address $DEA1...
+  $DEA1 BCS 0x03  
+    add external entry point $DEA6 
+    add continuation entry point $DEA3 
+
+tracing at address $DEA6...
+  $DEAA RTS (0x60)  
+
+tracing at address $DEB5...
+  $DEB9 JSR (0x20)  
+    add continuation entry point $DEBC 
+
+tracing at address $C472...
+  $C476 RTS (0x60)  
+
+tracing at address $C47B...
+  $C47F RTS (0x60)  
+
+tracing at address $C480...  $C480 is marked as data in cdl, skipping
+
+tracing at address $C452...
+  $C456 BCS 0x01  
+    add continuation entry point $C458 
+
+tracing at address $DF02...
+  $DF04 BCS 0x03  
+    add continuation entry point $DF06 
+
+tracing at address $DF18...
+  $DF1F BCC 0x05  
+
+tracing at address $DF21...
+  $DF28 BEQ 0x27  
+
+tracing at address $DF2A...
+  $DF30 BCC 0x36  
+    add continuation entry point $DF32 
+
+tracing at address $DF55...
+  $DF5C JSR (0x20)  
+    add continuation entry point $DF5F 
+
+tracing at address $DF6F...
+  $DF6F JSR (0x20)  
+    add continuation entry point $DF72 
+
+tracing at address $DFC0...
+  $DFC0 BNE 0xF9  
+    add external entry point $DFBB 
+    add continuation entry point $DFC2 
+
+tracing at address $DFBB...
+  $DFBB RTS (0x60)  
+
+tracing at address $E0A8...
+  $E0AA BCS 0x0D  
+    add external entry point $E0B9 
+    add continuation entry point $E0AC 
+
+tracing at address $E0B9...
+  $E0C1 BMI 0x15  
+
+tracing at address $E0EC...
+  $E0F2 RTS (0x60)  
+    add continuation entry point $E0F3 
+
+tracing at address $C362...
+  $C362 JSR (0x20)  
+    add continuation entry point $C365 
+
+tracing at address $C38F...
+  $C396 BCS 0x03  
+    add external entry point $C39B 
+    add continuation entry point $C398 
+
+tracing at address $C39B...
+  $C39E BPL 0xF2  
+    add external entry point $C392 
+    add continuation entry point $C3A0 
+
+tracing at address $C392...
+  $C396 BCS 0x03  
+
+tracing at address $E12D...
+  $E12D JSR (0x20)  
+    add continuation entry point $E130 
+
+tracing at address $E172...
+  $E185 JSR (0x20)  
+    add continuation entry point $E188 
+
+tracing at address $E1B3...
+  $E1BD BCS 0x0A  
+
+tracing at address $E1D7...
+  $E1DC illegal opcode NOP(0xE2), cdl flagged as code, not really stopping
+  $E1DE illegal opcode ISC(0xE3), cdl flagged as code, not really stopping
+  $E1E0 illegal opcode ISC(0xE3), cdl flagged as code, not really stopping
+  $E1E6 illegal opcode NOP(0xE2), cdl does not flag as code, stopping
+  potential issues, not marking as code
+
+tracing at address $E1FE...
+  $E204 BCC 0x1D  
+    add continuation entry point $E206 
+
+tracing at address $E27A...
+  $E27D BCS 0x03  
+
+tracing at address $E27F...
+  $E282 RTS (0x60)  
+
+tracing at address $E29E...
+  $E29E JSR (0x20)  
+
+tracing at address $E2AB...
+  $E2B3 BNE 0xE3  
+    add continuation entry point $E2B5 
+
+tracing at address $E2DC...
+  $E2DC BCC 0x06  
+    add external entry point $E2E4 
+    add continuation entry point $E2DE 
+
+tracing at address $E2E4...
+  $E2F0 BCC 0x0E  
+
+tracing at address $E336...
+  $E33B BMI 0x46  
+    add continuation entry point $E33D 
+
+tracing at address $E3B3...
+  $E3B4 JSR (0x20)  
+    add continuation entry point $E3B7 
+
+tracing at address $E3CF...
+  $E3D2 BPL 0x1A  
+
+tracing at address $E41B...
+  $E425 RTS (0x60)  
+
+tracing at address $E234...
+  $E234 JSR (0x20)  
+    add continuation entry point $E237 
+
+tracing at address $E44C...
+  $E44E RTS (0x60)  
+
+tracing at address $E464...
+  $E472 RTS (0x60)  
+    add continuation entry point $E473 
+
+tracing at address $E546...
+  $E546 BMI 0x02  
+    add continuation entry point $E548 
+
+tracing at address $E551...
+  $E559 BCS 0x13  
+    add continuation entry point $E55B 
+
+tracing at address $E57A...
+  $E586 JSR (0x20)  
+    add continuation entry point $E589 
+
+tracing at address $E52C...
+  $E52E JSR (0x20)  
+    add external entry point $E533 
+    add continuation entry point $E531 
+
+tracing at address $E533...
+  $E53F RTS (0x60)  
+
+tracing at address $E499...
+  $E49C RTS (0x60)  
+
+tracing at address $E66C...
+  $E670 BEQ 0x0B  
+    add continuation entry point $E672 
+
+tracing at address $E698...  $E698 is marked as data in cdl, skipping
+
+tracing at address $E71E...
+  $E72F JSR (0x20)  
+    add continuation entry point $E732 
+
+tracing at address $E6BD...
+  $E6BD BEQ 0x09  
+    add continuation entry point $E6BF 
+
+tracing at address $E6DD...
+  $E6E1 JSR (0x20)  
+    add continuation entry point $E6E4 
+
+tracing at address $E7CD...
+  $E7D2 BNE 0x02  
+    add external entry point $E7D6 
+    add continuation entry point $E7D4 
+
+tracing at address $E7D6...
+  $E7EF BMI 0x1B  
+    add external entry point $E80C 
+    add continuation entry point $E7F1 
+
+tracing at address $E80C...
+  $E815 BCC 0xD4  
+    add external entry point $E7EB 
+    add continuation entry point $E817 
+
+tracing at address $E7EB...
+  $E7EF BMI 0x1B  
+
+tracing at address $E886...
+  $E8A4 RTS (0x60)  
+
+tracing at address $E8CE...
+  $E8D6 RTS (0x60)  
+
+tracing at address $E8DF...
+  $E8F2 JSR (0x20)  
+
+tracing at address $E62B...
+  $E63D JMP (0x4C)  
+    add external entry point $E6F6 
+
+tracing at address $E6F6...
+  $E707 JSR (0x20)  
+
+tracing at address $C32A...
+  $C32A BNE 0x02  
+
+tracing at address $E948...
+  $E95B BCC 0x08  
+
+tracing at address $E99B...
+  $E9A9 RTS (0x60)  
+
+tracing at address $EB0E...
+  $EB10 BEQ 0x02  
+    add external entry point $EB14 
+
+tracing at address $EB14...
+  $EB2E BEQ 0x35  
+
+tracing at address $EB30...
+  $EB32 BCC 0x0B  
+    add external entry point $EB3F 
+    add continuation entry point $EB34 
+
+tracing at address $EB3F...
+  $EB43 BNE 0x20  
+    add continuation entry point $EB45 
+
+tracing at address $EB6E...
+  $EB72 BNE 0xB6  
+
+tracing at address $EB74...
+  $EB7A BNE 0x0C  
+    add external entry point $EB88 
+    add continuation entry point $EB7C 
+
+tracing at address $EB88...
+  $EB8D BCC 0xE7  
+    add external entry point $EB76 
+    add continuation entry point $EB8F 
+
+tracing at address $EB76...
+  $EB7A BNE 0x0C  
+
+tracing at address $ECA5...
+  $ECA5 JSR (0x20)  
+    add continuation entry point $ECA8 
+
+tracing at address $EBD4...
+  $EBD4 JSR (0x20)  
+    add continuation entry point $EBD7 
+
+tracing at address $ECE0...
+  $ECE4 JMP (0x4C)  
+    add continuation entry point $ECE7 
+
+tracing at address $ED23...
+  $ED25 BEQ 0x05  
+    add external entry point $ED2C 
+    add continuation entry point $ED27 
+
+tracing at address $ED2C...
+  $ED2C JSR (0x20)  
+    add continuation entry point $ED2F 
+
+tracing at address $EC0F...
+  $EC0F BCS 0x43  
+    add continuation entry point $EC11 
+
+tracing at address $EC54...
+  $EC5A BPL 0xA8  
+
+tracing at address $F7A5...
+  $F7AC BEQ 0xF4  
+    add continuation entry point $F7AE 
+
+tracing at address $BE21...
+  $BE21 JSR (0x20)  
+    add continuation entry point $BE24 
+
+tracing at address $C2A8...
+  $C2AC RTS (0x60)  
+    add continuation entry point $C2AD 
+
+tracing at address $C050...
+  $C050 JSR (0x20)  
+    add continuation entry point $C053 
+
+tracing at address $C2CB...
+  $C2CF JMP (0x4C)  
+    add continuation entry point $C2D2 
+
+tracing at address $C080...
+  $C080 JSR (0x20)  
+    add continuation entry point $C083 
+
+tracing at address $C530...
+  $C544 JSR (0x20)  
+    add continuation entry point $C547 
+
+tracing at address $C7AD...
+  $C7B3 BCS 0x12  
+    add continuation entry point $C7B5 
+
+tracing at address $C7C7...
+  $C7C9 BMI 0x0A  
+    add external entry point $C7D5 
+    add continuation entry point $C7CB 
+
+tracing at address $C7D5...
+  $C807 JSR (0x20)  
+    add continuation entry point $C80A 
+
+tracing at address $C5F3...
+  $C5F3 RTS (0x60)  
+    add continuation entry point $C5F4 
+
+tracing at address $C62A...
+  $C63C BEQ 0x02  
+    add external entry point $C640 
+    add continuation entry point $C63E 
+
+tracing at address $C640...
+  $C650 BNE 0x0C  
+    add continuation entry point $C652 
+
+tracing at address $C722...
+  $C722 JSR (0x20)  
+    add external entry point $C731 
+
+tracing at address $C731...
+  $C738 BCS 0x32  
+    add external entry point $C76C 
+    add continuation entry point $C73A 
+
+tracing at address $C76C...
+  $C774 BNE 0x08  
+    add external entry point $C77E 
+    add continuation entry point $C776 
+
+tracing at address $C77E...
+  $C78D JMP (0x4C)  
+    add continuation entry point $C790 
+
+tracing at address $C730...
+  $C730 RTS (0x60)  
+
+tracing at address $C222...
+  $C23A RTS (0x60)  
+
+tracing at address $C94C...
+  $C94C JSR (0x20)  
+    add continuation entry point $C94F 
+
+tracing at address $C979...
+  $C97C BEQ 0x0E  
+    add external entry point $C98C 
+    add continuation entry point $C97E 
+
+tracing at address $C98C...
+  $C990 JSR (0x20)  
+
+tracing at address $C9B0...
+  $C9B3 BCC 0x0D  
+    add continuation entry point $C9B5 
+
+tracing at address $C9FA...
+  $C9FE JMP (0x4C)  
+
+tracing at address $CA7F...
+  $CA7F JMP (0x4C)  
+
+tracing at address $CB73...
+  $CB75 BCC 0x02  
+    add continuation entry point $CB77 
+
+tracing at address $CB8A...
+  $CB96 JSR (0x20)  
+    add continuation entry point $CB99 
+
+tracing at address $CC4D...
+  $CC5B JSR (0x20)  
+
+tracing at address $CCA3...
+  $CCA3 JSR (0x20)  
+    add continuation entry point $CCA6 
+
+tracing at address $CCBA...
+  $CCBA JSR (0x20)  
+    add continuation entry point $CCBD 
+
+tracing at address $CCD0...
+  $CCD6 BCC 0x02  
+    add continuation entry point $CCD8 
+
+tracing at address $CD4B...
+  $CD64 RTS (0x60)  
+    add continuation entry point $CD65 
+
+tracing at address $CDC6...
+  $CDCA BNE 0x0A  
+    add external entry point $CDD6 
+    add continuation entry point $CDCC 
+
+tracing at address $CDD6...
+  $CDDA JSR (0x20)  
+    add continuation entry point $CDDD 
+
+tracing at address $CDFE...
+  $CE00 JSR (0x20)  
+
+tracing at address $CE1A...
+  $CE1A JSR (0x20)  
+    add continuation entry point $CE1D 
+
+tracing at address $CE8F...
+  $CE8F JSR (0x20)  
+    add external entry point $CEA1 
+
+tracing at address $CEA1...
+  $CEA5 JSR (0x20)  
+    add continuation entry point $CEA8 
+
+tracing at address $CE96...
+  $CE99 BNE 0x03  
+    add external entry point $CE9E 
+    add continuation entry point $CE9B 
+
+tracing at address $CE9E...
+  $CE9E JMP (0x4C)  
+
+tracing at address $CEEA...
+  $CEEE BEQ 0x92  
+    add continuation entry point $CEF0 
+
+tracing at address $CF17...
+  $CF17 JSR (0x20)  
+    add continuation entry point $CF1A 
+
+tracing at address $CF2A...
+  $CF2A JSR (0x20)  
+    add continuation entry point $CF2D 
+
+tracing at address $CE88...
+  $CE88 JSR (0x20)  
+
+tracing at address $D00C...
+  $D010 JSR (0x20)  
+    add continuation entry point $D013 
+
+tracing at address $D241...
+  $D241 JSR (0x20)  
+    add continuation entry point $D244 
+
+tracing at address $CF64...
+  $CF6A JSR (0x20)  
+    add continuation entry point $CF6D 
+
+tracing at address $D059...
+  $D059 JSR (0x20)  
+    add continuation entry point $D05C 
+
+tracing at address $D09C...
+  $D0A0 JSR (0x20)  
+    add continuation entry point $D0A3 
+
+tracing at address $CD98...
+  $CD98 JSR (0x20)  
+    add continuation entry point $CD9B 
+
+tracing at address $CDAB...
+  $CDAF BNE 0x02  
+    add continuation entry point $CDB1 
+
+tracing at address $D2AB...
+  $D2AB JSR (0x20)  
+    add continuation entry point $D2AE 
+
+tracing at address $D430...
+  $D438 JMP (0x4C)  
+
+tracing at address $D445...
+  $D450 BNE 0xD5  
+
+tracing at address $D46C...
+  $D46E JMP (0x4C)  
+    add external entry point $D473 
+
+tracing at address $D473...
+  $D479 JMP (0x4C)  
+
+tracing at address $D4BF...
+  $D4D7 BEQ 0x16  
+
+tracing at address $D4D9...
+  $D4F6 BCC 0xDD  
+
+tracing at address $D656...
+  $D65C JMP (0x4C)  
+
+tracing at address $D66C...
+  $D67B BNE 0x02  
+
+tracing at address $D67D...
+  $D681 JMP (0x4C)  
+
+tracing at address $D684...
+  $D693 BMI 0x97  
+    add continuation entry point $D695 
+
+tracing at address $D58A...
+  $D58A JMP (0x4C)  
+
+tracing at address $D5B7...
+  $D5B9 JMP (0x4C)  
+    add external entry point $D5BE 
+
+tracing at address $D5BE...
+  $D5DB BMI 0x11  
+
+tracing at address $D5DD...
+  $D5EB JMP (0x4C)  
+
+tracing at address $D613...
+  $D614 BNE 0xE7  
+    add continuation entry point $D616 
+
+tracing at address $D703...
+  $D708 BCC 0x03  
+    add external entry point $D70D 
+    add continuation entry point $D70A 
+
+tracing at address $D70D...
+  $D71B BPL 0x09  
+    add external entry point $D726 
+    add continuation entry point $D71D 
+
+tracing at address $D726...
+  $D72C BCS 0x02  
+    add external entry point $D730 
+    add continuation entry point $D72E 
+
+tracing at address $D730...
+  $D736 JSR (0x20)  
+
+tracing at address $D7CF...
+  $D7E3 BPL 0xFA  
+
+tracing at address $D8A5...
+  $D8AC BEQ 0xD4  
+    add continuation entry point $D8AE 
+
+tracing at address $D8F7...
+  $D8F9 BPL 0x3F  
+    add continuation entry point $D8FB 
+
+tracing at address $D974...
+  $D977 BEQ 0x57  
+    add continuation entry point $D979 
+
+tracing at address $DA10...
+  $DA14 JSR (0x20)  
+    add continuation entry point $DA17 
+
+tracing at address $DBD7...
+  $DBDE RTS (0x60)  
+
+tracing at address $E02B...
+  $E02D BNE 0x0F  
+    add continuation entry point $E02F 
+
+tracing at address $DC21...
+  $DC34 BPL 0x02  
+
+tracing at address $DC8F...
+  $DC8F JSR (0x20)  
+    add continuation entry point $DC92 
+
+tracing at address $DD6B...
+  $DD74 JSR (0x20)  
+
+tracing at address $DCDC...
+  $DCDF BEQ 0xEB  
+    add continuation entry point $DCE1 
+
+tracing at address $DDBD...
+  $DDC1 RTS (0x60)  
+
+tracing at address $DDEC...
+  $DDEE JSR (0x20)  
+
+tracing at address $DE41...
+  $DE43 BCS 0x05  
+
+tracing at address $DF8E...
+  $DF96 RTS (0x60)  
+
+tracing at address $DEA3...
+  $DEAA RTS (0x60)  
+
+tracing at address $DEBC...
+  $DEC0 RTS (0x60)  
+    add continuation entry point $DEC1 
+
+tracing at address $C458...
+  $C45E RTS (0x60)  
+
+tracing at address $DF06...
+  $DF06 JMP (0x4C)  
+
+tracing at address $DF32...
+  $DF34 BCC 0x0C  
+    add external entry point $DF42 
+    add continuation entry point $DF36 
+
+tracing at address $DF42...
+  $DF46 BPL 0x02  
+    add external entry point $DF4A 
+    add continuation entry point $DF48 
+
+tracing at address $DF4A...
+  $DF4E JMP (0x4C)  
+
+tracing at address $DF5F...
+  $DF67 RTS (0x60)  
+
+tracing at address $DF72...
+  $DF78 BCS 0x07  
+    add external entry point $DF81 
+    add continuation entry point $DF7A 
+
+tracing at address $DF81...
+  $DF8D RTS (0x60)  
+
+tracing at address $DFC2...
+  $DFC2 JSR (0x20)  
+    add continuation entry point $DFC5 
+
+tracing at address $E0AC...
+  $E0B1 JSR (0x20)  
+    add continuation entry point $E0B4 
+
+tracing at address $E0F3...  $E0F3 is marked as data in cdl, skipping
+
+tracing at address $C365...
+  $C365 BCC 0x10  
+    add external entry point $C377 
+    add continuation entry point $C367 
+
+tracing at address $C377...
+  $C380 BNE 0xF7  
+    add external entry point $C379 
+    add continuation entry point $C382 
+
+tracing at address $C379...
+  $C380 BNE 0xF7  
+
+tracing at address $C398...
+  $C39E BPL 0xF2  
+
+tracing at address $C3A0...
+  $C3A0 RTS (0x60)  
+
+tracing at address $E130...
+  $E136 BMI 0x37  
+    add continuation entry point $E138 
+
+tracing at address $E188...
+  $E194 BMI 0x29  
+
+tracing at address $E206...
+  $E212 JSR (0x20)  
+    add continuation entry point $E215 
+
+tracing at address $E2B5...
+  $E2C1 RTS (0x60)  
+
+tracing at address $E2DE...
+  $E2E1 JMP (0x4C)  
+
+tracing at address $E33D...
+  $E354 BEQ 0x12  
+    add external entry point $E368 
+    add continuation entry point $E356 
+
+tracing at address $E368...
+  $E368 RTS (0x60)  
+
+tracing at address $E3B7...
+  $E3C4 JMP (0x4C)  
+
+tracing at address $E237...
+  $E264 BCS 0x04  
+
+tracing at address $E473...
+  $E478 BEQ 0x0E  
+    add continuation entry point $E47A 
+
+tracing at address $E548...
+  $E54F BMI 0x1D  
+
+tracing at address $E55B...
+  $E563 BCS 0x09  
+    add continuation entry point $E565 
+
+tracing at address $E589...
+  $E58E BCC 0x0D  
+    add external entry point $E59D 
+    add continuation entry point $E590 
+
+tracing at address $E59D...
+  $E59D RTS (0x60)  
+    add continuation entry point $E59E 
+
+tracing at address $E531...
+  $E53F RTS (0x60)  
+
+tracing at address $E672...
+  $E677 BNE 0x04  
+    add continuation entry point $E679 
+
+tracing at address $E732...
+  $E737 BCC 0x0A  
+    add external entry point $E743 
+    add continuation entry point $E739 
+
+tracing at address $E743...
+  $E743 JMP (0x4C)  
+    add continuation entry point $E746 
+
+tracing at address $E6BF...
+  $E6D4 JSR (0x20)  
+
+tracing at address $E6E4...
+  $E6EE BEQ 0x03  
+
+tracing at address $E7D4...
+  $E7EF BMI 0x1B  
+
+tracing at address $E7F1...
+  $E7F5 BCC 0x15  
+    add continuation entry point $E7F7 
+
+tracing at address $E817...
+  $E827 BEQ 0x02  
+    add external entry point $E82B 
+    add continuation entry point $E829 
+
+tracing at address $E82B...
+  $E832 BMI 0x1A  
+    add external entry point $E84E 
+    add continuation entry point $E834 
+
+tracing at address $E84E...
+  $E857 BCC 0xD4  
+    add external entry point $E82D 
+    add continuation entry point $E859 
+
+tracing at address $E82D...
+  $E832 BMI 0x1A  
+
+tracing at address $EB34...
+  $EB3C JMP (0x4C)  
+
+tracing at address $EB45...
+  $EB63 BNE 0xF5  
+    add external entry point $EB5A 
+
+tracing at address $EB5A...
+  $EB63 BNE 0xF5  
+
+tracing at address $EB7C...
+  $EB8D BCC 0xE7  
+
+tracing at address $EB8F...
+  $EBA0 BEQ 0x15  
+
+tracing at address $ECA8...
+  $ECB4 JMP (0x4C)  
+    add continuation entry point $ECB7 
+
+tracing at address $EBD7...
+  $EBDB JSR (0x20)  
+    add continuation entry point $EBDE 
+
+tracing at address $ECE7...
+  $ECEE BPL 0xFB  
+    add external entry point $ECEB 
+    add continuation entry point $ECF0 
+
+tracing at address $ECEB...
+  $ECEE BPL 0xFB  
+
+tracing at address $ED27...
+  $ED2C JSR (0x20)  
+
+tracing at address $ED2F...
+  $ED33 BNE 0x06  
+    add continuation entry point $ED35 
+
+tracing at address $EC11...
+  $EC24 BEQ 0x08  
+    add external entry point $EC2E 
+    add continuation entry point $EC26 
+
+tracing at address $EC2E...
+  $EC43 BCC 0x05  
+    add continuation entry point $EC45 
+
+tracing at address $F7AE...
+  $F7B1 BNE 0xEF  
+    add continuation entry point $F7B3 
+
+tracing at address $BE24...
+  $BE24 JSR (0x20)  
+    add continuation entry point $BE27 
+
+tracing at address $C2AD...
+  $C2B5 JSR (0x20)  
+    add continuation entry point $C2B8 
+
+tracing at address $C053...
+  $C053 JSR (0x20)  
+    add continuation entry point $C056 
+
+tracing at address $C2D2...
+  $C2E5 BEQ 0x05  
+    add external entry point $C2EC 
+    add continuation entry point $C2E7 
+
+tracing at address $C2EC...
+  $C2EF BCC 0xEF  
+    add external entry point $C2E0 
+    add continuation entry point $C2F1 
+
+tracing at address $C2E0...
+  $C2E5 BEQ 0x05  
+
+tracing at address $C083...
+  $C085 BNE 0x02  
+    add external entry point $C089 
+    add continuation entry point $C087 
+
+tracing at address $C089...
+  $C08B BEQ 0x30  
+    add continuation entry point $C08D 
+
+tracing at address $C547...
+  $C54B BCC 0x03  
+    add external entry point $C550 
+    add continuation entry point $C54D 
+
+tracing at address $C550...
+  $C550 JSR (0x20)  
+    add continuation entry point $C553 
+
+tracing at address $C7B5...
+  $C7B7 BCS 0x12  
+    add continuation entry point $C7B9 
+
+tracing at address $C7CB...
+  $C7CD BMI 0x06  
+    add continuation entry point $C7CF 
+
+tracing at address $C80A...
+  $C81F JSR (0x20)  
+    add continuation entry point $C822 
+
+tracing at address $C5F4...
+  $C5F8 JSR (0x20)  
+    add continuation entry point $C5FB 
+
+tracing at address $C63E...
+  $C650 BNE 0x0C  
+
+tracing at address $C652...
+  $C654 BNE 0x04  
+    add continuation entry point $C656 
+
+tracing at address $C73A...
+  $C73C BCS 0x38  
+    add continuation entry point $C73E 
+
+tracing at address $C776...
+  $C78D JMP (0x4C)  
+
+tracing at address $C790...
+  $C792 BMI 0x02  
+    add external entry point $C796 
+    add continuation entry point $C794 
+
+tracing at address $C796...
+  $C7A5 JMP (0x4C)  
+    add external entry point $C7EA 
+
+tracing at address $C7EA...
+  $C807 JSR (0x20)  
+
+tracing at address $C94F...
+  $C952 BEQ 0x6E  
+    add continuation entry point $C954 
+
+tracing at address $C97E...
+  $C982 JSR (0x20)  
+    add continuation entry point $C985 
+
+tracing at address $C9B5...
+  $C9B6 BCC 0xB5  
+    add continuation entry point $C9B8 
+
+tracing at address $CB77...
+  $CB7B JSR (0x20)  
+
+tracing at address $CB99...
+  $CBA4 BCS 0x24  
+    add continuation entry point $CBA6 
+
+tracing at address $CCA6...
+  $CCAC BCC 0x2C  
+    add continuation entry point $CCAE 
+
+tracing at address $CCBD...
+  $CCBD JMP (0x4C)  
+
+tracing at address $CCD8...
+  $CCDF BPL 0x02  
+
+tracing at address $CD65...
+  $CD65 JSR (0x20)  
+    add continuation entry point $CD68 
+
+tracing at address $CDCC...
+  $CDD2 BCC 0xEF  
+    add continuation entry point $CDD4 
+
+tracing at address $CDDD...
+  $CDDD JSR (0x20)  
+
+tracing at address $CE1D...
+  $CE1D JSR (0x20)  
+    add continuation entry point $CE20 
+
+tracing at address $CEA8...
+  $CEBC JSR (0x20)  
+    add continuation entry point $CEBF 
+
+tracing at address $CE9B...
+  $CE9B JSR (0x20)  
+    add external entry point $D033 
+
+tracing at address $D033...
+  $D036 BNE 0x0E  
+    add continuation entry point $D038 
+
+tracing at address $CEF0...
+  $CEF2 BEQ 0x08  
+    add continuation entry point $CEF4 
+
+tracing at address $CF1A...
+  $CF1A JMP (0x4C)  
+    add external entry point $C002 
+
+tracing at address $C002...
+  $C00D BPL 0xFB  
+
+tracing at address $CF2D...
+  $CF3A BNE 0xD2  
+    add continuation entry point $CF3C 
+
+tracing at address $D013...
+  $D013 JSR (0x20)  
+    add continuation entry point $D016 
+
+tracing at address $D244...
+  $D244 JSR (0x20)  
+    add continuation entry point $D247 
+
+tracing at address $CF6D...
+  $CF6D JSR (0x20)  
+    add continuation entry point $CF70 
+
+tracing at address $D05C...
+  $D060 JSR (0x20)  
+    add continuation entry point $D063 
+
+tracing at address $D0A3...
+  $D0A3 JSR (0x20)  
+    add continuation entry point $D0A6 
+
+tracing at address $CD9B...
+  $CD9B RTS (0x60)  
+
+tracing at address $CDB1...
+  $CDB6 RTS (0x60)  
+
+tracing at address $D2AE...
+  $D2AE JSR (0x20)  
+    add continuation entry point $D2B1 
+
+tracing at address $D695...
+  $D69C BNE 0x55  
+    add continuation entry point $D69E 
+
+tracing at address $D616...
+  $D61A JMP (0x4C)  
+
+tracing at address $D70A...
+  $D70A JMP (0x4C)  
+
+tracing at address $D71D...
+  $D723 JMP (0x4C)  
+
+tracing at address $D72E...
+  $D736 JSR (0x20)  
+
+tracing at address $D8AE...
+  $D8B4 BCC 0x02  
+    add external entry point $D8B8 
+    add continuation entry point $D8B6 
+
+tracing at address $D8B8...
+  $D8DE BCS 0x03  
+
+tracing at address $D8FB...
+  $D8FF BCS 0x39  
+    add continuation entry point $D901 
+
+tracing at address $D979...
+  $D981 BCS 0x4D  
+    add continuation entry point $D983 
+
+tracing at address $DA17...
+  $DA17 JMP (0x4C)  
+    add external entry point $DA6D 
+
+tracing at address $DA6D...
+  $DA72 RTS (0x60)  
+
+tracing at address $E02F...
+  $E031 BPL 0x65  
+    add continuation entry point $E033 
+
+tracing at address $DC92...
+  $DC99 BCC 0x05  
+    add external entry point $DCA0 
+    add continuation entry point $DC9B 
+
+tracing at address $DCA0...
+  $DCA4 BPL 0x16  
+    add continuation entry point $DCA6 
+
+tracing at address $DCE1...
+  $DCE4 BNE 0x02  
+    add external entry point $DCE8 
+    add continuation entry point $DCE6 
+
+tracing at address $DCE8...
+  $DCEC BNE 0xDE  
+    add continuation entry point $DCEE 
+
+tracing at address $DEC1...
+  $DEC5 BEQ 0xAF  
+    add continuation entry point $DEC7 
+
+tracing at address $DF36...
+  $DF3C BCC 0x0C  
+    add continuation entry point $DF3E 
+
+tracing at address $DF48...
+  $DF4E JMP (0x4C)  
+
+tracing at address $DF7A...
+  $DF7F BCC 0x0C  
+    add external entry point $DF8D 
+
+tracing at address $DF8D...
+  $DF8D RTS (0x60)  
+
+tracing at address $DFC5...
+  $DFC5 JSR (0x20)  
+    add continuation entry point $DFC8 
+
+tracing at address $E0B4...
+  $E0B7 BCC 0x05  
+
+tracing at address $C367...
+  $C36E BPL 0xF9  
+    add external entry point $C369 
+    add continuation entry point $C370 
+
+tracing at address $C369...
+  $C36E BPL 0xF9  
+
+tracing at address $C382...
+  $C38C BNE 0xD4  
+
+tracing at address $E138...
+  $E13D BNE 0x30  
+    add continuation entry point $E13F 
+
+tracing at address $E215...
+  $E222 RTS (0x60)  
+
+tracing at address $E356...
+  $E359 BNE 0x0D  
+    add continuation entry point $E35B 
+
+tracing at address $E47A...
+  $E47A BCS 0x06  
+    add continuation entry point $E47C 
+
+tracing at address $E565...
+  $E565 JSR (0x20)  
+    add external entry point $E606 
+    add continuation entry point $E568 
+
+tracing at address $E606...
+  $E606 JSR (0x20)  
+
+tracing at address $E590...
+  $E592 BCC 0x0A  
+    add continuation entry point $E594 
+
+tracing at address $E59E...
+  $E5A2 BCC 0x3D  
+    add external entry point $E5E1 
+    add continuation entry point $E5A4 
+
+tracing at address $E5E1...
+  $E5E7 JSR (0x20)  
+    add continuation entry point $E5EA 
+
+tracing at address $E679...
+  $E680 BNE 0x67  
+
+tracing at address $E739...
+  $E73B JSR (0x20)  
+    add continuation entry point $E73E 
+
+tracing at address $E746...
+  $E748 BEQ 0xD4  
+    add continuation entry point $E74A 
+
+tracing at address $E7F7...
+  $E7F9 BCS 0x11  
+    add continuation entry point $E7FB 
+
+tracing at address $E829...
+  $E832 BMI 0x1A  
+
+tracing at address $E834...
+  $E839 BCC 0x13  
+    add continuation entry point $E83B 
+
+tracing at address $E859...
+  $E859 RTS (0x60)  
+    add continuation entry point $E85A 
+
+tracing at address $ECB7...
+  $ECB7 JSR (0x20)  
+    add continuation entry point $ECBA 
+
+tracing at address $EBDE...
+  $EBE2 JSR (0x20)  
+    add continuation entry point $EBE5 
+
+tracing at address $ECF0...
+  $ECF0 JMP (0x4C)  
+    add continuation entry point $ECF3 
+
+tracing at address $ED35...
+  $ED39 BEQ 0x0C  
+
+tracing at address $EC26...
+  $EC2C BNE 0xF9  
+    add external entry point $EC27 
+
+tracing at address $EC27...
+  $EC2C BNE 0xF9  
+
+tracing at address $EC45...
+  $EC51 JMP (0x4C)  
+
+tracing at address $F7B3...
+  $F7B3 RTS (0x60)  
+    add continuation entry point $F7B4 
+
+tracing at address $BE27...
+  $BE30 JMP (0x4C)  
+
+tracing at address $C2B8...
+  $C2B8 JSR (0x20)  
+    add continuation entry point $C2BB 
+
+tracing at address $C056...
+  $C056 JSR (0x20)  
+    add continuation entry point $C059 
+
+tracing at address $C2E7...
+  $C2EF BCC 0xEF  
+
+tracing at address $C2F1...
+  $C2FE BPL 0xDC  
+    add external entry point $C2DC 
+    add continuation entry point $C300 
+
+tracing at address $C2DC...
+  $C2E5 BEQ 0x05  
+
+tracing at address $C087...
+  $C08B BEQ 0x30  
+
+tracing at address $C08D...
+  $C08F BEQ 0x2C  
+    add continuation entry point $C091 
+
+tracing at address $C54D...
+  $C54D JSR (0x20)  
+
+tracing at address $C553...
+  $C553 JSR (0x20)  
+    add external entry point $C5D4 
+    add continuation entry point $C556 
+
+tracing at address $C5D4...
+  $C5DF BCC 0x13  
+    add continuation entry point $C5E1 
+
+tracing at address $C7B9...
+  $C7BB BCS 0x12  
+    add continuation entry point $C7BD 
+
+tracing at address $C7CF...
+  $C7D1 BMI 0x02  
+    add continuation entry point $C7D3 
+
+tracing at address $C822...
+  $C835 JSR (0x20)  
+    add continuation entry point $C838 
+
+tracing at address $C5FB...
+  $C604 BNE 0xF2  
+    add external entry point $C5F8 
+    add continuation entry point $C606 
+
+tracing at address $C5F8...
+  $C5F8 JSR (0x20)  
+
+tracing at address $C656...
+  $C658 BNE 0x07  
+    add external entry point $C661 
+
+tracing at address $C661...
+  $C66B BCC 0x06  
+
+tracing at address $C73E...
+  $C740 BCS 0x4E  
+    add continuation entry point $C742 
+
+tracing at address $C794...
+  $C7A5 JMP (0x4C)  
+
+tracing at address $C954...
+  $C954 JMP (0x4C)  
+
+tracing at address $C985...
+  $C989 JMP (0x4C)  
+    add external entry point $C997 
+
+tracing at address $C997...
+  $C99B BEQ 0x04  
+
+tracing at address $C9B8...
+  $C9BC BNE 0x5F  
+    add continuation entry point $C9BE 
+
+tracing at address $CBA6...
+  $CBA6 BCC 0x36  
+
+tracing at address $CCAE...
+  $CCB0 JMP (0x4C)  
+
+tracing at address $CD68...
+  $CD70 JSR (0x20)  
+    add continuation entry point $CD73 
+
+tracing at address $CDD4...
+  $CDD4 BCS 0x0A  
+
+tracing at address $CE20...
+  $CE20 JSR (0x20)  
+    add continuation entry point $CE23 
+
+tracing at address $CEBF...
+  $CEBF JSR (0x20)  
+    add continuation entry point $CEC2 
+
+tracing at address $D038...
+  $D03C BCC 0x09  
+    add continuation entry point $D03E 
+
+tracing at address $CEF4...
+  $CEF6 BEQ 0x04  
+    add continuation entry point $CEF8 
+
+tracing at address $CF3C...
+  $CF3C JSR (0x20)  
+    add continuation entry point $CF3F 
+
+tracing at address $D016...
+  $D016 JSR (0x20)  
+    add continuation entry point $D019 
+
+tracing at address $D247...
+  $D247 JSR (0x20)  
+    add external entry point $D2C9 
+    add continuation entry point $D24A 
+
+tracing at address $D2C9...
+  $D2CC BEQ 0x05  
+    add external entry point $D2D3 
+    add continuation entry point $D2CE 
+
+tracing at address $D2D3...
+  $D2D3 RTS (0x60)  
+    add continuation entry point $D2D4 
+
+tracing at address $CF70...
+  $CF70 JSR (0x20)  
+    add continuation entry point $CF73 
+
+tracing at address $D063...
+  $D074 JSR (0x20)  
+    add continuation entry point $D077 
+
+tracing at address $D0A6...
+  $D0B3 JSR (0x20)  
+    add continuation entry point $D0B6 
+
+tracing at address $D2B1...
+  $D2B1 JSR (0x20)  
+    add continuation entry point $D2B4 
+
+tracing at address $D69E...
+  $D6BA BCS 0x0B  
+    add external entry point $D6C7 
+    add continuation entry point $D6BC 
+
+tracing at address $D6C7...
+  $D6D2 BNE 0x02  
+    add external entry point $D6D6 
+    add continuation entry point $D6D4 
+
+tracing at address $D6D6...
+  $D6E3 BNE 0x02  
+    add continuation entry point $D6E5 
+
+tracing at address $D8B6...
+  $D8DE BCS 0x03  
+
+tracing at address $D901...
+  $D901 JSR (0x20)  
+    add continuation entry point $D904 
+
+tracing at address $D983...
+  $D98C BNE 0x07  
+    add continuation entry point $D98E 
+
+tracing at address $E033...
+  $E033 JSR (0x20)  
+    add continuation entry point $E036 
+
+tracing at address $DC9B...
+  $DCA4 BPL 0x16  
+
+tracing at address $DCA6...
+  $DCA6 JSR (0x20)  
+    add continuation entry point $DCA9 
+
+tracing at address $DCE6...
+  $DCEC BNE 0xDE  
+
+tracing at address $DCEE...
+  $DCF0 BNE 0x05  
+    add external entry point $DCF7 
+    add continuation entry point $DCF2 
+
+tracing at address $DCF7...
+  $DCFB JSR (0x20)  
+    add continuation entry point $DCFE 
+
+tracing at address $DEC7...
+  $DED6 BNE 0x19  
+    add continuation entry point $DED8 
+
+tracing at address $DF3E...
+  $DF40 BCS 0x08  
+
+tracing at address $DFC8...
+  $DFCC BCS 0x11  
+    add external entry point $DFDF 
+    add continuation entry point $DFCE 
+
+tracing at address $DFDF...
+  $DFDF RTS (0x60)  
+
+tracing at address $C370...
+  $C374 JMP (0x4C)  
+
+tracing at address $E13F...
+  $E149 BCS 0x24  
+    add continuation entry point $E14B 
+
+tracing at address $E35B...
+  $E368 RTS (0x60)  
+
+tracing at address $E47C...
+  $E47F JMP (0x4C)  
+
+tracing at address $E568...
+  $E578 BCC 0xD2  
+
+tracing at address $E594...
+  $E59B BPL 0xE7  
+    add external entry point $E584 
+
+tracing at address $E584...
+  $E586 JSR (0x20)  
+
+tracing at address $E5A4...
+  $E5A8 BCC 0x06  
+    add external entry point $E5B0 
+    add continuation entry point $E5AA 
+
+tracing at address $E5B0...
+  $E5B5 JSR (0x20)  
+    add continuation entry point $E5B8 
+
+tracing at address $E5EA...
+  $E5F1 BCC 0x0C  
+    add external entry point $E5FF 
+    add continuation entry point $E5F3 
+
+tracing at address $E5FF...
+  $E603 BCC 0xE0  
+    add external entry point $E5E5 
+    add continuation entry point $E605 
+
+tracing at address $E5E5...
+  $E5E7 JSR (0x20)  
+
+tracing at address $E73E...
+  $E740 JSR (0x20)  
+
+tracing at address $E74A...
+  $E750 JSR (0x20)  
+    add continuation entry point $E753 
+
+tracing at address $E7FB...
+  $E7FF BCS 0x0B  
+    add continuation entry point $E801 
+
+tracing at address $E83B...
+  $E83D BCS 0x0F  
+    add continuation entry point $E83F 
+
+tracing at address $E85A...
+  $E862 BNE 0x03  
+    add continuation entry point $E864 
+
+tracing at address $ECBA...
+  $ECC6 JMP (0x4C)  
+    add continuation entry point $ECC9 
+
+tracing at address $EBE5...
+  $EBE9 JSR (0x20)  
+    add continuation entry point $EBEC 
+
+tracing at address $ECF3...
+  $ECF5 BEQ 0x05  
+    add external entry point $ECFC 
+    add continuation entry point $ECF7 
+
+tracing at address $ECFC...
+  $ECFC JSR (0x20)  
+    add continuation entry point $ECFF 
+
+tracing at address $F7B4...  $F7B4 is marked as data in cdl, skipping
+
+tracing at address $C2BB...
+  $C2BB RTS (0x60)  
+
+tracing at address $C059...
+  $C07B BNE 0xFC  
+
+tracing at address $C300...
+  $C300 RTS (0x60)  
+
+tracing at address $C091...
+  $C093 BEQ 0x28  
+    add continuation entry point $C095 
+
+tracing at address $C556...
+  $C55A BCS 0x03  
+    add external entry point $C55F 
+    add continuation entry point $C55C 
+
+tracing at address $C55F...
+  $C564 BMI 0x01  
+    add external entry point $C567 
+    add continuation entry point $C566 
+
+tracing at address $C567...
+  $C589 BCS 0x38  
+    add external entry point $C5C3 
+    add continuation entry point $C58B 
+
+tracing at address $C5C3...
+  $C5C6 BNE 0xBC  
+    add external entry point $C584 
+    add continuation entry point $C5C8 
+
+tracing at address $C584...
+  $C589 BCS 0x38  
+
+tracing at address $C5E1...
+  $C5E5 JSR (0x20)  
+
+tracing at address $C7BD...
+  $C7BF BCS 0x12  
+    add continuation entry point $C7C1 
+
+tracing at address $C7D3...
+  $C807 JSR (0x20)  
+
+tracing at address $C838...
+  $C852 JMP (0x4C)  
+
+tracing at address $C606...
+  $C606 RTS (0x60)  
+
+tracing at address $C742...
+  $C744 BCS 0x4E  
+    add continuation entry point $C746 
+
+tracing at address $C9BE...
+  $C9C0 BNE 0x01  
+
+tracing at address $CD73...
+  $CD88 BPL 0xFA  
+    add external entry point $CD84 
+    add continuation entry point $CD8A 
+
+tracing at address $CD84...
+  $CD88 BPL 0xFA  
+
+tracing at address $CE23...
+  $CE23 JSR (0x20)  
+    add continuation entry point $CE26 
+
+tracing at address $CEC2...
+  $CEC2 JSR (0x20)  
+    add continuation entry point $CEC5 
+
+tracing at address $D03E...
+  $D040 BNE 0x04  
+    add continuation entry point $D042 
+
+tracing at address $CEF8...
+  $CEFA BNE 0x86  
+
+tracing at address $CF3F...
+  $CF3F JSR (0x20)  
+    add continuation entry point $CF42 
+
+tracing at address $D019...
+  $D023 JSR (0x20)  
+    add continuation entry point $D026 
+
+tracing at address $D24A...
+  $D24A JSR (0x20)  
+    add continuation entry point $D24D 
+
+tracing at address $D2CE...
+  $D2D1 BCC 0x01  
+
+tracing at address $D2D4...
+  $D2D9 BCS 0x42  
+    add external entry point $D31D 
+    add continuation entry point $D2DB 
+
+tracing at address $D31D...
+  $D325 BCC 0x2F  
+    add external entry point $D356 
+    add continuation entry point $D327 
+
+tracing at address $D356...
+  $D35B BCC 0x01  
+    add external entry point $D35E 
+    add continuation entry point $D35D 
+
+tracing at address $D35E...
+  $D382 BPL 0xFB  
+    add external entry point $D37F 
+    add continuation entry point $D384 
+
+tracing at address $D37F...
+  $D382 BPL 0xFB  
+
+tracing at address $CF73...
+  $CF7F JSR (0x20)  
+    add continuation entry point $CF82 
+
+tracing at address $D077...
+  $D07D JSR (0x20)  
+    add continuation entry point $D080 
+
+tracing at address $D0B6...
+  $D0BC JSR (0x20)  
+    add continuation entry point $D0BF 
+
+tracing at address $D2B4...
+  $D2C5 JSR (0x20)  
+    add continuation entry point $D2C8 
+
+tracing at address $D6BC...
+  $D6C4 JMP (0x4C)  
+
+tracing at address $D6D4...
+  $D6E3 BNE 0x02  
+
+tracing at address $D6E5...
+  $D6EB JSR (0x20)  
+
+tracing at address $D904...
+  $D90D JSR (0x20)  
+    add continuation entry point $D910 
+
+tracing at address $D98E...
+  $D991 BCC 0xF2  
+    add external entry point $D985 
+    add continuation entry point $D993 
+
+tracing at address $D985...
+  $D98C BNE 0x07  
+
+tracing at address $E036...
+  $E03C BNE 0x1A  
+
+tracing at address $DCA9...
+  $DCAD BPL 0x0D  
+    add continuation entry point $DCAF 
+
+tracing at address $DCF2...
+  $DCF5 BNE 0x27  
+
+tracing at address $DCFE...
+  $DCFE JMP (0x4C)  
+
+tracing at address $DED8...
+  $DEDD BNE 0x05  
+    add external entry point $DEE4 
+    add continuation entry point $DEDF 
+
+tracing at address $DEE4...
+  $DEEF BPL 0x07  
+
+tracing at address $DFCE...
+  $DFCE JSR (0x20)  
+
+tracing at address $E14B...
+  $E153 BCS 0x1A  
+    add continuation entry point $E155 
+
+tracing at address $E5AA...
+  $E5B5 JSR (0x20)  
+
+tracing at address $E5B8...
+  $E5C4 BCC 0x0E  
+    add external entry point $E5D4 
+    add continuation entry point $E5C6 
+
+tracing at address $E5D4...
+  $E5DE BCC 0xDA  
+    add external entry point $E5BA 
+    add continuation entry point $E5E0 
+
+tracing at address $E5BA...
+  $E5C4 BCC 0x0E  
+
+tracing at address $E5F3...
+  $E5F5 BCS 0x0E  
+    add continuation entry point $E5F7 
+
+tracing at address $E605...
+  $E605 RTS (0x60)  
+
+tracing at address $E753...
+  $E759 JSR (0x20)  
+    add continuation entry point $E75C 
+
+tracing at address $E801...
+  $E804 BCC 0x06  
+    add continuation entry point $E806 
+
+tracing at address $E83F...
+  $E844 BCS 0x08  
+    add continuation entry point $E846 
+
+tracing at address $E864...
+  $E867 JSR (0x20)  
+
+tracing at address $ECC9...
+  $ECC9 JSR (0x20)  
+    add continuation entry point $ECCC 
+
+tracing at address $EBEC...
+  $EBF6 BNE 0x0C  
+    add continuation entry point $EBF8 
+
+tracing at address $ECF7...
+  $ECFC JSR (0x20)  
+
+tracing at address $ECFF...
+  $ED03 BNE 0x42  
+    add continuation entry point $ED05 
+
+tracing at address $C095...
+  $C099 BNE 0x10  
+    add external entry point $C0AB 
+    add continuation entry point $C09B 
+
+tracing at address $C0AB...
+  $C0B7 JSR (0x20)  
+    add continuation entry point $C0BA 
+
+tracing at address $C55C...
+  $C55C JSR (0x20)  
+
+tracing at address $C566...
+  $C589 BCS 0x38  
+
+tracing at address $C58B...
+  $C596 BNE 0x2B  
+    add continuation entry point $C598 
+
+tracing at address $C5C8...
+  $C5D1 BNE 0xF7  
+    add external entry point $C5CA 
+    add continuation entry point $C5D3 
+
+tracing at address $C5CA...
+  $C5D1 BNE 0xF7  
+
+tracing at address $C7C1...
+  $C7C6 RTS (0x60)  
+
+tracing at address $C746...
+  $C748 BCS 0x06  
+    add external entry point $C750 
+    add continuation entry point $C74A 
+
+tracing at address $C750...
+  $C754 BEQ 0xF4  
+    add continuation entry point $C756 
+
+tracing at address $CD8A...
+  $CD8E JSR (0x20)  
+    add continuation entry point $CD91 
+
+tracing at address $CE26...
+  $CE2A BNE 0xAA  
+    add continuation entry point $CE2C 
+
+tracing at address $CEC5...
+  $CEC8 BNE 0xF8  
+    add continuation entry point $CECA 
+
+tracing at address $D042...
+  $D044 BMI 0x01  
+
+tracing at address $CF42...
+  $CF42 JMP (0x4C)  
+
+tracing at address $D026...
+  $D032 RTS (0x60)  
+
+tracing at address $D24D...
+  $D24D JSR (0x20)  
+    add continuation entry point $D250 
+
+tracing at address $D2DB...
+  $D2E6 BNE 0x6E  
+    add continuation entry point $D2E8 
+
+tracing at address $D327...
+  $D334 BCC 0x02  
+    add external entry point $D338 
+    add continuation entry point $D336 
+
+tracing at address $D338...
+  $D340 BNE 0x14  
+    add continuation entry point $D342 
+
+tracing at address $D35D...
+  $D35D RTS (0x60)  
+
+tracing at address $D384...
+  $D387 BEQ 0x03  
+    add external entry point $D38C 
+    add continuation entry point $D389 
+
+tracing at address $D38C...
+  $D391 BCS 0x30  
+    add external entry point $D3C3 
+    add continuation entry point $D393 
+
+tracing at address $D3C3...
+  $D3E7 BEQ 0x09  
+    add external entry point $D3F2 
+    add continuation entry point $D3E9 
+
+tracing at address $D3F2...
+  $D3F3 BPL 0xEF  
+    add external entry point $D3E4 
+    add continuation entry point $D3F5 
+
+tracing at address $D3E4...
+  $D3E7 BEQ 0x09  
+
+tracing at address $CF82...
+  $CF93 JSR (0x20)  
+    add continuation entry point $CF96 
+
+tracing at address $D080...
+  $D082 JSR (0x20)  
+    add continuation entry point $D085 
+
+tracing at address $D0BF...
+  $D0BF JSR (0x20)  
+    add continuation entry point $D0C2 
+
+tracing at address $D2C8...
+  $D2C8 RTS (0x60)  
+
+tracing at address $D910...
+  $D910 JMP (0x4C)  
+
+tracing at address $D993...
+  $D993 BCS 0x3B  
+
+tracing at address $DCAF...
+  $DCB5 BEQ 0x03  
+    add external entry point $DCBA 
+    add continuation entry point $DCB7 
+
+tracing at address $DCBA...
+  $DCBC JMP (0x4C)  
+
+tracing at address $DEDF...
+  $DEE2 BNE 0xF6  
+    add external entry point $DEDA 
+
+tracing at address $DEDA...
+  $DEDD BNE 0x05  
+
+tracing at address $E155...
+  $E158 BEQ 0x15  
+    add continuation entry point $E15A 
+
+tracing at address $E5C6...
+  $E5C8 BCS 0x16  
+    add continuation entry point $E5CA 
+
+tracing at address $E5E0...
+  $E5E0 RTS (0x60)  
+
+tracing at address $E5F7...
+  $E5FA BEQ 0x09  
+    add continuation entry point $E5FC 
+
+tracing at address $E75C...
+  $E761 JSR (0x20)  
+    add continuation entry point $E764 
+
+tracing at address $E806...
+  $E809 JMP (0x4C)  
+
+tracing at address $E846...
+  $E849 BCC 0x03  
+    add continuation entry point $E84B 
+
+tracing at address $ECCC...
+  $ECD0 JMP (0x4C)  
+
+tracing at address $EBF8...
+  $EBF8 JSR (0x20)  
+    add continuation entry point $EBFB 
+
+tracing at address $ED05...
+  $ED09 BEQ 0x30  
+    add continuation entry point $ED0B 
+
+tracing at address $C09B...
+  $C09F BEQ 0x12  
+    add external entry point $C0B3 
+    add continuation entry point $C0A1 
+
+tracing at address $C0B3...
+  $C0B7 JSR (0x20)  
+
+tracing at address $C0BA...
+  $C0BA JMP (0x4C)  
+
+tracing at address $C598...
+  $C59C BNE 0x03  
+    add external entry point $C5A1 
+    add continuation entry point $C59E 
+
+tracing at address $C5A1...
+  $C5C1 BEQ 0x10  
+
+tracing at address $C5D3...
+  $C5D3 RTS (0x60)  
+
+tracing at address $C74A...
+  $C74F RTS (0x60)  
+
+tracing at address $C756...
+  $C769 JMP (0x4C)  
+    add external entry point $C782 
+
+tracing at address $C782...
+  $C78D JMP (0x4C)  
+
+tracing at address $CD91...
+  $CD91 JSR (0x20)  
+    add continuation entry point $CD94 
+
+tracing at address $CE2C...
+  $CE2C JSR (0x20)  
+    add continuation entry point $CE2F 
+
+tracing at address $CECA...
+  $CECE JSR (0x20)  
+    add continuation entry point $CED1 
+
+tracing at address $D250...
+  $D250 JSR (0x20)  
+    add continuation entry point $D253 
+
+tracing at address $D2E8...
+  $D2F0 BCC 0x02  
+    add external entry point $D2F4 
+    add continuation entry point $D2F2 
+
+tracing at address $D2F4...
+  $D2FA BNE 0x09  
+    add external entry point $D305 
+    add continuation entry point $D2FC 
+
+tracing at address $D305...
+  $D30C BEQ 0x09  
+    add external entry point $D317 
+    add continuation entry point $D30E 
+
+tracing at address $D317...
+  $D31A JMP (0x4C)  
+
+tracing at address $D336...
+  $D340 BNE 0x14  
+
+tracing at address $D342...
+  $D347 BEQ 0x0D  
+    add continuation entry point $D349 
+
+tracing at address $D389...
+  $D389 JMP (0x4C)  
+
+tracing at address $D393...
+  $D3A1 BCS 0x02  
+    add external entry point $D3A5 
+    add continuation entry point $D3A3 
+
+tracing at address $D3A5...
+  $D3AE BEQ 0x09  
+    add external entry point $D3B9 
+    add continuation entry point $D3B0 
+
+tracing at address $D3B9...
+  $D3BE BCC 0xEB  
+    add external entry point $D3AB 
+    add continuation entry point $D3C0 
+
+tracing at address $D3AB...
+  $D3AE BEQ 0x09  
+
+tracing at address $D3E9...
+  $D3EA BCC 0x04  
+    add external entry point $D3F0 
+    add continuation entry point $D3EC 
+
+tracing at address $D3F0...
+  $D3F3 BPL 0xEF  
+
+tracing at address $D3F5...
+  $D3F8 BEQ 0x04  
+    add continuation entry point $D3FA 
+
+tracing at address $CF96...
+  $CFA7 JSR (0x20)  
+    add continuation entry point $CFAA 
+
+tracing at address $D085...
+  $D087 BNE 0xF7  
+    add continuation entry point $D089 
+
+tracing at address $D0C2...
+  $D0C2 JSR (0x20)  
+    add continuation entry point $D0C5 
+
+tracing at address $DCB7...
+  $DCBC JMP (0x4C)  
+
+tracing at address $E15A...
+  $E164 BMI 0x0C  
+    add continuation entry point $E166 
+
+tracing at address $E5CA...
+  $E5CF BEQ 0x0F  
+    add continuation entry point $E5D1 
+
+tracing at address $E5FC...
+  $E5FC JMP (0x4C)  
+
+tracing at address $E764...
+  $E770 JSR (0x20)  
+    add continuation entry point $E773 
+
+tracing at address $E84B...
+  $E84B JMP (0x4C)  
+
+tracing at address $EBFB...
+  $EBFF BPL 0x03  
+
+tracing at address $ED0B...
+  $ED0D BEQ 0x05  
+    add continuation entry point $ED0F 
+
+tracing at address $C0A1...
+  $C0A5 JSR (0x20)  
+    add continuation entry point $C0A8 
+
+tracing at address $C59E...
+  $C5C1 BEQ 0x10  
+
+tracing at address $CD94...
+  $CD94 RTS (0x60)  
+
+tracing at address $CE2F...
+  $CE2F JSR (0x20)  
+    add continuation entry point $CE32 
+
+tracing at address $CED1...
+  $CED1 JSR (0x20)  
+    add continuation entry point $CED4 
+
+tracing at address $D253...
+  $D253 JSR (0x20)  
+    add continuation entry point $D256 
+
+tracing at address $D2F2...
+  $D2FA BNE 0x09  
+
+tracing at address $D2FC...
+  $D302 JMP (0x4C)  
+
+tracing at address $D30E...
+  $D310 BNE 0x08  
+    add external entry point $D31A 
+    add continuation entry point $D312 
+
+tracing at address $D31A...
+  $D31A JMP (0x4C)  
+
+tracing at address $D349...
+  $D34E JSR (0x20)  
+    add continuation entry point $D351 
+
+tracing at address $D3A3...
+  $D3AE BEQ 0x09  
+
+tracing at address $D3B0...
+  $D3BE BCC 0xEB  
+
+tracing at address $D3C0...
+  $D3C0 JMP (0x4C)  
+
+tracing at address $D3EC...
+  $D3EE BPL 0x02  
+
+tracing at address $D3FA...
+  $D3FC BPL 0x15  
+    add external entry point $D413 
+
+tracing at address $D413...
+  $D41D BPL 0xFA  
+
+tracing at address $CFAA...
+  $CFAA JSR (0x20)  
+    add continuation entry point $CFAD 
+
+tracing at address $D089...
+  $D08F JSR (0x20)  
+    add continuation entry point $D092 
+
+tracing at address $D0C5...
+  $D0C7 BNE 0xF6  
+    add continuation entry point $D0C9 
+
+tracing at address $E166...
+  $E16D BCC 0xF3  
+    add external entry point $E162 
+
+tracing at address $E162...
+  $E164 BMI 0x0C  
+
+tracing at address $E5D1...
+  $E5D1 JMP (0x4C)  
+
+tracing at address $E773...
+  $E773 JSR (0x20)  
+    add continuation entry point $E776 
+
+tracing at address $ED0F...
+  $ED14 JSR (0x20)  
+
+tracing at address $C0A8...
+  $C0A8 JMP (0x4C)  
+
+tracing at address $CE32...
+  $CE34 BNE 0x0C  
+    add external entry point $CE42 
+    add continuation entry point $CE36 
+
+tracing at address $CE42...
+  $CE44 BEQ 0xF5  
+    add external entry point $CE3B 
+    add continuation entry point $CE46 
+
+tracing at address $CE3B...
+  $CE3D BNE 0xE4  
+    add continuation entry point $CE3F 
+
+tracing at address $CED4...
+  $CED4 JSR (0x20)  
+    add continuation entry point $CED7 
+
+tracing at address $D256...
+  $D256 JSR (0x20)  
+    add continuation entry point $D259 
+
+tracing at address $D312...
+  $D315 BEQ 0x03  
+
+tracing at address $D351...
+  $D35B BCC 0x01  
+
+tracing at address $CFAD...
+  $CFCB JSR (0x20)  
+    add continuation entry point $CFCE 
+
+tracing at address $D092...
+  $D098 RTS (0x60)  
+
+tracing at address $D0C9...
+  $D0CD JSR (0x20)  
+    add continuation entry point $D0D0 
+
+tracing at address $E776...
+  $E77C BCC 0x0C  
+    add external entry point $E78A 
+    add continuation entry point $E77E 
+
+tracing at address $E78A...
+  $E78D RTS (0x60)  
+
+tracing at address $CE36...
+  $CE39 BNE 0xE8  
+
+tracing at address $CE46...
+  $CE4B BMI 0xEE  
+    add continuation entry point $CE4D 
+
+tracing at address $CE3F...
+  $CE3F JMP (0x4C)  
+
+tracing at address $CED7...
+  $CED7 JSR (0x20)  
+    add continuation entry point $CEDA 
+
+tracing at address $D259...
+  $D259 JSR (0x20)  
+    add continuation entry point $D25C 
+
+tracing at address $CFCE...
+  $CFCE JSR (0x20)  
+    add continuation entry point $CFD1 
+
+tracing at address $D0D0...
+  $D0D0 JSR (0x20)  
+    add continuation entry point $D0D3 
+
+tracing at address $E77E...
+  $E780 BCC 0x04  
+    add external entry point $E786 
+    add continuation entry point $E782 
+
+tracing at address $E786...
+  $E789 RTS (0x60)  
+
+tracing at address $CE4D...
+  $CE4D BPL 0xD1  
+
+tracing at address $CEDA...
+  $CEDC JSR (0x20)  
+    add continuation entry point $CEDF 
+
+tracing at address $D25C...
+  $D25F BEQ 0x12  
+    add continuation entry point $D261 
+
+tracing at address $CFD1...
+  $CFD1 JSR (0x20)  
+    add continuation entry point $CFD4 
+
+tracing at address $D0D3...
+  $D0D3 JSR (0x20)  
+    add continuation entry point $D0D6 
+
+tracing at address $E782...
+  $E785 RTS (0x60)  
+
+tracing at address $CEDF...
+  $CEDF RTS (0x60)  
+
+tracing at address $D261...
+  $D264 BMI 0x0D  
+    add continuation entry point $D266 
+
+tracing at address $CFD4...
+  $CFDF JSR (0x20)  
+    add continuation entry point $CFE2 
+
+tracing at address $D0D6...
+  $D0D6 JSR (0x20)  
+    add continuation entry point $D0D9 
+
+tracing at address $D266...
+  $D26A BEQ 0x07  
+    add continuation entry point $D26C 
+
+tracing at address $CFE2...
+  $CFE6 BNE 0x05  
+    add external entry point $CFED 
+    add continuation entry point $CFE8 
+
+tracing at address $CFED...
+  $CFED JSR (0x20)  
+    add continuation entry point $CFF0 
+
+tracing at address $D0D9...
+  $D0DC BNE 0xF2  
+    add continuation entry point $D0DE 
+
+tracing at address $D26C...
+  $D273 RTS (0x60)  
+
+tracing at address $CFE8...
+  $CFEB BNE 0xF2  
+    add external entry point $CFDF 
+
+tracing at address $CFDF...
+  $CFDF JSR (0x20)  
+
+tracing at address $CFF0...
+  $CFF0 JSR (0x20)  
+    add continuation entry point $CFF3 
+
+tracing at address $D0DE...
+  $D0E0 JSR (0x20)  
+    add continuation entry point $D0E3 
+
+tracing at address $CFF3...
+  $CFF7 JSR (0x20)  
+    add continuation entry point $CFFA 
+
+tracing at address $D0E3...
+  $D0E7 BNE 0x1A  
+    add external entry point $D103 
+    add continuation entry point $D0E9 
+
+tracing at address $D103...
+  $D117 JSR (0x20)  
+    add continuation entry point $D11A 
+
+tracing at address $CFFA...
+  $CFFA JMP (0x4C)  
+
+tracing at address $D0E9...
+  $D100 JMP (0x4C)  
+    add external entry point $D117 
+
+tracing at address $D117...
+  $D117 JSR (0x20)  
+
+tracing at address $D11A...
+  $D11E JSR (0x20)  
+    add continuation entry point $D121 
+
+tracing at address $D121...
+  $D123 JSR (0x20)  
+    add continuation entry point $D126 
+
+tracing at address $D126...
+  $D137 JSR (0x20)  
+    add continuation entry point $D13A 
+
+tracing at address $D13A...
+  $D13C BEQ 0x3D  
+    add external entry point $D17B 
+    add continuation entry point $D13E 
+
+tracing at address $D17B...
+  $D17D JSR (0x20)  
+    add continuation entry point $D180 
+
+tracing at address $D13E...
+  $D141 JSR (0x20)  
+    add external entry point $D163 
+    add continuation entry point $D144 
+
+tracing at address $D163...
+  $D165 JSR (0x20)  
+    add continuation entry point $D168 
+
+tracing at address $D180...
+  $D184 JSR (0x20)  
+    add continuation entry point $D187 
+
+tracing at address $D144...
+  $D148 BCS 0xF6  
+    add external entry point $D140 
+    add continuation entry point $D14A 
+
+tracing at address $D140...
+  $D141 JSR (0x20)  
+
+tracing at address $D168...
+  $D16C JSR (0x20)  
+    add continuation entry point $D16F 
+
+tracing at address $D187...
+  $D18B JSR (0x20)  
+    add external entry point $D210 
+    add continuation entry point $D18E 
+
+tracing at address $D210...
+  $D220 JSR (0x20)  
+    add continuation entry point $D223 
+
+tracing at address $D14A...
+  $D14E JSR (0x20)  
+    add continuation entry point $D151 
+
+tracing at address $D16F...
+  $D171 JSR (0x20)  
+    add continuation entry point $D174 
+
+tracing at address $D18E...
+  $D190 JSR (0x20)  
+    add continuation entry point $D193 
+
+tracing at address $D223...
+  $D227 JMP (0x4C)  
+
+tracing at address $D151...
+  $D160 JMP (0x4C)  
+    add external entry point $D18B 
+
+tracing at address $D18B...
+  $D18B JSR (0x20)  
+
+tracing at address $D174...
+  $D178 JMP (0x4C)  
+
+tracing at address $D193...
+  $D195 BEQ 0x38  
+    add external entry point $D1CF 
+    add continuation entry point $D197 
+
+tracing at address $D1CF...
+  $D1D5 JSR (0x20)  
+    add continuation entry point $D1D8 
+
+tracing at address $D197...
+  $D19E JSR (0x20)  
+    add continuation entry point $D1A1 
+
+tracing at address $D1D8...
+  $D1DA JSR (0x20)  
+    add continuation entry point $D1DD 
+
+tracing at address $D1A1...
+  $D1A1 JSR (0x20)  
+    add continuation entry point $D1A4 
+
+tracing at address $D1DD...
+  $D1E1 JSR (0x20)  
+    add continuation entry point $D1E4 
+
+tracing at address $D1A4...
+  $D1A4 JSR (0x20)  
+    add continuation entry point $D1A7 
+
+tracing at address $D1E4...
+  $D1E8 JSR (0x20)  
+    add continuation entry point $D1EB 
+
+tracing at address $D1A7...
+  $D1A7 JSR (0x20)  
+    add continuation entry point $D1AA 
+
+tracing at address $D1EB...
+  $D1ED JSR (0x20)  
+    add continuation entry point $D1F0 
+
+tracing at address $D1AA...
+  $D1AE JSR (0x20)  
+    add continuation entry point $D1B1 
+
+tracing at address $D1F0...
+  $D1F4 JSR (0x20)  
+    add continuation entry point $D1F7 
+
+tracing at address $D1B1...
+  $D1B1 JSR (0x20)  
+    add continuation entry point $D1B4 
+
+tracing at address $D1F7...
+  $D1FB JSR (0x20)  
+    add continuation entry point $D1FE 
+
+tracing at address $D1B4...
+  $D1C0 JSR (0x20)  
+    add continuation entry point $D1C3 
+
+tracing at address $D1FE...
+  $D200 JSR (0x20)  
+    add continuation entry point $D203 
+
+tracing at address $D1C3...
+  $D1C3 JSR (0x20)  
+    add continuation entry point $D1C6 
+
+tracing at address $D203...
+  $D207 JSR (0x20)  
+    add continuation entry point $D20A 
+
+tracing at address $D1C6...
+  $D1C8 BNE 0xD4  
+    add external entry point $D19E 
+    add continuation entry point $D1CA 
+
+tracing at address $D19E...
+  $D19E JSR (0x20)  
+
+tracing at address $D20A...
+  $D20C JSR (0x20)  
+    add continuation entry point $D20F 
+
+tracing at address $D1CA...
+  $D1CC JSR (0x20)  
+
+tracing at address $D20F...
+  $D20F RTS (0x60)  

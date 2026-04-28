@@ -1,0 +1,101 @@
+﻿
+"C:\working\disasm6\Galaga - Demons of Death (U) [!].nes" -cdl "C:\working\disasm6\Galaga - Demons of Death (U) [!].cdl" -p 4 -r
+
+"Galaga - Demons of Death (U) [!].nes" -cdl "Galaga - Demons of Death (U) [!].cdl" -p 3 -r
+
+"Excitebike (JU) [!].nes" -p 5
+
+"Excitebike (JU) [!].nes" -p 4 -r  ; nes register labels are declared but not used on pass 4+
+> produces extra unused labels in php version
+
+"Excitebike (JU) [!].nes" -p 5 -cdl "Excitebike (JU) [!].cdl" -r -php -wfe
+
+"Rush'n Attack (U) [!].nes" -mapper2 
+> lots of printed 'Array'
+> generally does not work
+
+"Rush'n Attack (U) [!]_prg_27C128_8_of_8.bin" -o $c000
+
+da6 "Megaman III (U) [!].nes" -r
+
+da6 "Megaman III (U) [!].nes" -r  -fs 0x3C010  -o $c000 -m2
+> need a file end value
+
+
+da6 "C:\working\disasm6\Gradius (U) [!].nes" -r -cdl "C:\working\disasm6\Gradius (U) [!].cdl"  
+
+
+$registers = array(
+   '2000' => 'PPUCTRL',
+   '2001' => 'PPUMASK',
+   ...
+
+$initLabels = array(
+   'fffa' => "vectors",
+   ...
+
+if ($includeReg)
+{
+   $initLabels += $registers; // contents of registers appended to $initLabels 
+}
+
+// $registers contents written to output text at some point
+
+// $initLabels contents copied to $labels for first 2 passes ($pass starts at 1), $prgLabels every pass 
+while ($pass <= $lastPass)
+{
+   if ($pass < 3)
+   {  
+       $labels = $initLabels;
+   }
+   $prgLabels = $initLabels;
+
+   ... 
+
+   if ($pass == 1)
+   {
+      $oldDidDrawLine = false;
+      $oldLabels = $labels; // $labels contents copied to $oldLabels on first pass
+	  ...
+   }
+
+   // ... various addresses are added to $labels during processing
+
+   // ... $oldLabels is accessed when cdl file is in use, not relevant
+
+
+   // when processing current operation byte, operand bytes are checked if they are at an address in $oldLabels
+    if (isCounterLabel($counter + $i, $oldLabels)
+	... 
+
+   // $oldLabels is accessed to read a label name
+    if (isset($oldLabels[$byteStr]) && $lbl !== '')
+    {
+        $oldLabel = $oldLabels[$byteStr];
+		... 
+
+
+    // only deal with output on last pass
+    if ($pass == $lastPass)
+    { 
+        ...
+        $counter_pad = dechex_pad($counter);
+        if (array_key_exists($counter_pad, $oldLabels)) // $oldLabels is accessed when generating final output on last pass
+		...
+
+
+   // $labels contents compared to $oldLabels contents
+   if ($pass < $lastPass && $oldLabels !== false && $labels == $oldLabels)
+   {
+      $lastPass = $pass + 1;
+   }
+
+   if ($pass < $lastPass)
+   {
+      $oldLabels = $labels; // $labels contents copied to $oldLabels
+      $oldPrgLabels = $prgLabels; // $prgLabels contents copied to $oldPrgLabels
+
+      rewind($file);
+   }
+
+}

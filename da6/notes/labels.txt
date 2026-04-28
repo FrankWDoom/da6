@@ -1,0 +1,7 @@
+    test_label = $c007 
+    test2 = $c007 
+
+	nextlbl = $c015
+
+	  xffc7 = $ffc7
+	  xffc72 = $ffc7

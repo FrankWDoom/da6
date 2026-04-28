@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/da6/bin/Debug
+/da6/obj/Debug
+/.vs/da6/v14

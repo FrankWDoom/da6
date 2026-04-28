@@ -1,0 +1,30 @@
+﻿
+
+#e61a
+
+jsr to common sub at $c301- sub does not return.
+pulls return address off stack, does indexed read starting from that address, indirect jumps to it
+
+eg 
+
+>01:E61A: 20 01 C3  JSR $C301
+
+...
+ 01:C304: 68        PLA
+ 01:C305: 85 1E     STA $1E = #$1C
+ 01:C307: 68        PLA
+ 01:C308: 85 1F     STA $1F = #$E6
+>01:C30A: B1 1E     LDA ($1E),Y @ $E625 = #$AD
+ 01:C30C: AA        TAX
+ 01:C30D: C8        INY
+>01:C30E: B1 1E     LDA ($1E),Y @ $E626 = #$E6
+ 01:C310: 85 1F     STA $1F = #$E6
+ 01:C312: 86 1E     STX $1E = #$AD
+>01:C314: 6C 1E 00  JMP ($001E) = $E6AD
+
+
+
+continuning bytes at $e61d would be valid code but don't make sense
+
+TODO figure out why seperator lines are drawn
+
