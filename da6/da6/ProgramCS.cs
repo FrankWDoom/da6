@@ -1056,6 +1056,8 @@ namespace da6
 
         internal static bool IsDataRepeated(byte[] slice)
         {
+            return IsDataRepeated(slice, 0, slice.Length);
+
             if (slice.Length % 2 != 0)
                 throw new Exception("odd length byte array");
 
@@ -1070,6 +1072,21 @@ namespace da6
             return true;
         }
 
+        internal static bool IsDataRepeated(byte[] slice, int start, int totalLength)
+        {
+            if (totalLength % 2 != 0)
+                throw new Exception("odd length byte array");
+
+            int half = totalLength / 2;
+
+            for (int j = 0; j < half; j++)
+            {
+                if (slice[start + j] != slice[start + half + j])
+                    return false;
+            }
+
+            return true;
+        }
 
         /*
         static string FormatOp(

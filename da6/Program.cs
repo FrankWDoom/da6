@@ -22,29 +22,43 @@ namespace da6
             argv = Environment.GetCommandLineArgs();
             int argc = argv.Length;
 
-            if (argv.Length > 1)
+            for (int j = 0; j < argv.Length; j++)
             {
-                var rom = argv[1];
-                _workingPath = Path.GetDirectoryName(rom);
-                da6Umbrella._targetPath = _workingPath;
-            }
+                if (string.Equals(argv[j], "-dir", StringComparison.OrdinalIgnoreCase))
+                {
+                    int k = j + 1;
+                    if (k < argv.Length)
+                    {
+                        _workingPath = argv[k];
+                        Directory.SetCurrentDirectory(_workingPath);
+                    }
 
+                    break;
+                }
+            }
 
             // c# direct port
             try
             {
                 //Console.WriteLine("executing c# direct conversion".PadRight(80, '_'));
-                da6Umbrella.disasm6net.Run(argc, argv);
+                //da6Umbrella.disasm6net.Run(argc, argv);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
 
-            //// c# revised code TODO
-            //Console.WriteLine("executing c# revised program".PadRight(80, '_'));
-            //var dis = new Disassembler();
-            //dis.Run(argc, argv);
+            try
+            {
+                // c# revised code TODO
+                Console.WriteLine("executing c# revised program".PadRight(80, '_'));
+                var dis = new da6Umbrella.Disassembler();
+                dis.Run(argc, argv);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
             if (argv.Any(n => string.Equals(n.ToLowerInvariant(), "-php")))
             {
@@ -59,7 +73,7 @@ namespace da6
                     Console.WriteLine(ex.Message);
                 }
             }
-
+             
             Console.WriteLine("finished".PadRight(80, '_'));
 
             if (argv.Any(n => string.Equals(n.ToLowerInvariant(), "-wfe")))
@@ -88,19 +102,16 @@ namespace da6
                 }
             }
 
-            ////args.Append($"-t \"{path}{argv[0]}\" ");
-            //args.Append($"-t \"old-{argv[0]}\" ");
-
             var romName = argv[1];
             var asmOutName = $"{Path.GetFileNameWithoutExtension(romName).Trim()}.php.asm";
 
-
             // Use ProcessStartInfo class
-            //var t = new System.Diagnostics.Process();
             var startInfo = new System.Diagnostics.ProcessStartInfo();
+            //startInfo.WorkingDirectory = _workingPath;
+
             //startInfo.CreateNoWindow = false;
             startInfo.UseShellExecute = false;
-            startInfo.FileName = System.IO.Path.Combine(_workingPath, "disasm6.exe");
+            startInfo.FileName = "disasm6.exe";
             startInfo.Arguments = args + $"-t \"{asmOutName}\" ";
             startInfo.RedirectStandardOutput = true;
 
@@ -111,8 +122,6 @@ namespace da6
 
             using (var exeProcess = System.Diagnostics.Process.Start(startInfo))
             {
-                //string output = exeProcess.StandardOutput.ReadToEnd();
-
                 string output;
                 while ((output = exeProcess.StandardOutput.ReadLine()) != null)
                 {
@@ -132,22 +141,22 @@ namespace da6
                 }
             }
 
-            if (!string.IsNullOrWhiteSpace(_workingPath))
-            {
-                foreach (var filename in files)
-                {
-                    var fi = new FileInfo(filename);
-                    var dest = Path.Combine(_workingPath, filename);
+            //if (!string.IsNullOrWhiteSpace(_workingPath))
+            //{
+            //    foreach (var filename in files)
+            //    {
+            //        var fi = new FileInfo(filename);
+            //        var dest = Path.Combine(_workingPath, filename);
 
-                    if (!string.Equals(dest, fi.FullName, StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        if (File.Exists(dest))
-                            File.Delete(dest);
+            //        if (!string.Equals(dest, fi.FullName, StringComparison.InvariantCultureIgnoreCase))
+            //        {
+            //            if (File.Exists(dest))
+            //                File.Delete(dest);
 
-                        File.Move(fi.FullName, dest);
-                    }
-                }
-            }
+            //            File.Move(fi.FullName, dest);
+            //        }
+            //    }
+            //}
         }
 
     }

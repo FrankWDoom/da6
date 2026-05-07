@@ -18,7 +18,6 @@ namespace da6
         *
         */
 
-        const string VERSION = "1.5.1";
         const string LEFT_MARGIN = "            ";
 
 
@@ -327,6 +326,8 @@ namespace da6
         /// </summary>
         public class disasm6net
         {
+            const string VERSION = "1.5.1";
+
             // port: 'global' variables from original php
             static int origin = 0x8000; // port: start of prg address space, assuming all 32K prg used
             static int labelLen = 0;
@@ -1516,11 +1517,10 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                                     var counter_i = counter + i;
                                     if (isCounterLabel(counter_i, oldLabels)
                                        //if (isset($oldLabels[dechex_pad($counter + $i)]) // port: disabled in original, in favor of condition above apparently
-                                       || counter_i >= 0xFFFA
+                                       || counter_i >= 0xFFFA // if counter in the vectors
                                        || (counter_i >= fileLength)
-                                       //|| (operand == 0xff && _branches.Contains(mnemonic)) // port: branch into self check // todo enable for revised version
                                        || (usingMapper2 && headerInfo != null && headerInfo.mapper == 2 && counter_i > 0xBFFF && prgBank < headerInfo.prg - 1)
-                                     ) // if counter in the vectors
+                                     )
 
                                     {
                                         invalidCounter = 0; // port note: set but never used

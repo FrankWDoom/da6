@@ -4,6 +4,6 @@
     <ProjectView>ShowAllFiles</ProjectView>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <StartArguments>"C:\working\disasm6\Excitebike %28JU%29 [!].nes" -p 5 -cdl "C:\working\disasm6\Excitebike %28JU%29 [!].cdl" -r -php  -wfe</StartArguments>
+    <StartArguments>"Donkey Kong %28W%29 %28PRG1%29 [!].nes" -dir "C:\working\disasm6" -wfe -php</StartArguments>
   </PropertyGroup>
 </Project>

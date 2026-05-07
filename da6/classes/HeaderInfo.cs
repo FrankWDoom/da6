@@ -85,7 +85,7 @@ namespace da6
 
         public static int GetBankSize(int mapper)
         {
-            int size = 0;
+            int size; // = 0;
 
             switch (mapper)
             {

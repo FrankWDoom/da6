@@ -106,6 +106,12 @@ namespace da6
             Console.Write(s);
         }
 
+        // this one's made up so I don't have to manage newline chars everywhere
+        public static void echo_line(string s = null)
+        {
+            Console.WriteLine(s);
+        }
+
         //// feof ( resource $handle ) : bool
         public static bool feof(FileStream handle)
         {

@@ -21,6 +21,8 @@ namespace da6
         /// </summary>
         public class Disassembler
         {
+            const string VERSION = "1.5.2";
+
             // port: this list is used when checking for code or data
             static string[] _branches = new[] {
                 "BCC",
@@ -33,23 +35,26 @@ namespace da6
                 "BVS",
             };
 
-            // port: global variables from original php
-            static int origin = 0x8000; // port: start of prg address space, assuming all 32K prg
+            // port: 'global' variables from original php
+            static int origin = CPU_ADDR_BASE; // port: start of prg address space, assuming all 32K prg
             static int labelLen = 0;
 
             #region disasm6 methods
             // used for branch opcodes
             int addressOffset(int value, string offset2)
             {
-                var offset = hexdec(offset2);
-                offset += 2; // length of branch command
+                // port fix: original version was adding command length to offset
+                // triggering + to - correction when the +2 put the offset over 0x80
 
-                if (offset > 0x80)
+                var offset = hexdec(offset2);
+                var cmdEnd = value + 2; // length of branch command
+
+                if (offset >= 0x80)
                 {
                     offset = offset - 0x100;
                 }
 
-                return (value + offset); //.ToString("x4");
+                return (cmdEnd + offset); //.ToString("x4");
                 //return str_pad(dechex(value + offset), 4, '0', STR_PAD_LEFT);
             }
 
@@ -372,8 +377,10 @@ namespace da6
                 var len = 0;
                 str = preg_replace("(?m);.*$", "", str); // port: removes semicolon plus anything to end of the line
 
+                // todo extend labels to specify Read/Write/eXecute and choose the appropriate one for the op
+
                 var matches = new List<Match>();
-                if (preg_match_all(@"(?m)^\s*([a-zA-Z0-9_\-\+\@]*)\s*\=\s*([\$\%]*)([a-fA-F0-9]*)", str, out matches) != 0)
+                if (preg_match_all(@"(?m)^\s*([a-zA-Z0-9_\-\+\@]*)\s*\=\s*([\$\%]*)([xXa-fA-F0-9]+)", str, out matches) != 0)
                 {
                     foreach (var match in matches)
                     {
@@ -480,7 +487,7 @@ namespace da6
 @"Usage:
 
 disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
-         [-h] [-c] [-p #] [-r] [-lc] [-uc] [-fs #] [-cs #] [-fe #] [-ce <#>] 
+         [-h] [-c] [-p #] [-r] [-lc] [-uc] [-fs #] [-cs #] [-fe #] [-ce <#>] [-b <#>]
          [-len #] [-iw] [-m2] [-v #] [-xt [<file>]]
 
   <file>                The file to disassemble
@@ -502,10 +509,12 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
   cs    codestart       Start reading at a specific code location
   fe    fileend         Stop reading at a specific file location
   ce    codeend         Stop reading at a specific code location
+  b     bank #          ROM bank number containing codestart/codeend (if prg banking is involved)
   len   length          Number of bytes to read
   iw    ignorewrites    Ignore writes to $8000 - $FFFF
   m2    mapper2         Enable mapper 2 (UxROM) support
   v     vectors         Read 6502 vectors from specific file location
+  nv    novectors       Do not look for 6502 vectors
   xt    trace           Trace code from known execution start points 
 ");
 
@@ -553,6 +562,20 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
 
             #endregion
 
+            /// <summary>
+            /// generate a pad instruction for output
+            /// </summary>
+            /// <param name="endAddr">pad up to address (exclusive)</param>
+            /// <param name="value">fill byte</param>
+            /// <returns></returns>
+            private string WritePad(int endAddr, byte value = 0)
+            {
+                var line = $".pad ${hex_pad(endAddr)}";
+                if (value != 0)
+                    line += $",${hex_pad(value)}";
+                // todo generate trailing comment
+                return line;
+            }
 
             public void Run(int argc, string[] argv)
             {
@@ -562,7 +585,9 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                 var time_start = microtime(true);
                 // Program start
 
-                var head = "DISASM6 v" + VERSION + " - A NES-oriented 6502 disassembler - Created by Frantik 2015 - .NET port by FrankWDoom";
+                var head = "DISASM6 v1.5 - A NES-oriented 6502 disassembler - Created by Frantik 2015\n";
+                head += $".NET port v{VERSION} by FrankWDoom 2026";
+
                 echo($"\n{head}\n" + str_repeat('-', 79) + "\n");
 
                 if (!isset(argv, 1)) // port: no input file specified
@@ -576,7 +601,7 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
 
                 var filename = argv[1];
 
-                origin = 0x8000;
+                origin = CPU_ADDR_BASE;
                 bool showHeader = true;
                 bool includeChr = false;
                 bool includeReg = false;
@@ -594,15 +619,19 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                 bool fileEndOverride = false;
                 int codeStart = 0;
                 bool codeStartOverride = false;
-                int codeEnd = 0;
+                int codeEnd = -1;
                 bool codeEndOverride = false;
+                int bankNumber = -1;
                 int cdlOffset = 0;
                 bool ignoreWrites = false;
                 bool useLowerCase = true;
                 bool usingMapper2 = false;
+                int mapperNumber = 0;
+                bool mapperOverride = false;
                 // port: new options
                 int vectorsFilePos = 0;
                 bool vectorsOverride = false;
+                bool noVectors = false;
                 bool trace = false;
                 string traceFilename = null;
 
@@ -659,7 +688,7 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                                 return;
                             }
 
-                            fileStart = baseToDec(argv[++i]); // port: note codestart takes priority over filestart
+                            fileStart = baseToDec(argv[++i]);
                             fileStartOverride = true;
                             break;
 
@@ -697,10 +726,21 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                                 return;
                             }
 
-                            fileLength = baseToDec(argv[++i]); // will NOT be tweaked since lengthOverride isn't enable
-                            codeEndOverride = true; // port: never used?
+                            //fileLength = baseToDec(argv[++i]); // will NOT be tweaked since lengthOverride isn't enable // do not understand what this line is intended for
+                            codeEndOverride = true; // port: wasn't used?
+                            codeEnd = baseToDec(argv[++i]); // port: doing this instead
                             break;
 
+                        case "-b":
+                        case "-bank":
+                            if (!int.TryParse(nextParam, out bankNumber))
+                            {
+                                outputHelp("Must specify a valid bank number");
+                                return;
+                            }
+
+                            ++i;
+                            break;
 
                         case "-h":
                         case "-noheader":
@@ -732,21 +772,20 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
 
                             shortname = pathinfo(preg_replace(@"%[^a-zA-Z0-9_\-\. ]%", "", argv[++i]), PATHINFO_FILENAME);
 
-                            var target = argv[i];
-                            _targetPath = Path.GetDirectoryName(target);
+                            //var target = argv[i];
+                            //_targetPath = Path.GetDirectoryName(target);
                             //shortname = string.Join("_", Path.GetFileNameWithoutExtension(target).Split(Path.GetInvalidFileNameChars()));
                             break;
 
                         case "-p":
                         case "-passes":
-                            int n;
-                            if (!int.TryParse(nextParam, out n))
+                            if (!int.TryParse(nextParam, out lastPass))
                             {
-                                outputHelp("You must specify a number of passes");
-                                return;
+                                lastPass = 9;
+                                outputHelp($"You must specify a number of passes, using default {lastPass}");
                             }
 
-                            lastPass = n; ++i;
+                            ++i;
                             break;
 
                         case "-nodetect":
@@ -811,6 +850,21 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                         case "-mapper2":
 
                             usingMapper2 = true;
+                            mapperNumber = 2;
+                            mapperOverride = true;
+                            break;
+
+                        case "-m":
+                        case "-mapper":
+
+                            mapperOverride = int.TryParse(nextParam, out mapperNumber);
+                            if (!mapperOverride)
+                            {
+                                outputHelp($"Must specify a valid mapper number, defaulting to {mapperNumber}");
+                            }
+
+                            usingMapper2 = (mapperNumber == 2);
+                            ++i;
                             break;
 
                         case "-v":
@@ -852,23 +906,28 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                 int invalidCounter = 0;
                 var theText = new StringBuilder();
 
+                /* port: don't know what this is doing but not using it now
                 if (fileEndOverride)
                 {
                     fileLength = fileStart + fileEnd;
                     lengthOverride = true;
                 }
+                */
 
 
-                var file = File.ReadAllBytes(filename);
+                var fileSource = File.ReadAllBytes(filename);
 
                 var pass = 1;
 
                 AsmLabels oldLabels = null;
 
                 var initLabels = new AsmLabels();
-                initLabels.Add(V_NMI, "vectors");
-                initLabels.Add(V_RESET);
-                initLabels.Add(V_IRQ_BRK);
+                if (!noVectors)
+                {
+                    initLabels.Add(V_NMI, "vectors");
+                    initLabels.Add(V_RESET);
+                    initLabels.Add(V_IRQ_BRK);
+                }
 
                 if (includeReg) // port note: include the NES defined function addresses
                 {
@@ -877,7 +936,7 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                 }
 
                 var labelLen = 0;
-                if (labelFile != null) // port: read in user defined named addresses from file
+                if (labelFile != null) // port note: read in user defined named addresses from file
                 {
                     int maxLength;
                     fileLabels = readLabels2(labelFile, out maxLength);
@@ -907,54 +966,72 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                 var theLabel = "";
 
 
-                // port: this is all stuff added after porting
-                byte[] prg = file; // port: without a header, the input file should be just the prg data;
-                int prgOffset = 0; // port: start index for prg within file, 0 or 0x10 (HDR_LEN)
-                int romBankSize = LEN_32K; // 0x8000; // default size
+                #region pre-loop setup
 
-                if (usingMapper2) // todo add mapper run argument and check here 
+                // todo userInputs object
+                var inputs = new Inputs(); // this will be a mirror of user inputs, resolved to authoritative values
+
+                // establish content bounds within source data   
+                inputs.SetFileRange(
+                    fileSource, fileStartOverride, fileStart, fileEndOverride, fileEnd, lengthOverride, fileLength);
+                // file bounds ready (usually whole .nes or .bin file)
+                var file = Util.CopyBytes(fileSource, inputs.fileStart, inputs.fileLength);
+
+                // establish prg location within file data, total size, and bank size
+                // port: without a header, prg data will be the specified range of file data;
+                if (!ignoreHeader)
+                    headerInfo = getHeaderInfo(file);
+
+                inputs.SetPRGRange(file, noDetect, ignoreHeader, headerInfo, mapperOverride, mapperNumber);
+                if (headerInfo != null)
                 {
-                    var mapperNum = 2;
-                    romBankSize = HeaderInfo.GetBankSize(mapperNum);
-
-                    if (prg.Length % romBankSize != 0)
-                    {
-                        throw new Exception($"data length {prg.Length} does not divide evenly by rom bank size 0x{romBankSize:X}");
-                    }
-                }
-                else if (!ignoreHeader && (headerInfo = getHeaderInfo(file)) != null)
-                {
-                    romBankSize = headerInfo.GetBankSize();
-
-                    prgOffset = HDR_LEN; // prg data starts after the header
                     oldPrg = headerInfo.prg;
 
-                    prg = new byte[headerInfo.prg * LEN_16K]; // header prg values is # of 16K banks regardless of mapper
-                    Array.Copy(file, prgOffset, prg, 0, prg.Length); // todo if length option specified
+                    if (headerInfo.prg * LEN_16K != inputs.prgLen)
+                    {
+                        newPrg = (byte)(inputs.prgLen / LEN_16K); // TODO if prgLen isn't length 2^x ?
+                        if (newPrg == 0)
+                            newPrg = 1; // 1 bank minimum
+                    }
                 }
 
-                if (prg.Length > LEN_32K && !usingMapper2) // prg length too long to fit everything in address space
+                // prg bounds and tentative start index are ready
+                var prg = Util.CopyBytes(file, inputs.prgOffset, inputs.prgLen);
+
+                // determine where to start in prg based on codestart/end
+                inputs.SetCodeRange(prg, originOverride, origin, codeStartOverride, codeStart, codeEndOverride, codeEnd, bankNumber);
+                originOverride = inputs.originOverride;
+                origin = inputs.origin; // copying back since origin is used outside this method // todo replace references
+
+                //  cdl offset
+                if (cdlFile != null && cdlOffset == 0 && inputs.prgStartIndex != 0)
                 {
-                    // port: TODO support other mappers
-                    echo("PRG length requires a mapper, use mapper 2 option\n");
-                    return;
+                    if (cdlFile.Length == file.Length || cdlFile.Length == file.Length + HDR_LEN)
+                    {
+                        // assume file prg and cdl prg data are aligned from byte 0 and use prg start index
+                        cdlOffset = inputs.prgStartIndex;
+                    }
+                    else
+                    {
+                        echo_line($"Can't determine starting point in CDL file for prg start index: 0x{inputs.prgStartIndex:X5}");
+                        echo_line($"Specify offset manually with -cdloffset switch");
+                    }
                 }
 
+                // should be set for prg loop now
+                // origin should be a prg address space value
+                // prgStartIndex is a prg address where disassembly starts
 
-                // for sub 32K games
-                while (prg.Length == romBankSize / 2)
-                {
-                    romBankSize /= 2;
-                }
-
-                //if (prg.Length < romBankSize)
-                //    romBankSize = prg.Length;
-
-                // port todo check for prg repeated as a whole
+                #endregion
 
 
-                var romBanksInfo = MapBanks(prg, romBankSize);
-                SetBankOrigins(romBanksInfo, prg, cdlFile);
+                var romBanksInfo = MapBanks(prg, inputs.romBankSize);
+                SetBankOrigins(romBanksInfo, prg, cdlFile, cdlOffset - inputs.prgStartIndex); // cdlOffset should align to prgStartIndex. this method starts at prg 0, so backtrack cdlOffset to match
+                BankInfo.SetBankVectorsFlag(romBanksInfo, inputs.mapperNumber);
+
+                DisplayRomBanks(romBanksInfo);
+
+                var padBlocks = FindPadBlocks(prg, 0xA0); // todo
 
                 // by default assume vectors always at the end of the last bank (but could be in other banks as well)
                 // todo identify any mappers where this isn't true
@@ -972,7 +1049,6 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                     irq_break = wordAddr(file, vectorsFilePos + 4);
                 }
 
-                // todo in case of no header
 
                 var prgChunks = new List<byte[]>();
                 var cdlChunks = new List<byte[]>();
@@ -991,6 +1067,7 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                 }
 
                 // todo list of bank info
+                /*
 
                 // for vectors this should be safe for just about everything. 
                 // don't know of any roms that would not have vectors in last prg bank regardless of banking scheme. 
@@ -999,7 +1076,6 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                 byte[] prgChunk = prgChunks.Last();
                 byte[] cdlChunk = null;
 
-                int prgStartIndex = 0;
 
                 // port: todo loop chunks
                 prgChunk = prgChunks[0];
@@ -1036,136 +1112,105 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
 
                 //PrintInputs(inputs, origin, headerInfo);
                 codeMask = codeMasks?.FirstOrDefault(); // todo iterate with prg slice
+                */
 
                 // ---------------------------------------------------------
                 // all settings and input should be processed and ready to use
                 // proceed with disassembly
 
-                // port: todo for now run entire prg block as a unit, work on splitting banks later
-                prgChunk = prg;
-                if (cdlFile != null)
-                    cdlChunk = cdlFile;
-
-
-                if (pass < 3)
+                /*
+                // check for 16k roms
+                if (!noDetect && headerInfo != null)
                 {
-                    labels = initLabels.AsCopy();
-                }
-
-                var counter = origin;
-
-
-                #region pre loop
-                // do this stuff only on the first pass
-                if (pass == 1)
-                {
-                    oldDidDrawLine = false;
-                    oldLabels = labels.AsCopy(); // port: previous-pass general labels
-
-                    // check for 16k roms
-                    if (!noDetect && headerInfo != null)
+                    newPrg = 0;
+                    if (headerInfo.prg == 2) // port: 2 x 16K
                     {
-                        newPrg = 0;
-                        if (headerInfo.prg == 2) // port: 2 x 16K
+                        int pos = fileStart + HDR_LEN; // port: temp file position variable
+                        var prg0 = fread(file, 0x4000, ref pos);
+                        var prg1 = fread(file, 0x4000, ref pos);
+
+                        if (php_bytes_equal(prg0, prg1) && headerInfo.mapper == 0)
                         {
-                            int pos = fileStart + HDR_LEN; // port: temp file position variable
-                            var prg0 = fread(file, 0x4000, ref pos);
-                            var prg1 = fread(file, 0x4000, ref pos);
+                            echo("PRG Banks 0 and 1 are identical, overdumped 16K PRG suspected, use -d to disable check\n");
+                            // port: this is an overdump and a mess to sort out with the byte arrays. todo
+                            return;
+                            newPrg = 1;
 
-                            if (php_bytes_equal(prg0, prg1) && headerInfo.mapper == 0)
+                            origin = originOverride ? origin : 0xc000;
+
+                            if (cdlFilename != null)
                             {
-                                echo("PRG Banks 0 and 1 are identical, overdumped 16K PRG suspected, use -d to disable check\n");
-                                // port: this is an overdump and a mess to sort out with the byte arrays. todo
-                                return;
-                                newPrg = 1;
-
-                                origin = originOverride ? origin : 0xc000;
-
-                                if (cdlFilename != null)
-                                {
-                                    cdlOffset += 0x4000;
-                                }
+                                cdlOffset += 0x4000;
                             }
                         }
-                        else if (headerInfo.prg == 1) // port: this would be standard 16K rom
-                        {
-                            origin = originOverride ? origin : 0xc000;
-                        }
                     }
-
-                    echo("Using Origin: 0x" + hex_pad(origin) + "\n\n");
-
-                    if (headerInfo != null)
+                    else if (headerInfo.prg == 1) // port: this would be standard 16K rom
                     {
-                        echo("NES Header Found - " + (showHeader ? "included in disassembly" : "not included") + "\n");
+                        origin = originOverride ? origin : 0xc000;
                     }
-
-                    if (labelFile != null)
-                    {
-                        echo("Using user defined labels\n");
-                    }
-
-                    if (includeReg)
-                    {
-                        echo("Using NES registers\n");
-                    }
-
-                    if (cdlFilename != null)
-                    {
-                        echo("Using code/data log\n");
-                    }
-
-                    if (ignoreWrites != false)
-                    {
-                        echo("Writes to PRG will not create labels\n");
-                    }
-
-                    if (usingMapper2 != false)
-                    {
-                        echo("Mapper 2 (UxROM) support enabled\n");
-                    }
-
-                    if (codeStartOverride)
-                    {
-                        fileStart = codeStart - origin + prgOffset; // port: was 10 instead of 0x10 in original, assuming bug
-                        origin = codeStart;
-                        originOverride = true;
-                        // port: fileStart is an absolute file position, and should be in the prg bytes
-                        // origin should be a prg address space value. prg byte 0 maps to this address (maybe?)
-                        // codeStart is a prg address where disassembly starts
-
-                        if (fileStart < prgOffset)
-                            throw new Exception("invalid file start");
-
-                        fileStartOverride = true;
-                        prgStartIndex = fileStart - prgOffset;
-
-                        // todo cdlOffset doesn't serve any purpose now
-                        cdlOffset += fileStart - prgOffset; // port: was 10 instead of 0x10 in original, assuming bug
-
-                        echo("Starting at code location $" + hex_pad(codeStart) + "\n");
-                    }
-                    else if (fileStartOverride)
-                    {
-                        echo("Starting at file location 0x" + hex_pad(fileStart) + "\n");
-                    }
-
-                    if (lengthOverride)
-                    {
-                        echo("Reading 0x" + hex_pad(fileLength) + " bytes\n");
-
-                        fileLength += origin - prgOffset; // port note correcting for header present/missing
-                                                          // port note filelength is relative to counter, not file 0
-                    }
-
-                    if (includeChr && headerInfo != null)
-                    {
-                        //echo "Using CHR-ROM\n"; // port: disabled in original
-                    }
-
-                    echo("\n");
                 }
-                #endregion
+                */
+
+                echo("Using Origin: 0x" + hex_pad(origin) + "\n\n");
+
+                if (headerInfo != null)
+                {
+                    echo("NES Header Found - " + (showHeader ? "included in disassembly" : "not included") + "\n");
+                }
+
+                if (labelFile != null)
+                {
+                    echo("Using user defined labels\n");
+                }
+
+                if (includeReg)
+                {
+                    echo("Using NES registers\n");
+                }
+
+                if (cdlFilename != null)
+                {
+                    echo("Using code/data log\n");
+                }
+
+                if (ignoreWrites != false)
+                {
+                    echo("Writes to PRG will not create labels\n");
+                }
+
+                if (inputs.mapperOverride)
+                {
+                    echo_line($"Mapper {inputs.mapperNumber} selected");
+                }
+
+                if (inputs.usingMapper2 != false)
+                {
+                    echo("Mapper 2 (UxROM) support enabled\n");
+                }
+
+                if (inputs.fileStartOverride)
+                {
+                    echo("Starting at file location 0x" + hex_pad(inputs.fileStart) + "\n");
+                }
+
+                if (inputs.codeStartOverride)
+                {
+
+                    echo("Starting at code location $" + hex_pad(inputs.codeStart) + "\n");
+                }
+
+                if (inputs.lengthOverride)
+                {
+                    echo("Reading 0x" + hex_pad(inputs.fileLength) + " bytes\n");
+
+                }
+
+                if (includeChr && headerInfo != null)
+                {
+                    //echo "Using CHR-ROM\n"; // port: disabled in original
+                }
+
+                echo("\n");
 
 
                 #region pass loop
@@ -1182,6 +1227,7 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                     }
                     var prgLabels = initLabels.AsCopy();
 
+                    /*
                     counter = origin;
                     // port: counter is location within executing address space. filePos represents the location within the prg data.
 
@@ -1202,13 +1248,26 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                         oldPrg = headerInfo.prg;
                     }
 
+                    */
 
-                    if (prgStartIndex < 0)
-                        throw new Exception($"invalid prgStartIndex value: 0x{prgStartIndex:X5}");
+                    #region pass 1 only
+                    // do this stuff only on the first pass
+                    if (pass == 1)
+                    {
+                        oldDidDrawLine = false;
+                        oldLabels = labels.AsCopy(); // port: previous-pass general labels
+                    }
 
-                    int filePos = prgStartIndex; // port: filePos is the working index within the prg block
+                    #endregion
+
+
+                    int filePos = inputs.prgStartIndex; // port: filePos is the working index within the prg block
+                    int cdlPos = cdlOffset;
+
+                    // this assumes rom bank size of 16K and uses it in relation to rom header prg count and unrom bank size
+                    // TODO needs to be mapper aware, or separate value to track rom bank sized index or something
                     prgBank = 0;
-                    // port: prgBank was never reset in original code, throwing off the output
+                    // port: prgBank was never reset in original code, prg bank comments didn't get printed
 
                     // if 16k rom, update prg info
                     if (newPrg != 0)
@@ -1231,14 +1290,14 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                             theText.Append(outputLabels(registers, "Registers"));
                         }
 
-                        string header = null;
-                        if (showHeader && (header = processHeaderInfo(headerInfo)) != null)
+                        string headerText = null;
+                        if (showHeader && (headerText = processHeaderInfo(headerInfo)) != null)
                         {
-                            theText.Append(header);
+                            theText.Append(headerText);
                         }
 
                         theText.Append(commentHeader("Program Origin"));
-                        theText.Append(str_pad(LEFT_MARGIN + ".org $" + hex_pad(counter), 30 + labelLen) + " ; Set program counter\n");
+                        theText.Append(str_pad(LEFT_MARGIN + ".org $" + hex_pad(origin), 30 + labelLen) + " ; Set program counter\n");
                         theText.Append(commentHeader("ROM Start"));
 
                     }
@@ -1247,25 +1306,27 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                     // read the file
                     // each pass of this loop completes one line of output
 
-                    counter = origin;
+                    var counter = origin; // port: counter is location within executing address space. filePos represents the location within the prg data.
                     echo($"Starting pass {pass} " + (pass == lastPass ? "(final) " : "") + "... ");
 
                     #region byte loop
+                    var currentRomBank = romBanksInfo[0];
 
-                    while (filePos < prgChunk.Length && counter < fileLength)
+                    while (filePos < prg.Length)
                     {
+                        if (inputs.codeEndOverride && counter >= inputs.codeEnd)
+                            break; // replaces counter < fileLength condition
+
                         var invalidText = "Invalid Opcode";
                         var didDrawLine = false;
 
+                        if (filePos >= currentRomBank.DataOffset + currentRomBank.BankSize)
+                            currentRomBank = SelectRomBank(romBanksInfo, filePos);
+
                         // handle mapper 2
-                        if (usingMapper2
-                            && headerInfo != null
-                            && headerInfo.mapper == 2
-                            && counter == 0xC000
-                            //&& prgBank < (headerInfo.prg - 1) // port: relocated below
-                            )
+                        if (NewRomBank(romBanksInfo, counter, inputs.usingMapper2, headerInfo))
                         {
-                            prgBank++; // port: update prgBank value before checking for last bank
+                            prgBank++; // port change: update prgBank value before checking for last bank
 
                             if (prgBank < (headerInfo.prg - 1)) // port: header.prg-1 is fixed last bank
                                 counter = 0x8000; // port: counter changes, so this block doesn't happen when loop restarts
@@ -1273,7 +1334,7 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                             if (pass == lastPass)
                             {
                                 theText.Append(commentHeader($"PRG Bank {prgBank}"));
-                                theText.AppendLine(LEFT_MARGIN + $".base 0x{hex_pad(counter)}");
+                                theText.Append(LEFT_MARGIN + $".base 0x{hex_pad(counter)}\n");
                                 theText.Append(commentLine());
                             }
                             if (counter == 0x8000) // port: make sure counter has moved before restarting
@@ -1282,7 +1343,7 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
 
                         // handle vectors
 
-                        if (pass < lastPass && counter == V_NMI)
+                        if (pass < lastPass && counter == V_NMI && !noVectors /*&& currentRomBank.HasVectors*/)
                         {
                             // todo if remaining bytes match vectors, then add labels
                             // eg for mmc1 where all banks should have the vectors in the same place
@@ -1294,6 +1355,7 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                             irq_break = wordStr(fread(prgChunk, 2, ref filePos)); 
                             */
                             filePos += 6;
+                            cdlPos += 6;
 
                             addVector(nmi, "nmi", labels);
                             addVector(reset, "reset", labels);
@@ -1306,10 +1368,11 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                             counter += 6;
                             continue;
                         }
-                        else if (pass == lastPass && counter == 0xFFFA)
+                        else if (pass == lastPass && counter == V_NMI && !noVectors /*&& currentRomBank.HasVectors*/)
                         {
                             theText.Append(processVectors(hex_pad(nmi), hex_pad(reset), hex_pad(irq_break)));
                             filePos += 6;
+                            cdlPos += 6;
 
                             counter += 6;
 
@@ -1317,10 +1380,8 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                         }
 
                         //read opcode
-                        var opcode = prgChunk[filePos];
-                        var opinfo = opcodes.FirstOrDefault(n => n.Code == opcode);
-                        if (opinfo == null)
-                            throw new Exception($"opcode ${opcodes:X2} not in resource list");
+                        var opcode = prg[filePos];
+                        var opinfo = opcodes.First(n => n.Code == opcode);
 
                         var isInvalid = opinfo.Legal; // [0];
                         var mnemonic = opinfo.Text; // [1];
@@ -1338,22 +1399,19 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                         // check code/data log - if data, don't process as an opcode
                         if (cdlFilename != null)
                         {
-                            var newCdlByte = cdlChunk[filePos];
+                            var newCdlByte = cdlFile[cdlPos];
 
                             // draw line between data and code
                             if (pass == lastPass
-                                && !oldDidDrawLine
-                                && counter != origin
-                                && newCdlByte != 0
-                                && ((newCdlByte & CDL_CODE) != (cdlByte & CDL_CODE)) // port: change from data to code or vice versa //todo indirect?
-                            )
+                                && DrawDataCodeSeparator(oldDidDrawLine, counter, newCdlByte, cdlByte)
+                                )
                             {
                                 theText.Append("\n" + commentLine());
 
                                 didDrawLine = true;
                             }
 
-                            // port: todo what was i doing here? manually identifying code bytes?
+                            /* port: todo what was i doing here? manually identifying code bytes?
                             if (codeMask != null)
                             {
                                 if (codeMask[filePos])
@@ -1368,6 +1426,7 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                                 //    newCdlByte |= CDL_DATA;
                                 //}
                             }
+                            */
 
                             // check if the CDL byte is known, if known, copy, otherwise do some checks
                             var dechex_pad_counter = hex_pad(counter);
@@ -1379,12 +1438,12 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                             //else if (isset(oldPrgLabels, dechex_pad_counter))
                             else if (oldPrgLabels.ContainsKey(counter))
                             {
-                                cdlByte = CDL_CODE;
+                                cdlByte = CDL_CODE; // port: bindec('00000001')
                             }
                             // if byte is zero and we're at a label, but not program, assume data (only on 2nd pass)
                             else if (oldLabels.ContainsKey(counter) && pass > 1)
                             {
-                                cdlByte = CDL_DATA;
+                                cdlByte = CDL_DATA; // port: bindec('00000010')
                             }
                             // else assume program code
 
@@ -1436,6 +1495,7 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                                 }  */ // port: disabled in original
                                 else
                                 {
+                                    // generic .hex ff ... statement 
                                     byteLen = 4;
                                     mnemonic = "";
                                     addressingType = -1;
@@ -1452,7 +1512,7 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
 
 
                         var readBytes = byteLen - 1;
-                        //var bytes = ""; // port: declared where it's used below
+                        //var bytes = ""; // port: now declared where it's used below
                         var byteStr = "";
                         var trailer = "";
                         var hextext = hex_pad(opcode);
@@ -1460,26 +1520,32 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                         var byteArr = new[] { hextext }.ToList();
 
 
-                        // read 1 or 2 byte paramters for the opcode
-                        if (readBytes > 0)
+                        /* better handled when branch command is checked, probably won't need this
+                        if (readBytes > 0 && filePos + 1 < prgChunk.Length)
                         {
                             // port: added an operand check for branch into self scenarios
                             // original code could generate a branch instruction with a non-existent label
                             byte operand = 0; // port: 1 byte of operand, for use with branch checks
-                            if (filePos + 1 < prgChunk.Length)
                                 operand = prgChunk[filePos + 1];
+                                if (operand == 0xff && _branches.Contains(mnemonic)) // port: branch into self check
+                                {
+                                    invalidCounter = 0; // port note: set but never used
+                                    readBytes = 0;
+                                    isInvalid = 1;
+                                    byteLen = 1;
+                                    addressingType = -1;
+                                }
+                        }
+                        */
 
+                        // read 1 or 2 byte parameters for the opcode
+                        if (readBytes > 0)
+                        {
                             // check to see if a label exists in this opcode.. if so then usually it's data
                             for (var i = 1; i <= readBytes; i++)
                             {
-                                var counter_i = counter + i;
-                                if (isCounterLabel(counter_i, oldLabels)
-                                   || counter_i >= V_NMI // 0xFFFA
-                                   || (counter_i >= fileLength)
-                                   || (operand == 0xff && _branches.Contains(mnemonic)) // port: branch into self check
-                                   || filePos + 1 >= prgChunk.Length // port: added prg overrun check, original code dipped into chr space
-                                   || (usingMapper2 && headerInfo != null && headerInfo.mapper == 2 && counter_i > 0xBFFF && prgBank < headerInfo.prg - 1)
-                                   ) // if counter in the vectors
+                                bool lastPrgBank = headerInfo != null && prgBank == headerInfo.prg - 1;
+                                if (HasConflict(counter, filePos, i, inputs.prgLen, inputs.mapperNumber, lastPrgBank, noVectors, oldLabels))
                                 {
                                     invalidCounter = 0; // port note: set but never used
                                     readBytes = i - 1;
@@ -1492,7 +1558,7 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                                 // if this byte marked as data in cdl; check if next bytes are code
                                 if (cdlFilename != null && isDataByte)
                                 {
-                                    var newCdlByte = cdlChunk[filePos + i];
+                                    var newCdlByte = cdlFile[cdlPos + i];
                                     //var didMoveCdlPtr = true; // port: no longer relevant
                                     if ((newCdlByte & CDL_CODE) != 0)
                                     {
@@ -1510,7 +1576,7 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                             if (readBytes > 0) // if readbytes is still > 0 after above
                             {
                                 var tmp = filePos + 1; // port: todo sort out file position 
-                                var bytes = fread(prgChunk, readBytes, ref tmp);
+                                var bytes = fread(prg, readBytes, ref tmp);
 
                                 for (var j = 0; j < readBytes; j++)
                                 {
@@ -1537,10 +1603,10 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                         // when using $00xx.. it turns it into $xx
                         // so instead we'll use .hex
                         if (readBytes == 2
-                           && substr(byteStr, 0, 2) == "00"
-                           && addressingType > 0
-                           && addressingType < 9
-                           && addressingType != 3)
+                            && substr(byteStr, 0, 2) == "00"
+                            && addressingType > 0
+                            && addressingType < 9
+                            && addressingType != 3)
                         {
                             isInvalid = 1;
                             invalidText = "Bad Addr Mode";
@@ -1579,9 +1645,11 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                         {
 
                             case 0: // Implicit/Accumulator/Immediate
-                                byteStr = (readBytes > 0
-                                    ? "#$" + byteStr
-                                    : "");
+                                if (readBytes > 0)
+                                    byteStr = "#$" + byteStr;
+                                else
+                                    byteStr = string.Empty;
+
                                 break;
 
                             case TBL_JP: // port: jump table
@@ -1655,9 +1723,13 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
 
                                 var isInvalidBranch = false; // port note: never set to anything else in original code
 
-                                // port: making use of isInvalidBranch for branch into self scenario mentioned earlier
-                                if (filePos + 1 < prgChunk.Length && prgChunk[filePos + 1] == 0xff)
+                                // port: making use of isInvalidBranch for branch into self
+                                // possibly legal but creates label conflicts
+                                if (filePos + 1 < prg.Length && prg[filePos + 1] == 0xff)
                                     isInvalidBranch = true;
+
+                                // todo check for label at destination addr? at least from user defined labels
+                                // todo need to know how many bytes at label that would be cut into
 
                                 if (pass < lastPass && isInvalid != 1 && !isInvalidBranch)
                                 {
@@ -1683,6 +1755,9 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                                 {
                                     isInvalid = 1;
                                     invalidText = "Illegal Branch";
+
+                                    if (isInvalidBranch)
+                                        invalidText = "Branch into self";
                                 }
 
                                 break;
@@ -1774,19 +1849,19 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                                         // port note if label is too long then put content on next line // todo actually doing this somewhere?
 
                                         if (lastComment) // port: only on the last label
-                                            labelsSub.Append(LEFT_MARGIN);
+                                            labelsSub.Append(LEFT_MARGIN); // port: separated from prev statement
                                     }
                                     else
                                     {
                                         labelsSub.Append(str_pad(theLabel + ":", marginLen));
 
                                         if (!lastComment) // port: any but the last label
-                                            labelsSub.AppendLine();
+                                            labelsSub.AppendLine(); // port: original did not have a newline in this else block
                                     }
 
                                 }
 
-                                theText.Append(labelsSub); // port: print the labels, after the vector comments are written
+                                theText.Append(labelsSub); // port: print the labels after the vector comment block
                             }
                             /* todo remove
                             else
@@ -1809,7 +1884,7 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                             line += " ; $" + hex_pad(counter) + ": " + hextext; // port: this is the post-instruction comment
                             line = str_pad(line, width);
 
-                            line2.Append($" ; ${hex_pad(counter)}: {hextext}".PadRight(width));
+                            line2.Append($" ; ${hex_pad(counter)}: {hextext}".PadRight(width - line2.Length)); // fixed too much padding
 
                             if (isInvalid == 1)
                             {
@@ -1829,13 +1904,14 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                         #endregion
 
                         filePos += byteLen; // port: move index to next opcode
+                        cdlPos += byteLen;
                         counter += byteLen;
                         oldDidDrawLine = didDrawLine;
                     }  // end line by line loop
 
                     #endregion
 
-                    // port: if no change in labels this pass, remaining passes are omitted by truncating last pass value
+                    // port note: if no change in labels this pass, lastPass truncated to skip any redundant passes
                     if (pass < lastPass && oldLabels != null && php_dictionaries_equal(labels, oldLabels))
                     {
                         lastPass = pass + 1;
@@ -1860,7 +1936,7 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                     if (headerInfo.chr > 0)
                     {
                         chr = new byte[headerInfo.chr * 0x2000]; // banks x 8K  
-                        Array.Copy(file, prgOffset + prg.Length, chr, 0, chr.Length);
+                        Array.Copy(file, inputs.prgOffset + prg.Length, chr, 0, chr.Length);
                     }
 
                     // port: chr already loaded in entirety above
@@ -1885,7 +1961,7 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                 else if (includeChr)
                 {
                     echo("\nCHR-ROM cannot be exported without iNES header data");
-                    if (ignoreHeader)
+                    if (inputs.ignoreHeader)
                     {
                         echo("\nTry disabling -ignoreheader if you wish to export CHR-ROM data"); // port: original did not explicitly echo, assuming it was intended to do so
                     }
@@ -1912,7 +1988,151 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
             //    return $"_{b}_{hex_pad(address)}";
             //}
 
-            const int CPU_BANK_LEN = LEN_8K; // size of cpu address space used by cdl
+
+            /// <summary>
+            /// choose the rom bank info containing the file position
+            /// </summary>
+            /// <param name="romBanksInfo"></param>
+            /// <param name="filePos"></param>
+            /// <returns></returns>
+            private BankInfo SelectRomBank(List<BankInfo> romBanksInfo, int filePos)
+            {
+                var bank = romBanksInfo.FirstOrDefault(
+                    n => n.DataOffset <= filePos && filePos < n.DataOffset + n.BankSize);
+                return bank;
+            }
+
+            /// <summary>
+            /// print info to screen
+            /// </summary>
+            /// <param name="romBanksInfo"></param>
+            private void DisplayRomBanks(List<BankInfo> romBanksInfo)
+            {
+                echo_line("banks:");
+                foreach (var rbi in romBanksInfo)
+                    echo_line(rbi.ToString());
+                echo_line();
+            }
+
+            /// <summary>
+            /// look for runs of bytes that can be replaced with a .pad instruction
+            /// </summary>
+            /// <param name="buffer"></param>
+            /// <param name="minLength"></param>
+            /// <returns></returns>
+            private List<int[]> FindPadBlocks(byte[] buffer, int minLength = 0x20)
+            {
+                var padValues = new[] { 0x00, 0xff }; // byte values that can be used to create pads (of the same byte)
+                byte dummy = 0xa9; // dummy value to prevent false matches to start new sequence
+
+                var found = new List<int[]>(); // start (incl), end (excl), pad byte
+                int currentStart = -1;
+                byte currentVal = dummy;
+
+                for (int j = 0; j < buffer.Length; j++)
+                {
+                    byte b = buffer[j];
+
+                    if (currentStart != -1)
+                    {
+                        // in sequence
+
+                        if (b == currentVal)
+                        {
+                            // sequence extends
+                            continue;
+                        }
+
+                        // sequence ended
+                        int len = j - currentStart;
+                        if (len >= minLength)
+                        {
+                            // valid for pad command
+                            found.Add(new[] { origin + currentStart, origin + j, currentVal });
+                        }
+
+                        currentStart = -1;
+                        currentVal = dummy;
+                    }
+
+                    if (padValues.Contains(b))
+                    {
+                        // new sequence
+                        currentStart = j;
+                        currentVal = b;
+                    }
+                }
+
+                return found;
+            }
+
+            /// <summary>
+            /// check for op's data bytes crossing any kind of barrier that would suggest an invalid op
+            /// </summary>
+            /// <param name="counter">counter postion of op</param>
+            /// <param name="filePos">index location of op within file</param>
+            /// <param name="offset">number of bytes post-counter/filePos to op parameter byte</param>
+            /// <param name="prgLen">total prg length</param>
+            /// <param name="mapper">mapper number</param>
+            /// <param name="lastPrgBank">true if currently in the last rom bank</param>
+            /// <param name="oldLabels"></param>
+            /// <returns></returns>
+            private bool HasConflict(int counter, int filePos, int offset, int prgLen, int mapper, bool lastPrgBank, bool noVectors, AsmLabels oldLabels)
+            {
+                int counter_i = counter + offset;
+                int filePos_i = filePos + offset;
+
+                var counterMax = V_NMI; // counter runs into vectors
+                if (noVectors)
+                {
+                    counterMax = 0x10000; // counter runs out of range
+                }
+
+                return (
+                    filePos_i >= prgLen // port: added prg overrun check, original code dipped into chr space
+                    || counter_i >= counterMax
+                    //|| (counter_i >= fileLength) // counter exceeds something? // TODO fileLength is wrong
+                    || isCounterLabel(counter_i, oldLabels) // existing label at counter
+                    || (mapper != 0 && mapper != 3 && counter_i > 0xBFFF && !lastPrgBank) // TODO this is checking for counter running into last bank, assuming it's fixed, modify it for general banking/variable bank size
+                    );
+            }
+
+            /// <summary>
+            /// determine if a separation line needs to printed to the output asm
+            /// </summary>
+            /// <param name="oldDidDrawLine"></param>
+            /// <param name="counter"></param>
+            /// <param name="newCdlByte"></param>
+            /// <param name="cdlByte"></param>
+            /// <returns></returns>
+            private bool DrawDataCodeSeparator(bool oldDidDrawLine, int counter, byte newCdlByte, byte cdlByte)
+            {
+                return (
+                    !oldDidDrawLine
+                    && counter != origin
+                    && newCdlByte != 0
+                    && ((newCdlByte & CDL_CODE) != (cdlByte & CDL_CODE)) // port: change from data to code or vice versa //todo indirect?
+                    );
+            }
+
+            /// <summary>
+            /// determine if counter has incremented into a different rom bank
+            /// </summary>
+            /// <param name="romBanksInfo"></param>
+            /// <param name="counter"></param>
+            /// <param name="usingMapper2"></param>
+            /// <param name="headerInfo"></param>
+            /// <returns></returns>
+            private bool NewRomBank(List<BankInfo> romBanksInfo, int counter, bool usingMapper2, HeaderInfo headerInfo)
+            {
+                return (
+                    usingMapper2
+                    && headerInfo != null
+                    && headerInfo.mapper == 2
+                    && counter == 0xC000
+                    //&& prgBank < (headerInfo.prg - 1) // port: relocated below
+                    );
+            }
 
             private static List<BankInfo> MapBanks(byte[] prg, int romBankSize)
             {
@@ -1930,8 +2150,14 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                 return bankList;
             }
 
-            public static void SetBankOrigins(List<BankInfo> bankList, byte[] prg, byte[] cdl)
+            public static void SetBankOrigins(List<BankInfo> bankList, byte[] prg, byte[] cdl, int cdlOffset)
             {
+                if (cdl != null && cdlOffset != 0)
+                {
+                    var cdlTmp = Util.CopyBytes(cdl, cdlOffset, prg.Length);
+                    cdl = cdlTmp;
+                }
+
                 int romBanks = bankList.Count;
                 var romBankSize = bankList[0].BankSize;
 
@@ -1939,10 +2165,15 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                 {
                     // 32K: everything starts at $8000
                     // 16K: same, except last bank at $C000 (set below)
-                    bankList.ForEach(n => n.Origin = 0x8000);
+                    bankList.ForEach(n => n.Origin = CPU_ADDR_BASE);
                 }
                 else if (romBankSize == LEN_8K && cdl != null)
                 {
+                    // $8000
+                    // $A000
+                    // $C000
+                    // $E000
+
                     // assume last bank at $E000, everything else tbd
                     for (int j = 0; j < bankList.Count; j++)
                     {
@@ -1967,10 +2198,10 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                 }
 
                 var last = bankList[bankList.Count - 1];
-                last.Origin = 0x10000 - romBankSize; // set last bank origin so vectors come out right
-                last.HasVectors = true; // almost always
+                last.Origin = (CPU_ADDR_BASE + LEN_32K) - romBankSize; // set last bank origin so vectors come out right
             }
 
+            /*
             public static List<BankInfo> GetBankOrigins(byte[] prg, byte[] cdl, int romBankSize = LEN_8K)
             {
                 // rom bank size is 8K default
@@ -2031,6 +2262,7 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
 
                 return bankList;
             }
+            */
 
             /// <summary>
             /// searches cdl data for the memory address of any code executed within the rom bank

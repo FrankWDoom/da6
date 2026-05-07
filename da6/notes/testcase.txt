@@ -24,6 +24,23 @@ da6 "Megaman III (U) [!].nes" -r  -fs 0x3C010  -o $c000 -m2
 
 da6 "C:\working\disasm6\Gradius (U) [!].nes" -r -cdl "C:\working\disasm6\Gradius (U) [!].cdl"  
 
+da6 "C:\working\disasm6\Megaman III (U) [!]_prg_27C020.bin" -i -fs 0x3E000 -o $e000 -wfe -l mmc.txt
+
+da6 "C:\working\disasm6\Galaga - Demons of Death (U) [!].nes" -cs $be00 -php -wfe
+
+da6 "Megaman III (U) [!]_prg_27C020.bin" -i  -o $e000 -cs $f000 -wfe -l mmc.txt
+
+"C:\working\disasm6\Megaman III (U) [!]_prg_27C020.bin" -i  -o $e000 -cs $f000 -wfe  -php  
+
+da6 "C:\working\disasm6\Megaman III (U) [!]_prg_2764_32_of_32.bin" -i  -o $e000 -cs $f000 -wfe -l mmc.txt
+
+"C:\working\disasm6\Megaman III (U) [!]_prg_2764_32_of_32.bin" -i  -o $e000  -cdl "C:\working\disasm6\Megaman III (U) [!].cdl" -cdlo 0x3E000 -wfe  -php
+
+"Megaman III (U) [!].cdl"
+
+
+set path="D:\source\da6\da6\bin\Debug"
+
 
 $registers = array(
    '2000' => 'PPUCTRL',

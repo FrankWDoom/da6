@@ -15,7 +15,7 @@ namespace da6
     {
         // ines header length
 
-        const byte HDR_LEN = 0x10;
+        public const byte HDR_LEN = 0x10;
 
         // 6502 vector addresses
 
@@ -58,6 +58,8 @@ namespace da6
         static readonly byte CDL_ANY_CODE = (CDL_CODE | CDL_IND_CODE);
         static readonly byte CDL_ANY_DATA = (CDL_DATA | CDL_IND_DATA | CDL_PCM_DATA);
 
+        const int CPU_BANK_LEN = LEN_8K; // size of cpu address space used by cdl bank mask
+
         // common bank sizes for nes games
 
         internal const int LEN_8K = 0x2000;
@@ -67,6 +69,7 @@ namespace da6
         internal const int HEX_ALIGN = 2; // 2 digit places per byte
         internal const int BIN_ALIGN = 8; // 8 digit places per byte
 
+        internal const int CPU_ADDR_BASE = 0x8000; // starting address for prg rom memory space
 
         internal static string _targetPath = null; // port addition // todo
                                                    //private static string _workingPath = null; // port addition // todo

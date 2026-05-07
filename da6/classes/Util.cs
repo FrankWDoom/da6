@@ -42,5 +42,26 @@ namespace da6
                 Directory.CreateDirectory(targetPath);
             }
         }
+
+        /// <summary>
+        /// copy a block of bytes to a new array
+        /// </summary>
+        /// <param name="buffer"></param>
+        /// <param name="dataStart"></param>
+        /// <param name="dataLen"></param>
+        /// <returns></returns>
+        internal static byte[] CopyBytes(byte[] buffer, int dataStart, int dataLen = -1)
+        {
+            if (dataLen != -1 && dataStart + dataLen > buffer.Length)
+                throw new Exception("data selection overruns buffer length");
+
+            if (dataLen == -1)
+                dataLen = buffer.Length - dataStart;
+
+            var trimmed = new byte[dataLen];
+            Array.Copy(buffer, dataStart, trimmed, 0, dataLen);
+
+            return trimmed;
+        }
     }
 }
