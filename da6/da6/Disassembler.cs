@@ -308,10 +308,10 @@ namespace da6
                         romtype = "Playchoice 10";
                         break;
                 }
-                ret += str_pad(LEFT_MARGIN + ".db %" + bin_pad(info.ctrl_2), pad) + " ; RomType: " + romtype + "\n";
+                ret += str_pad(LEFT_MARGIN + ".db %" + bin_pad(info.ctrl_2), pad) + " ; RomType: " + romtype + Environment.NewLine;
 
-                ret += str_pad(LEFT_MARGIN + ".hex " + strToHex(info.tail, 0, 4), pad) + " ; iNES Tail \n";
-                ret += str_pad(LEFT_MARGIN + ".hex " + strToHex(info.tail, 4), pad) + "  \n";
+                ret += str_pad(LEFT_MARGIN + ".hex " + strToHex(info.tail, 0, 4), pad) + " ; iNES Tail " + Environment.NewLine;
+                ret += str_pad(LEFT_MARGIN + ".hex " + strToHex(info.tail, 4), pad) + "  " + Environment.NewLine; ;
 
                 return ret;
             }
@@ -334,9 +334,9 @@ namespace da6
                 var ret = commentHeader("Vector Table");
                 var line1 = str_pad("vectors:", marginLen);
                 line1 += ".dw nmi";
-                ret = ret + str_pad(line1, pad) + " ; $fffa: " + toLittleEndianStr(nmi) + "     Vector table\n";
-                ret += str_pad(LEFT_MARGIN + ".dw reset", pad) + " ; $fffc: " + toLittleEndianStr(reset) + "     Vector table\n";
-                ret += str_pad(LEFT_MARGIN + ".dw irq", pad) + " ; $fffe: " + toLittleEndianStr(irq_break) + "     Vector table\n";
+                ret = ret + str_pad(line1, pad) + " ; $fffa: " + toLittleEndianStr(nmi) + "     Vector table" + Environment.NewLine;
+                ret += str_pad(LEFT_MARGIN + ".dw reset", pad) + " ; $fffc: " + toLittleEndianStr(reset) + "     Vector table" + Environment.NewLine;
+                ret += str_pad(LEFT_MARGIN + ".dw irq", pad) + " ; $fffe: " + toLittleEndianStr(irq_break) + "     Vector table" + Environment.NewLine;
 
                 return ret;
             }
@@ -350,8 +350,10 @@ namespace da6
                             break; //port: this will kick down to the int.Parse() call which .net will try to read as an octal
                                    // user has to be careful about defining addresses to avoid this. or todo throw up a warning or something
 
-                        return hexdec(substr(str, 2));
+                        if (str.Length > 1)
+                            return hexdec(substr(str, 2));
 
+                        break;
                     case '$':
                         return hexdec(substr(str, 1));
 
@@ -380,14 +382,15 @@ namespace da6
                 // todo extend labels to specify Read/Write/eXecute and choose the appropriate one for the op
 
                 var matches = new List<Match>();
-                if (preg_match_all(@"(?m)^\s*([a-zA-Z0-9_\-\+\@]*)\s*\=\s*([\$\%]*)([xXa-fA-F0-9]+)", str, out matches) != 0)
+                if (preg_match_all(@"(?m)^\s*([a-zA-Z0-9_\-\+\@]*)\s*\=\s*([\$\%]*)([xXa-fA-F0-9]+)(\:\d+)?", str, out matches) != 0)
                 {
                     foreach (var match in matches)
                     {
                         string
                             matches_1_n = trim(match.Groups[1].Value), // port: label name
                             matches_2_n = match.Groups[2].Value, // port: numeric format token ($,%,empty)
-                            matches_3_n = match.Groups[3].Value; // port: address value, digits 0..F
+                            matches_3_n = match.Groups[3].Value, // port: address value, digits 0..F
+                            bankNum = match.Groups[4].Value;
 
                         // port: the regex pattern allows for an empty string in the address group
                         // which would not make sense to use as a key
@@ -438,6 +441,9 @@ namespace da6
             {
                 var ret = commentHeader(text);
 
+                int maxlen = arr.Where(n => n.Key < origin).Max(n => n.Value.Max(m => m.Length));
+                maxlen = Math.Max(maxlen, 20);
+
                 foreach (var n_v in arr)
                 {
                     var n = n_v.Key;
@@ -446,8 +452,8 @@ namespace da6
                         var addr = hex_pad(n);
                         foreach (var lbl in n_v.Value)
                         {
-                            var v = str_pad(lbl, 20);
-                            ret += v + " = $" + addr + "\n";
+                            var v = str_pad(lbl, maxlen);
+                            ret += v + " = $" + addr + Environment.NewLine;
                         }
                     }
                 }
@@ -470,7 +476,7 @@ namespace da6
                     if (hexdec(n) < origin) // port: this is probably a nes register, or maybe something in prg ram?
                     {
                         var v = Convert.ToString(n_v.Value); // port: todo this could be an array, check output
-                        ret += str_pad(v, 20) + " = $" + n + "\n";
+                        ret += str_pad(v, 20) + " = $" + n + Environment.NewLine;
                     }
                 }
 
@@ -1026,7 +1032,7 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
 
 
                 var romBanksInfo = MapBanks(prg, inputs.romBankSize);
-                SetBankOrigins(romBanksInfo, prg, cdlFile, cdlOffset - inputs.prgStartIndex); // cdlOffset should align to prgStartIndex. this method starts at prg 0, so backtrack cdlOffset to match
+                BankInfo.SetBankOrigins(romBanksInfo, prg, cdlFile, cdlOffset - inputs.prgStartIndex); // cdlOffset should align to prgStartIndex. this method starts at prg 0, so backtrack cdlOffset to match
                 BankInfo.SetBankVectorsFlag(romBanksInfo, inputs.mapperNumber);
 
                 DisplayRomBanks(romBanksInfo);
@@ -1036,9 +1042,10 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                 // by default assume vectors always at the end of the last bank (but could be in other banks as well)
                 // todo identify any mappers where this isn't true
 
-                var nmi = wordAddr(prg, prg.Length - 6);
-                var reset = wordAddr(prg, prg.Length - 4);
-                var irq_break = wordAddr(prg, prg.Length - 2);
+                // using own location as placeholder
+                var nmi = V_NMI;
+                var reset = V_RESET;
+                var irq_break = V_IRQ_BRK;
 
                 // user can identify vectors location manually if needed 
                 // todo might cause problems with output
@@ -1213,6 +1220,8 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                 echo("\n");
 
 
+                var addressHistory = new List<Dictionary<int, bool>>();
+
                 #region pass loop
                 //  This loop is done x times
                 //  The first pass we just collect addesses
@@ -1260,6 +1269,11 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
 
                     #endregion
 
+                    var addressAsked = oldLabels.ToDictionary(n => n.Key, n => false);
+                    foreach (var item in initLabels)
+                        addressAsked.Remove(item.Key); // limit to generated labels
+
+                    addressHistory.Add(addressAsked);
 
                     int filePos = inputs.prgStartIndex; // port: filePos is the working index within the prg block
                     int cdlPos = cdlOffset;
@@ -1297,7 +1311,7 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                         }
 
                         theText.Append(commentHeader("Program Origin"));
-                        theText.Append(str_pad(LEFT_MARGIN + ".org $" + hex_pad(origin), 30 + labelLen) + " ; Set program counter\n");
+                        theText.AppendLine(str_pad(LEFT_MARGIN + ".org $" + hex_pad(origin), 30 + labelLen) + " ; Set program counter");
                         theText.Append(commentHeader("ROM Start"));
 
                     }
@@ -1334,7 +1348,7 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                             if (pass == lastPass)
                             {
                                 theText.Append(commentHeader($"PRG Bank {prgBank}"));
-                                theText.Append(LEFT_MARGIN + $".base 0x{hex_pad(counter)}\n");
+                                theText.AppendLine(LEFT_MARGIN + $".base 0x{hex_pad(counter)}");
                                 theText.Append(commentLine());
                             }
                             if (counter == 0x8000) // port: make sure counter has moved before restarting
@@ -1348,13 +1362,15 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                             // todo if remaining bytes match vectors, then add labels
                             // eg for mmc1 where all banks should have the vectors in the same place
 
+                            nmi = wordAddr(fread(prg, 2, ref filePos));
+                            reset = wordAddr(fread(prg, 2, ref filePos));
+                            irq_break = wordAddr(fread(prg, 2, ref filePos));
+
                             /* port: this assumes the prg bank being processed is the last bank. 
                              * use predetermined values from above instead
-                            nmi = wordStr(fread(prgChunk, 2, ref filePos));
-                            reset = wordStr(fread(prgChunk, 2, ref filePos));
-                            irq_break = wordStr(fread(prgChunk, 2, ref filePos)); 
-                            */
                             filePos += 6;
+                            */
+
                             cdlPos += 6;
 
                             addVector(nmi, "nmi", labels);
@@ -1406,7 +1422,7 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                                 && DrawDataCodeSeparator(oldDidDrawLine, counter, newCdlByte, cdlByte)
                                 )
                             {
-                                theText.Append("\n" + commentLine());
+                                theText.Append(Environment.NewLine + commentLine());
 
                                 didDrawLine = true;
                             }
@@ -1453,14 +1469,7 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                             {
                                 if (isCounterLabel(counter, oldLabels))
                                 {
-                                    //theOldLabel = ToLabel(counter);
-
-                                    //if (oldLabels[counter].Count > 0)
-                                    //{
-                                    //    theOldLabel = oldLabels[counter][0]; // todo should be fine?
-                                    //}
-
-                                    theOldLabel = FirstLabel(oldLabels[counter], (counter));
+                                    theOldLabel = FirstLabel(oldLabels[counter], counter);
                                 }
 
                                 // port: JumpTable/RTSTable don't appear anywhere else in the original php
@@ -1511,7 +1520,7 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                         //}
 
 
-                        var readBytes = byteLen - 1;
+                        var readBytes = byteLen - 1; // how many bytes the op addresses
                         //var bytes = ""; // port: now declared where it's used below
                         var byteStr = "";
                         var trailer = "";
@@ -1634,6 +1643,8 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
 
                         if (oldLabels.ContainsKey(byteStrNum))
                         {
+                            addressAsked[byteStrNum] = true;
+
                             var list = oldLabels[byteStrNum];
 
                             if (list.Count > 0)
@@ -1657,7 +1668,10 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                             case JP: // port: jsr, jmp
                                 if (isInvalid != 1)
                                 {
-                                    addValidLabel(hexdec(byteStr), prgLabels);
+                                    var destAddr = hexdec(byteStr);
+                                    addValidLabel(destAddr, prgLabels);
+
+                                    addressAsked[destAddr] = true;
                                 }
 
                                 byteStr = newByteStr;
@@ -1735,6 +1749,8 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                                 {
                                     addValidLabel(addr, labels);
                                     addValidLabel(addr, prgLabels);
+
+                                    addressAsked[addr] = true;
                                 }
 
                                 if (!isInvalidBranch && isValidLabel(addr))
@@ -1768,7 +1784,7 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                             case "JMP":
                                 if (isInvalid != 1)
                                 {
-                                    trailer = "\n" + commentLine();
+                                    trailer = Environment.NewLine + commentLine();
                                     drawTrailer = true;
                                     didDrawLine = true;
                                 }
@@ -1782,7 +1798,7 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                         {
                             hextext = string.Join(" ", byteArr); // port: this is where the disabled line above is reimplemented
 
-                            string oldMnemonicStr = dataStr;
+                            string oldMnemonicStr = dataStr; // oldMnemonicStr only added to output when isInvalid==1
                             if (isInvalid == 1)
                             {
                                 if (addressingType != -1)
@@ -1792,10 +1808,7 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                                 byteStr = hextext;
                             }
 
-                            if (!oldLabels.ContainsKey(counter))
-                            {
-                                theText.Append(LEFT_MARGIN);
-                            }
+                            var printableLabels = new List<string>();
 
                             if (oldLabels.ContainsKey(counter))
                             {
@@ -1806,7 +1819,9 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                                     tmpList.Add(ToLabel(counter));
                                 }
 
-                                var labelsSub = new StringBuilder(); // port: for gathering address labels together before outputting, to prevent interruptions
+                                // TODO verify old label has been referenced in a recent pass before printing
+                                // todo maybe addressChecked<counter,bool> updated at end of pass
+
                                 for (var i = 0; i < tmpList.Count; i++)
                                 {
                                     theLabel = tmpList[i];
@@ -1820,8 +1835,27 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                                         continue;
                                     }
 
+                                    //// check address history before considering label printable // todo
+                                    //if (oldPrgLabels.ContainsKey(counter) || AddressBeenAsked(counter, addressHistory, 3))
+                                    //{
+                                    printableLabels.Add(theLabel);
+                                    //}
+                                }
+                            }
+
+                            // any good labels should be in printableLabels now
+                            if (printableLabels.Count == 0)
+                            {
+                                theText.Append(LEFT_MARGIN);
+                            }
+                            else
+                            {
+                                var labelsSub = new StringBuilder(); // port: for gathering address labels together before outputting, to prevent interruptions
+                                for (int i = 0; i < printableLabels.Count; i++)
+                                {
+                                    theLabel = printableLabels[i];
                                     bool drawn = oldDidDrawLine || didDrawLine; // port: refactoring to simplify
-                                    bool lastComment = i == tmpList.Count - 1;
+                                    bool lastComment = i == printableLabels.Count - 1;
 
                                     switch (theLabel)
                                     {
@@ -1838,6 +1872,7 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
 
                                     }
 
+                                    // port note if label is too long then put content on next line 
                                     if (strlen(theLabel) >= marginLen - 1)
                                     {
                                         //if (!drawn && counter != origin) // is this equivalent?
@@ -1845,8 +1880,6 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                                             labelsSub.AppendLine();
 
                                         labelsSub.AppendLine($"{theLabel}:");
-
-                                        // port note if label is too long then put content on next line // todo actually doing this somewhere?
 
                                         if (lastComment) // port: only on the last label
                                             labelsSub.Append(LEFT_MARGIN); // port: separated from prev statement
@@ -1863,37 +1896,23 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
 
                                 theText.Append(labelsSub); // port: print the labels after the vector comment block
                             }
-                            /* todo remove
-                            else
-                            {
-                                theText.Append(LEFT_MARGIN);
-                            }
-                            */
 
 
                             var mnem = useLowerCase ? strtolower(mnemonic) : mnemonic;
-
                             var width = 30 - marginLen + labelLen;
-                            var line = mnem + " " + byteStr;
-                            line = str_pad(line, width);
 
                             var line2 = new StringBuilder();
                             line2.Append($"{mnem} {byteStr}".PadRight(width));
 
                             width = (isDataByte ? 54 : 50) - marginLen + labelLen;
-                            line += " ; $" + hex_pad(counter) + ": " + hextext; // port: this is the post-instruction comment
-                            line = str_pad(line, width);
-
                             line2.Append($" ; ${hex_pad(counter)}: {hextext}".PadRight(width - line2.Length)); // fixed too much padding
 
                             if (isInvalid == 1)
                             {
-                                line += oldMnemonicStr;
                                 line2.Append(oldMnemonicStr);
                             }
 
                             //if (drawTrailer) // port todo?
-                            line += "\n" + trailer;
                             line2.AppendLine();
                             line2.Append(trailer);
 
@@ -1947,12 +1966,14 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                     }
                     else
                     {
-                        theText.Append("\n" + commentLine());
-                        theText.Append("; CHR-ROM");
-                        theText.Append("\n" + commentLine());
+                        theText.AppendLine();
+                        theText.Append(commentLine());
+
+                        theText.AppendLine("; CHR-ROM");
+                        theText.Append(commentLine());
 
                         var incLine = LEFT_MARGIN + ".incbin " + shortname + ".chr";
-                        theText.Append(str_pad(incLine, 30 + labelLen) + " ; Include CHR-ROM\n");
+                        theText.AppendLine(str_pad(incLine, 30 + labelLen) + " ; Include CHR-ROM");
 
                         file_put_contents(shortname + ".chr", chr);
                         echo($"\nCHR-ROM exported as {shortname}.chr");
@@ -1976,8 +1997,26 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                 echo($"\nDisassembly {shortname}.da6.asm generated in {time} seconds\n\n");
             }
 
+            private bool AddressBeenAsked(int counter, List<Dictionary<int, bool>> addressHistory, int passesAgo)
+            {
+                int passes = 0;
 
+                for (int j = addressHistory.Count - 1; j >= 0; j--)
+                {
+                    if (passes >= passesAgo)
+                        break;
 
+                    var asked = addressHistory[j];
+                    if (asked.ContainsKey(counter) && asked[counter])
+                    {
+                        return true;
+                    }
+
+                    passes++;
+                }
+
+                return false;
+            }
 
             //public string ToLabel(int address, int bank = -1)
             //{
@@ -2085,7 +2124,7 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
                 var counterMax = V_NMI; // counter runs into vectors
                 if (noVectors)
                 {
-                    counterMax = 0x10000; // counter runs out of range
+                    counterMax = 0x10000; // counter runs out of range ($ffff+1)
                 }
 
                 return (
@@ -2149,156 +2188,7 @@ disasm6 <file> [-t <file>] [-o #] [-l <file>] [-cdl <file>] [-cdlo #] [-d] [-i]
 
                 return bankList;
             }
-
-            public static void SetBankOrigins(List<BankInfo> bankList, byte[] prg, byte[] cdl, int cdlOffset)
-            {
-                if (cdl != null && cdlOffset != 0)
-                {
-                    var cdlTmp = Util.CopyBytes(cdl, cdlOffset, prg.Length);
-                    cdl = cdlTmp;
-                }
-
-                int romBanks = bankList.Count;
-                var romBankSize = bankList[0].BankSize;
-
-                if (romBankSize == LEN_32K || romBankSize == LEN_16K)
-                {
-                    // 32K: everything starts at $8000
-                    // 16K: same, except last bank at $C000 (set below)
-                    bankList.ForEach(n => n.Origin = CPU_ADDR_BASE);
-                }
-                else if (romBankSize == LEN_8K && cdl != null)
-                {
-                    // $8000
-                    // $A000
-                    // $C000
-                    // $E000
-
-                    // assume last bank at $E000, everything else tbd
-                    for (int j = 0; j < bankList.Count; j++)
-                    {
-                        var info = bankList[j];
-
-                        var cpuBank = IdentifyCPUBank(cdl, info.DataOffset, info.BankSize);
-
-                        int address = 0x0000; // zero indicates no bank information available
-                        if (cpuBank > -1) // one of the 4 prg banks in the $8000-FFFF space
-                        {
-                            address = 0x8000 + (cpuBank * CPU_BANK_LEN);
-                        }
-
-                        //int subAddr = address % 0x2000;
-                        //address += subAddr; // for rom banks less than 8K // todo this probably doesn't happen
-
-                        if (address > 0)
-                            info.Origin = address;
-
-                        //Console.WriteLine($"rom bank: {j,3} cpu bank: {cpuBank,3} ${address:X4}");
-                    }
-                }
-
-                var last = bankList[bankList.Count - 1];
-                last.Origin = (CPU_ADDR_BASE + LEN_32K) - romBankSize; // set last bank origin so vectors come out right
-            }
-
-            /*
-            public static List<BankInfo> GetBankOrigins(byte[] prg, byte[] cdl, int romBankSize = LEN_8K)
-            {
-                // rom bank size is 8K default
-                // actual banks can be more (or less?) depending on mapper
-
-                var bankList = new List<BankInfo>();
-                int romBanks = prg.Length / romBankSize; // chunks of data as managed by mapper
-                //int slices = prg.Length / CPU_BANK_LEN; // chunks of data executing from (ideally) the same 8K address space
-
-                int cpuBank = -1;
-
-                for (int j = 0; j < romBanks; j++)
-                {
-                    var bi = new BankInfo();
-                    bi.Index = j;
-                    bi.BankSize = romBankSize;
-                    bankList.Add(bi);
-
-                    int nextOffset = (j + 1) * romBankSize;
-                    int chunkSize = Math.Min(CPU_BANK_LEN, romBankSize);
-                }
-
-                if (romBankSize == LEN_32K || romBankSize == LEN_16K)
-                {
-                    // 32K: everything starts at $8000
-                    // 16K: same, except last bank at $C000 (set below)
-                    bankList.ForEach(n => n.Origin = 0x8000);
-                }
-                else if (romBankSize == LEN_8K && cdl != null)
-                {
-                    // assume last bank at $E000, everything else tbd
-                    for (int j = 0; j < bankList.Count; j++)
-                    {
-
-                        cpuBank = IdentifyCPUBank(cdl, bankList[j].DataOffset, romBankSize);
-
-                        int address = 0x0000; // zero indicates no bank information available
-                        if (cpuBank > -1) // one of the 4 prg banks in the $8000-FFFF space
-                        {
-                            address = 0x8000 + (cpuBank * CPU_BANK_LEN);
-                        }
-
-                        //int subAddr = address % 0x2000;
-                        //address += subAddr; // for rom banks less than 8K // todo this probably doesn't happen
-
-                        bankList[j].Origin = address;
-
-                        //Console.WriteLine($"rom bank: {j,3} cpu bank: {cpuBank,3} ${address:X4}");
-                    }
-                }
-
-                bankList[bankList.Count - 1].Origin = 0x10000 - romBankSize; // set last bank origin so vectors come out right
-
-                for (int j = 0; j < bankList.Count; j++)
-                {
-                    Console.WriteLine($"rom bank: 0x{bankList[j].DataOffset:X5} ${bankList[j].Origin:x4}");
-                }
-
-                return bankList;
-            }
-            */
-
-            /// <summary>
-            /// searches cdl data for the memory address of any code executed within the rom bank
-            /// </summary>
-            /// <param name="cdl"></param>
-            /// <param name="bankSize"></param>
-            /// <param name="offset"></param>
-            /// <returns></returns>
-            private static int IdentifyCPUBank(byte[] cdl, int offset, int romBankSize)
-            {
-                int cpuBank = -1;
-
-                for (int j = 0; j < romBankSize; j++)
-                {
-                    if (j >= cdl.Length)
-                        break;
-
-                    var byteCDL = cdl[offset + j];
-                    if (byteCDL == 0)
-                        continue;
-
-                    int cdlBank = (byteCDL & CDL_BANK_MASK) >> 2; // bank mask = b1100
-
-                    if (cpuBank != -1 && cpuBank != cdlBank)
-                    {
-                        Console.Write("cpu bank mismatch");
-                    }
-                    else if (cpuBank == -1)
-                    {
-                        cpuBank = cdlBank;
-                        break; // disable to allow mismatch checks
-                    }
-                }
-
-                return cpuBank;
-            }
         }
+
     }
 }

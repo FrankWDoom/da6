@@ -48,17 +48,17 @@ namespace da6
         // bytes replace repeated calls to bindec() throughout code
         // http://www.fceux.com/web/help/fceux.html?CodeDataLogger.html
 
-        const byte CDL_CODE = 0x01; // bindec('00000001')
-        const byte CDL_DATA = 0x02; // bindec('00000010')
-        const byte CDL_BANK_MASK = 0x0C; // 1100
-        const byte CDL_IND_DATA = 0x10;
-        const byte CDL_IND_CODE = 0x20;
-        const byte CDL_PCM_DATA = 0x40;
+        internal const byte CDL_CODE = 0x01; // bindec('00000001')
+        internal const byte CDL_DATA = 0x02; // bindec('00000010')
+        internal const byte CDL_BANK_MASK = 0x0C; // 1100
+        internal const byte CDL_IND_DATA = 0x10;
+        internal const byte CDL_IND_CODE = 0x20;
+        internal const byte CDL_PCM_DATA = 0x40;
 
         static readonly byte CDL_ANY_CODE = (CDL_CODE | CDL_IND_CODE);
         static readonly byte CDL_ANY_DATA = (CDL_DATA | CDL_IND_DATA | CDL_PCM_DATA);
 
-        const int CPU_BANK_LEN = LEN_8K; // size of cpu address space used by cdl bank mask
+        internal const int CPU_BANK_LEN = LEN_8K; // size of cpu address space used by cdl bank mask
 
         // common bank sizes for nes games
 
